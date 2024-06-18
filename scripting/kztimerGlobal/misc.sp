@@ -994,7 +994,7 @@ public PlayLeetJumpSound(client)
 					else
 						if (g_js_GODLIKE_Count[client]==5)
 						{
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATINGE_RELATIVE_SOUND_PATH);
+							Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATING_RELATIVE_SOUND_PATH);
 							ClientCommand(i, buffer);
 						}
 			}
