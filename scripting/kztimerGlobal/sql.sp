@@ -254,40 +254,40 @@ public sql_selectChallengesCompareCallback(Handle:owner, Handle:hndl, const Stri
 		if (winratio>0)
 		{
 			if (pointratio>0)
-				PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+				PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 			else
 					if (pointratio<0)
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 		}
 		else
 		{
 			if (winratio<0)
 			{
 				if (pointratio>0)
-					PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+					PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 				else
 					if (pointratio<0)
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 		
 			}
 			else
 			{
 				if (pointratio>0)
-					PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+					PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 				else
 					if (pointratio<0)
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 			}
 		}	
 	}
 	else
-		PrintToChat(client,"[%cKZ%c] No challenges againgst %s found", szName);
+		PrintToChat(client,"%cFKZ%c | No challenges againgst %s found", szName);
 }
 
 //COMPARE
@@ -732,7 +732,7 @@ public SQL_ViewJumpStatsCallback2(Handle:owner, Handle:hndl, const String:error[
 				AddMenuItem(menu, szVr, szVr);	
 			}				
 			if (ljtrue && !g_bPreStrafe)
-				PrintToChat(client,"[%cKZ%c] %cJUMPSTATS INFO%c: %cLJ PRE%c = JumpOff",PINK,WHITE,GRAY,WHITE,YELLOW,WHITE);	
+				PrintToChat(client,"%cFKZ%c | %cJUMPSTATS INFO%c: %cLJ PRE%c = JumpOff",PINK,WHITE,GRAY,WHITE,YELLOW,WHITE);	
 			SetMenuPagination(menu, 5);
 			//SetMenuPagination(menu, MENU_NO_PAGINATION); 
 			SetMenuOptionFlags(menu, MENUFLAG_BUTTON_EXIT);
@@ -1976,7 +1976,7 @@ public db_viewChallengeHistory(client, String:szSteamId[32])
 	}
 	else
 		if (IsClientInGame(client))
-			PrintToChat(client,"[%cKZ%c] Invalid SteamID found.",RED,WHITE);
+			PrintToChat(client,"%cFKZ%c | Invalid SteamID found.",RED,WHITE);
 	ProfileMenu(client, -1);
 }
 
@@ -2056,7 +2056,7 @@ public sql_selectChallengesCallback(Handle:owner, Handle:hndl, const String:erro
 	if(!bHeader)
 	{
 		ProfileMenu(client, -1);
-		PrintToChat(client, "[%cKZ%c] No challenges found.",PINK,WHITE);
+		PrintToChat(client, "%cFKZ%c | No challenges found.",PINK,WHITE);
 	}
 }
 
@@ -2121,7 +2121,7 @@ public db_viewAllRecords(client, String:szSteamId[32])
 		SQL_TQuery(g_hDb, SQL_ViewAllRecordsCallback, szQuery, client,DBPrio_Low);
 	else
 		if (IsClientInGame(client))
-			PrintToChat(client,"[%cKZ%c] Invalid SteamID found.",RED,WHITE);
+			PrintToChat(client,"%cFKZ%c | Invalid SteamID found.",RED,WHITE);
 	ProfileMenu(client, -1);
 }
 
@@ -2665,7 +2665,7 @@ public sql_selectLatestRecordsCallback(Handle:owner, Handle:hndl, const String:e
 	else
 		PrintToConsole(client,"No records found.");
 	PrintToConsole(client, "----------------------------------------------------------------------------------------------------");
-	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);	
+	PrintToChat(client, "%cFKZ%c | See console for output!", PINK,WHITE);	
 }
 
 			
@@ -3004,7 +3004,7 @@ public ProfileMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 			{
 				if(g_bRecalcRankInProgess[param1])
 				{
-					PrintToChat(param1, "[%cKZ%c] %cRecalculation in progress. Please wait!", PINK,WHITE,GRAY);
+					PrintToChat(param1, "%cFKZ%c | %cRecalculation in progress. Please wait!", PINK,WHITE,GRAY);
 				}
 				else
 				{

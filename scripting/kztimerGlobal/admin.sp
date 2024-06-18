@@ -26,7 +26,7 @@ public Action:Admin_KzPanel(client, args)
 	CreateTimer(0.1, OpenAdminMenu, client,TIMER_FLAG_NO_MAPCHANGE);
 	if ((GetUserFlagBits(client) & ADMFLAG_ROOT))
 	{
-		PrintToChat(client, "[%cKZ%c] See console for more commands", LIMEGREEN,WHITE);
+		PrintToChat(client, "%cFKZ%c | See console for more commands", LIMEGREEN,WHITE);
 		PrintToConsole(client,"\n[KZ ROOT ADMIN]");
 		PrintToConsole(client," sm_refreshprofile <steamid> (recalculates player profile for given steamid)\n sm_deleteproreplay <mapname> (Deletes pro replay file for a given map)\n sm_deletetpreplay <mapname> (Deletes tp replay file for a given map)\n ");
 		PrintToConsole(client,"[PLAYER RANKING]\n sm_resetplayerchallenges <steamid> (Resets (won) challenges for given steamid)\n sm_resetextrapoints (Resets given extra points for all players)\n ");
@@ -273,7 +273,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 		{ 
 			DeleteButtons(param1);
 			db_deleteMapButtons(g_szMapName);
-			PrintToChat(param1,"[%cKZ%c] Timer buttons deleted", PINK,WHITE,GREEN,WHITE);
+			PrintToChat(param1,"%cFKZ%c | Timer buttons deleted", PINK,WHITE,GREEN,WHITE);
 			KzAdminMenu(param1);
 		}
 		if(param2 == 5)

@@ -727,13 +727,13 @@ public CreateButton(client,String:targetname[])
 			if (StrEqual(targetname, "climb_startbuttonx"))
 			{
 				g_fStartButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,PINK,WHITE);
+				PrintToChat(client,"%c%cFKZ%c | Start button built!", WHITE,PINK,WHITE);
 				g_bFirstStartButtonPush=false;
 			}
 			else
 			{
 				g_fEndButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,PINK,WHITE);
+				PrintToChat(client,"%c%cFKZ%c | Stop button built!", WHITE,PINK,WHITE);
 				g_bFirstEndButtonPush = false;
 			}
 			g_global_SelfBuiltButtons=true;
@@ -1369,7 +1369,7 @@ public MapFinishedMsgs(client, type)
 		}
 
 		if (rank==99999 && IsValidClient(client))
-			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
+			PrintToChat(client, "%cFKZ%c | %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
 		else
 		{
 			Call_StartForward(g_hFWD_TimerStoppedValid);
@@ -3162,11 +3162,11 @@ public PerformStats(client, target,bool:console_only)
 		decl String:banstats[512];
 		GetClientStats(target, banstats, sizeof(banstats));
 		if (!console_only)
-			PrintToChat(client, "[%cKZ%c] %s",PINK,WHITE,banstats);
+			PrintToChat(client, "%cFKZ%c | %s",PINK,WHITE,banstats);
 		PrintToConsole(client, "FKZ | %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
 		if (g_bAutoBhop)
 		{
-			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",PINK,WHITE);
+			PrintToChat(client, "%cFKZ%c | AutoBhop enabled",PINK,WHITE);
 			PrintToConsole(client, "FKZ | AutoBhop enabled");
 		}
 	}
