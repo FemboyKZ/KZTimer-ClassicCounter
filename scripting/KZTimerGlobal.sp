@@ -2306,9 +2306,9 @@ public OnGameFrame()
 
 public Plugin:myinfo =
 {
-	name = "KZTimer",
-	author = "1NutWunDeR",
+	name = "KZTimer - FKZ ClassicCounter Ver",
+	author = "1NutWunDeR, Camwhore",
 	description = "timer plugin",
 	version = VERSION,
-	url = "https://forums.alliedmods.net/showthread.php?t=223274"
+	url = "https://github.com/FemboyKZ/KZTimerClassic"
 }
