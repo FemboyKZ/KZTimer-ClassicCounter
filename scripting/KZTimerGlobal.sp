@@ -194,6 +194,8 @@ new Handle:g_hdist_perfect_weird = INVALID_HANDLE;
 new Float:g_dist_perfect_weird;
 new Handle:g_hdist_godlike_weird = INVALID_HANDLE;
 new Float:g_dist_god_weird;
+new Handle:g_hdist_golden_weird = INVALID_HANDLE;
+new Float:g_dist_golden_weird;
 new Handle:g_hdist_good_dropbhop = INVALID_HANDLE;
 new Float:g_dist_min_dropbhop;
 new Handle:g_hdist_impressive_dropbhop = INVALID_HANDLE;
@@ -202,6 +204,8 @@ new Handle:g_hdist_perfect_dropbhop = INVALID_HANDLE;
 new Float:g_dist_perfect_dropbhop;
 new Handle:g_hdist_godlike_dropbhop = INVALID_HANDLE;
 new Float:g_dist_god_dropbhop;
+new Handle:g_hdist_golden_dropbhop = INVALID_HANDLE;
+new Float:g_dist_golden_dropbhop;
 new Handle:g_hdist_good_bhop = INVALID_HANDLE;
 new Float:g_dist_min_bhop;
 new Handle:g_hdist_impressive_bhop = INVALID_HANDLE;
@@ -210,6 +214,8 @@ new Handle:g_hdist_perfect_bhop = INVALID_HANDLE;
 new Float:g_dist_perfect_bhop;
 new Handle:g_hdist_godlike_bhop = INVALID_HANDLE;
 new Float:g_dist_god_bhop;
+new Handle:g_hdist_golden_bhop = INVALID_HANDLE;
+new Float:g_dist_golden_bhop;
 new Handle:g_hdist_good_multibhop = INVALID_HANDLE;
 new Float:g_dist_min_multibhop;
 new Handle:g_hdist_impressive_multibhop = INVALID_HANDLE;
@@ -218,6 +224,8 @@ new Handle:g_hdist_perfect_multibhop = INVALID_HANDLE;
 new Float:g_dist_perfect_multibhop;
 new Handle:g_hdist_godlike_multibhop = INVALID_HANDLE;
 new Float:g_dist_god_multibhop;
+new Handle:g_hdist_golden_multibhop = INVALID_HANDLE;
+new Float:g_dist_golden_multibhop;
 new Handle:g_hdist_good_ladder = INVALID_HANDLE;
 new Float:g_dist_min_ladder;
 new Handle:g_hdist_perfect_ladder = INVALID_HANDLE;
@@ -226,6 +234,8 @@ new Handle:g_hdist_impressive_ladder = INVALID_HANDLE;
 new Float:g_dist_impressive_ladder;
 new Handle:g_hdist_godlike_ladder = INVALID_HANDLE;
 new Float:g_dist_god_ladder;
+new Handle:g_hdist_golden_ladder = INVALID_HANDLE;
+new Float:g_dist_golden_ladder
 new Handle:g_hBanDuration = INVALID_HANDLE;
 new Float:g_fBanDuration;
 new Handle:g_hdist_good_lj = INVALID_HANDLE;
@@ -236,6 +246,8 @@ new Handle:g_hdist_perfect_lj = INVALID_HANDLE;
 new Float:g_dist_perfect_lj;
 new Handle:g_hdist_godlike_lj = INVALID_HANDLE;
 new Float:g_dist_god_lj;
+new Handle:g_hdist_golden_lj = INVALID_HANDLE;
+new Float:g_dist_golden_lj
 new Handle:g_hdist_good_countjump = INVALID_HANDLE;
 new Float:g_dist_min_countjump;
 new Handle:g_hdist_impressive_countjump = INVALID_HANDLE;
@@ -244,6 +256,8 @@ new Handle:g_hdist_perfect_countjump = INVALID_HANDLE;
 new Float:g_dist_perfect_countjump;
 new Handle:g_hdist_godlike_countjump = INVALID_HANDLE;
 new Float:g_dist_god_countjump;
+new Handle:g_hdist_golden_countjump = INVALID_HANDLE;
+new Float:g_dist_golden_countjump
 new Handle:g_hBhopSpeedCap = INVALID_HANDLE;
 new Float:g_fBhopSpeedCap;
 new Handle:g_hMaxBhopPreSpeed = INVALID_HANDLE;
@@ -730,6 +744,8 @@ new String:IMPRESSIVE_FULL_SOUND_PATH[128];
 new String:IMPRESSIVE_RELATIVE_SOUND_PATH[128];
 new String:GOLDEN_FULL_SOUND_PATH[128];
 new String:GOLDEN_RELATIVE_SOUND_PATH[128];
+new String:WRECKER_FULL_SOUND_PATH[128];
+new String:WRECKER_RELATIVE_SOUND_PATH[128];
 new String:g_szLanguages[][128] = {"English", "German", "Swedish", "French", "Russian", "SChinese", "Brazilian"};
 new String:RadioCMDS[][] = {"coverme", "takepoint", "holdpos", "regroup", "followme", "takingfire", "go", "fallback", "sticktog",
 	"getinpos", "stormfront", "report", "roger", "enemyspot", "needbackup", "sectorclear", "inposition", "reportingin",
@@ -774,14 +790,14 @@ new bool:PlayerOnGround[MAXPLAYERS + 1];
 new Float:AirSpeed[MAXPLAYERS + 1][3];
 new bool:PlayerInTriggerPush[MAXPLAYERS + 1];
 
-// Gold jumpstats
-new Float:g_hdist_golden_countjump;
-new Float:g_hdist_golden_lj;
-new Float:g_hdist_golden_weird;
-new Float:g_hdist_golden_dropbhop;
-new Float:g_hdist_golden_bhop;
-new Float:g_hdist_golden_multibhop;
-new Float:g_hdist_golden_ladder;
+// purple jumpstats
+new Float:g_hdist_wrecker_countjump;
+new Float:g_hdist_wrecker_lj;
+new Float:g_hdist_wrecker_weird;
+new Float:g_hdist_wrecker_dropbhop;
+new Float:g_hdist_wrecker_bhop;
+new Float:g_hdist_wrecker_multibhop;
+new Float:g_hdist_wrecker_ladder;
 
 #include "kztimerGlobal/admin.sp"
 #include "kztimerGlobal/commands.sp"
@@ -987,7 +1003,7 @@ public OnPluginEnd()
 	UnhookEntityOutput("func_button", "OnPressed", ButtonPress);
 
 	//set server convars back to default
-	ServerCommand("sm_cvar sv_enablebunnyhopping 0;sv_friction 5.2;sv_accelerate 5.5;sv_airaccelerate 10;sv_maxvelocity 2000;sv_staminajumpcost .08;sv_staminalandcost .050");
+	ServerCommand("sv_friction 5.2;sv_accelerate 5.5;sv_airaccelerate 10;sv_maxvelocity 2000;sv_staminajumpcost .08;sv_staminalandcost .050");
 	ServerCommand("mp_respawn_on_death_ct 0;mp_respawn_on_death_t 0;mp_respawnwavetime_ct 10.0;mp_respawnwavetime_t 10.0;bot_zombie 0;mp_ignore_round_win_conditions 0");
 	ServerCommand("sv_infinite_ammo 0;mp_endmatch_votenextmap 1;mp_do_warmup_period 1;mp_warmuptime 60;mp_match_can_clinch 1;mp_match_end_changelevel 0");
 	ServerCommand("mp_match_restart_delay 15;mp_endmatch_votenextleveltime 20;mp_endmatch_votenextmap 1;mp_halftime 0;mp_do_warmup_period 1;mp_maxrounds 0;bot_quota 0");
@@ -1703,12 +1719,12 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			SetConVarFloat(g_hAccelerate, 6.5);
 			SetConVarFloat(g_hMaxVelocity, 2000.0);
 			SetConVarFloat(g_hBhopSpeedCap, 380.0);
-			SetConVarFloat(g_hWaterAccelerate, 10.0);
+			//SetConVarFloat(g_hWaterAccelerate, 10.0);
 			SetConVarInt(g_hCheats, 0);
-			SetConVarInt(g_hEnableBunnyhoping, 1);
+			//SetConVarInt(g_hEnableBunnyhoping, 1);
 			SetConVarInt(g_hDropKnifeEnable, 0);
-			SetConVarInt(g_hAutoBhop, 0);
-			SetConVarInt(g_hClampVel, 0);
+			//SetConVarInt(g_hAutoBhop, 0);
+			//SetConVarInt(g_hClampVel, 0);
 			SetConVarFloat(g_hsv_ladder_scale_speed, 1.0);
 		}
 		else
@@ -1825,6 +1841,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 	if(convar == g_hdist_godlike_multibhop)
 		g_dist_god_multibhop = StringToFloat(newValue[0]);
 
+	if(convar == g_hdist_golden_multibhop)
+		g_dist_golden_multibhop = StringToFloat(newValue[0]);
+
 	if(convar == g_hdist_good_bhop)
 		g_dist_min_bhop = StringToFloat(newValue[0]);
 
@@ -1836,6 +1855,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 
 	if(convar == g_hdist_godlike_bhop)
 		g_dist_god_bhop = StringToFloat(newValue[0]);
+
+	if(convar == g_hdist_golden_bhop)
+		g_dist_golden_bhop = StringToFloat(newValue[0]);
 
 	if(convar == g_hdist_good_dropbhop)
 		g_dist_min_dropbhop = StringToFloat(newValue[0]);
@@ -1849,6 +1871,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 	if(convar == g_hdist_godlike_dropbhop)
 		g_dist_god_dropbhop = StringToFloat(newValue[0]);
 
+	if(convar == g_hdist_golden_dropbhop)
+		g_dist_golden_dropbhop = StringToFloat(newValue[0]);
+
 	if(convar == g_hdist_good_weird)
 		g_dist_min_weird = StringToFloat(newValue[0]);
 
@@ -1861,6 +1886,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 	if(convar == g_hdist_godlike_weird)
 		g_dist_god_weird = StringToFloat(newValue[0]);
 
+	if(convar == g_hdist_golden_weird)
+		g_dist_golden_weird = StringToFloat(newValue[0]);
+
 	if(convar == g_hdist_good_lj)
 		g_dist_min_lj = StringToFloat(newValue[0]);
 
@@ -1872,6 +1900,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 
 	if(convar == g_hdist_godlike_lj)
 		g_dist_god_lj = StringToFloat(newValue[0]);
+	
+	if(convar == g_hdist_golden_lj)
+		g_dist_golden_lj = StringToFloat(newValue[0]);
 
 	if(convar == g_hdist_good_countjump)
 		g_dist_min_countjump = StringToFloat(newValue[0]);
@@ -1885,6 +1916,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 	if(convar == g_hdist_godlike_countjump)
 		g_dist_god_countjump = StringToFloat(newValue[0]);
 
+	if(convar == g_hdist_golden_countjump)
+		g_dist_golden_countjump = StringToFloat(newValue[0]);
+
 	if(convar == g_hdist_good_ladder)
 		g_dist_min_ladder = StringToFloat(newValue[0]);
 
@@ -1896,6 +1930,9 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 
 	if(convar == g_hdist_godlike_ladder)
 		g_dist_god_ladder = StringToFloat(newValue[0]);
+
+	if(convar == g_hdist_golden_ladder)
+		g_dist_golden_ladder = StringToFloat(newValue[0]);
 
 	if(convar == g_hBanDuration)
 		g_fBanDuration = StringToFloat(newValue[0]);
