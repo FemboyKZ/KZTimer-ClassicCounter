@@ -852,7 +852,7 @@ public Postthink(client)
 				}
 				//golden
 				else
-					if (g_js_fJump_Distance[client] >= g_hdist_golden_ladder && g_js_fJump_Distance[client] < g_dist_wrecker_ladder)	
+					if (g_js_fJump_Distance[client] >= g_hdist_golden_ladder)	
 					{				
 						// strafe hack protection					
 						if (strafes < 3)
@@ -968,7 +968,7 @@ public Postthink(client)
 					}		
 					//godlike
 					else 
-					if (g_js_fJump_Distance[client] >= g_dist_god_ladder && g_js_fJump_Distance[client] < g_dist_golden_ladder)	
+					if (g_js_fJump_Distance[client] >= g_dist_god_ladder)	
 					{				
 						// strafe hack protection					
 						if (strafes < 3)
@@ -1043,7 +1043,7 @@ public Postthink(client)
 		}				
 	}
 	
-
+	
 	//Chat Output
 	//LongJump
 	if (!g_bCountJump[client] && !g_bLadderJump[client] && ground_frames > 11 && fGroundDiff == 0.0 && fJump_Height <= 67.0 && g_js_fJump_Distance[client] < 300.0 && g_js_fMax_Speed_Final[client] > 200.0) 
@@ -1145,7 +1145,7 @@ public Postthink(client)
 			bPersonalBest = true;
 			Format(szPersonalBest, 32, "%T", "Jumpstats_PersonalBest",client,YELLOW);			
 		}	
-
+			
 		//min?
 		if (g_js_fJump_Distance[client] >= g_dist_min_lj && g_js_fJump_Distance[client] < g_dist_impressive_lj)	
 		{		
@@ -1257,7 +1257,7 @@ public Postthink(client)
 				else		
 				{	
 				// Golden=?
-					if (g_js_fJump_Distance[client] >= g_hdist_golden_lj && g_js_fJump_Distance[client] < g_dist_wrecker_lj)	
+					if (g_js_fJump_Distance[client] >= g_hdist_golden_lj)	
 					{
 						// strafe hack protection					
 						if (strafes < 4 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -1317,7 +1317,8 @@ public Postthink(client)
 						{
 							PlayGoldenJumpSound(client);
 						}
-					// wrecker=?
+					}else 
+					// Wrecker=?
 					if (g_js_fJump_Distance[client] >= g_hdist_wrecker_lj)	
 					{
 						// strafe hack protection					
@@ -1379,7 +1380,7 @@ public Postthink(client)
 							PlayWreckerJumpSound(client);
 						}
 					}else 
-					if (g_js_fJump_Distance[client] >= g_dist_god_lj && g_js_fJump_Distance[client] < g_dist_golden_lj)	
+					if (g_js_fJump_Distance[client] >= g_dist_god_lj)	
 					{
 						// strafe hack protection					
 						if (strafes < 4 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -1590,7 +1591,7 @@ public Postthink(client)
 					}
 					// Golden mhop
 					else
-						if (g_js_fJump_Distance[client] >= g_hdist_golden_multibhop && g_js_fJump_Distance[client] < g_dist_wrecker_multibhop)	
+						if (g_js_fJump_Distance[client] >= g_hdist_golden_multibhop)	
 						{
 							// strafe hack protection					
 							if (strafes < 4 || g_js_fPreStrafe[client] < 270.0)
@@ -1647,9 +1648,9 @@ public Postthink(client)
 								PlayGoldenJumpSound(client);
 							}
 						}
-						// wrecker mhop
+						// Wrecker mhop
 						else
-						if (g_js_fJump_Distance[client] >= g_dist_wrecker_multibhop)	
+						if (g_js_fJump_Distance[client] >= g_hdist_wrecker_multibhop)	
 						{
 							// strafe hack protection					
 							if (strafes < 4 || g_js_fPreStrafe[client] < 270.0)
@@ -1706,9 +1707,9 @@ public Postthink(client)
 								PlayWreckerJumpSound(client);
 							}
 						}
-					//godlike?
+						//godlike?
 						else
-						if (g_js_fJump_Distance[client] >= g_dist_god_multibhop && g_js_fJump_Distance[client] < g_dist_golden_multibhop)	
+						if (g_js_fJump_Distance[client] >= g_dist_god_multibhop)	
 						{
 							// strafe hack protection					
 							if (strafes < 4 || g_js_fPreStrafe[client] < 270.0)
@@ -1901,7 +1902,7 @@ public Postthink(client)
 				}
 				//Golden
 				else
-					if (g_js_fJump_Distance[client] >= g_hdist_golden_countjump && g_js_fJump_Distance[client] < g_dist_wrecker_countjump)	
+					if (g_js_fJump_Distance[client] >= g_hdist_golden_countjump)	
 					{				
 						// strafe hack protection					
 						if (strafes < 4 || g_js_fPreStrafe[client] < 270.0 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -2017,7 +2018,7 @@ public Postthink(client)
 					}
 					//godlike
 					else
-					if (g_js_fJump_Distance[client] >= g_dist_god_countjump && g_js_fJump_Distance[client] < g_dist_golden_countjump)	
+					if (g_js_fJump_Distance[client] >= g_dist_god_countjump)	
 					{				
 						// strafe hack protection					
 						if (strafes < 4 || g_js_fPreStrafe[client] < 270.0 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -2211,7 +2212,7 @@ public Postthink(client)
 						}
 						//Golden
 						else
-							if (g_js_fJump_Distance[client] >= g_hdist_golden_dropbhop && g_js_fJump_Distance[client] < g_dist_wrecker_dropbhop)	
+							if (g_js_fJump_Distance[client] >= g_hdist_golden_dropbhop)	
 							{				
 								// strafe hack protection					
 								if (strafes < 3 || g_js_fPreStrafe[client] < 270.0 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -2267,9 +2268,8 @@ public Postthink(client)
 									PlayGoldenJumpSound(client);
 								}
 							}
-
-							//wrecker
-						    else
+							//Wrecker
+							else
 							if (g_js_fJump_Distance[client] >= g_hdist_wrecker_dropbhop)	
 							{				
 								// strafe hack protection					
@@ -2328,7 +2328,7 @@ public Postthink(client)
 							}
 							//godlike
 							else
-							if (g_js_fJump_Distance[client] >= g_dist_god_dropbhop && g_js_fJump_Distance[client] < g_dist_golden_dropbhop)	
+							if (g_js_fJump_Distance[client] >= g_dist_god_dropbhop)	
 							{				
 								// strafe hack protection					
 								if (strafes < 3 || g_js_fPreStrafe[client] < 270.0 || g_js_fMax_Speed_Final[client] < 300.0)
@@ -2524,7 +2524,7 @@ public Postthink(client)
 						}
 						//Golden?
 						else
-							if (g_js_fJump_Distance[client] >= g_hdist_golden_weird && g_js_fJump_Distance[client] < g_dist_wrecker_weird)	
+							if (g_js_fJump_Distance[client] >= g_hdist_golden_weird)	
 							{
 								// strafe hack protection					
 								if (strafes < 3 || g_js_fPreStrafe[client] < 255.0)
@@ -2577,9 +2577,8 @@ public Postthink(client)
 								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
 								{
 									PlayGoldenJumpSound(client);
-								}	
-							}
-						//wrecker?
+								}								
+							}//Wrecker?
 							else
 							if (g_js_fJump_Distance[client] >= g_hdist_wrecker_weird)	
 							{
@@ -2637,7 +2636,7 @@ public Postthink(client)
 								}								
 							}//godlike?
 							else
-							if (g_js_fJump_Distance[client] >= g_dist_god_weird && g_js_fJump_Distance[client] < g_dist_golden_weird)	
+							if (g_js_fJump_Distance[client] >= g_dist_god_weird)	
 							{
 								// strafe hack protection					
 								if (strafes < 3 || g_js_fPreStrafe[client] < 255.0)
@@ -2823,7 +2822,7 @@ public Postthink(client)
 					{
 					
 						//Golden?
-						if (g_js_fJump_Distance[client] >= g_hdist_golden_bhop && g_js_fJump_Distance[client] < g_dist_wrecker_bhop)	
+						if (g_js_fJump_Distance[client] >= g_hdist_golden_bhop)	
 						{
 							ValidJump=true;
 							// strafe hack protection					
@@ -2878,10 +2877,7 @@ public Postthink(client)
 								PlayGoldenJumpSound(client);
 							}						
 						}
-						else
-						{
-					
-						//wrecker?
+						//Wrecker?
 						if (g_js_fJump_Distance[client] >= g_hdist_wrecker_bhop)	
 						{
 							ValidJump=true;
@@ -2938,7 +2934,7 @@ public Postthink(client)
 							}						
 						}
 						//godlike?
-						else if (g_js_fJump_Distance[client] >= g_dist_god_bhop && g_js_fJump_Distance[client] < g_dist_golden_bhop)	
+						else if (g_js_fJump_Distance[client] >= g_dist_god_bhop)	
 						{
 							ValidJump=true;
 							// strafe hack protection					
@@ -3000,7 +2996,7 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]=0;
 						}
 					}
-
+							
 				//strafe sync chat
 				if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_bhop)
 						PrintToChat(client,"%s", szStrafeSync);		
@@ -3018,7 +3014,7 @@ public Postthink(client)
 	if (!ValidJump)
 		g_js_GODLIKE_Count[client]=0;
 	PostThinkPost(client, ground_frames);						
-}}}
+}
 
 public PostThinkPost(client, ground_frames)
 {
