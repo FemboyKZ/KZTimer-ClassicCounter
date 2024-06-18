@@ -1043,7 +1043,7 @@ public Postthink(client)
 		}				
 	}
 	
-	
+
 	//Chat Output
 	//LongJump
 	if (!g_bCountJump[client] && !g_bLadderJump[client] && ground_frames > 11 && fGroundDiff == 0.0 && fJump_Height <= 67.0 && g_js_fJump_Distance[client] < 300.0 && g_js_fMax_Speed_Final[client] > 200.0) 
@@ -1145,7 +1145,7 @@ public Postthink(client)
 			bPersonalBest = true;
 			Format(szPersonalBest, 32, "%T", "Jumpstats_PersonalBest",client,YELLOW);			
 		}	
-			
+
 		//min?
 		if (g_js_fJump_Distance[client] >= g_dist_min_lj && g_js_fJump_Distance[client] < g_dist_impressive_lj)	
 		{		
@@ -3000,7 +3000,7 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]=0;
 						}
 					}
-							
+
 				//strafe sync chat
 				if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_bhop)
 						PrintToChat(client,"%s", szStrafeSync);		
@@ -3018,7 +3018,7 @@ public Postthink(client)
 	if (!ValidJump)
 		g_js_GODLIKE_Count[client]=0;
 	PostThinkPost(client, ground_frames);						
-}
+}}}
 
 public PostThinkPost(client, ground_frames)
 {
