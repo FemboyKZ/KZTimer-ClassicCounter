@@ -42,8 +42,8 @@ public Action:CheckTeleport(Handle:timer, any:client)
 		{
 			decl Float:org[3];
 			GetClientAbsOrigin(client,org);
-			PrintToChat(client,"[%cKZ%c] Unverified client teleport detected. Your position: %f, %f, %f on %s",MOSSGREEN,WHITE,org[0],org[1],org[2],g_szMapName);
-			PrintToConsole(client,"[KZ] Unverified client teleport detected. Your position: %f, %f, %f on %s",org[0],org[1],org[2],g_szMapName);
+			PrintToChat(client,"[%cKZ%c] Unverified client teleport detected. Your position: %f, %f, %f on %s",PINK,WHITE,org[0],org[1],org[2],g_szMapName);
+			PrintToConsole(client,"FKZ | Unverified client teleport detected. Your position: %f, %f, %f on %s",org[0],org[1],org[2],g_szMapName);
 			Client_Stop(client,0);
 		}	
 	}
@@ -65,7 +65,7 @@ public Action:SpecAdvertTimer(Handle:timer)
 			if (StrEqual(szNameList,""))
 				Format(szNameList,1024,"%s",clientname);
 			else
-				Format(szNameList,1024,"%s%c;%c %s",szNameList, MOSSGREEN,WHITE,clientname);
+				Format(szNameList,1024,"%s%c;%c %s",szNameList, PINK,WHITE,clientname);
 			count++;
 		}
 	}
@@ -684,7 +684,7 @@ public Action:SetClanTag(Handle:timer, any:client)
 	//new rank
 	if (oldrank && g_bPointSystem)
 		if (!StrEqual(g_pr_rankname[client], old_pr_rankname, false) && IsValidClient(client))
-			CPrintToChat(client,"%t","SkillGroup", MOSSGREEN, WHITE, GRAY,GRAY, g_pr_chat_coloredrank[client]);
+			CPrintToChat(client,"%t","SkillGroup", PINK, WHITE, GRAY,GRAY, g_pr_chat_coloredrank[client]);
 }
 
 public Action:TerminateRoundTimer(Handle:timer)
@@ -701,7 +701,7 @@ public Action:WelcomeMsgTimer(Handle:timer, any:client)
 public Action:HelpMsgTimer(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))
-		PrintToChat(client, "%t", "HelpMsg", MOSSGREEN,WHITE,GREEN,WHITE);
+		PrintToChat(client, "%t", "HelpMsg", PINK,WHITE,GREEN,WHITE);
 }
 
 public Action:SteamGroupTimer(Handle:timer, any:client)
@@ -724,7 +724,7 @@ public Action:StartMsgTimer(Handle:timer, any:client)
 	if (IsValidClient(client) && !IsFakeClient(client))
 	{
 		if (!g_bEnforcer)
-			PrintToChat(client, "%t", "SettingsEnforcerDisabled", MOSSGREEN,WHITE,GRAY);	
+			PrintToChat(client, "%t", "SettingsEnforcerDisabled", PINK,WHITE,GRAY);	
 		PrintMapRecords(client);	
 	}
 }

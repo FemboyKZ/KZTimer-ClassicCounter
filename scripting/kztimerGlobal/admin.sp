@@ -244,7 +244,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 		{ 
 			if (!g_pr_RankingRecalc_InProgress)
 			{
-				PrintToChat(param1, "%t", "PrUpdateStarted", MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "PrUpdateStarted", PINK,WHITE);
 				g_bManualRecalc=true;
 				g_pr_Recalc_AdminID=param1;
 				RefreshPlayerRankTable(MAX_PR_PLAYERS);
@@ -256,7 +256,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				g_bTop100Refresh = false;
 				g_bManualRecalc = false;
 				g_pr_RankingRecalc_InProgress = false;
-				PrintToChat(param1, "%t", "StopRecalculation", MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "StopRecalculation", PINK,WHITE);
 			}
 		}
 		if(param2 == 2)
@@ -273,7 +273,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 		{ 
 			DeleteButtons(param1);
 			db_deleteMapButtons(g_szMapName);
-			PrintToChat(param1,"[%cKZ%c] Timer buttons deleted", MOSSGREEN,WHITE,GREEN,WHITE);
+			PrintToChat(param1,"[%cKZ%c] Timer buttons deleted", PINK,WHITE,GREEN,WHITE);
 			KzAdminMenu(param1);
 		}
 		if(param2 == 5)
@@ -668,7 +668,7 @@ public Action:Admin_ResetRecords(client, args)
 {
 	if(args < 1)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetplayertimes <steamid> [<mapname>]");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetplayertimes <steamid> [<mapname>]");
 		return Plugin_Handled;
 	}
 	else 
@@ -700,7 +700,7 @@ public Action:Admin_RefreshProfile(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_refreshprofile <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_refreshprofile <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -724,7 +724,7 @@ public Action:Admin_ResetRecordTp(client, args)
 {
 	if(args != 6)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetplayertptime <steamid> <mapname>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetplayertptime <steamid> <mapname>");
 		return Plugin_Handled;
 	}
 	else 
@@ -752,7 +752,7 @@ public Action:Admin_ResetRecordPro(client, args)
 {
 	if(args != 6)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetplayerprotime <steamid> <mapname>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetplayerprotime <steamid> <mapname>");
 		return Plugin_Handled;
 	}
 	else 
@@ -780,7 +780,7 @@ public Action:Admin_ResetChallenges(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetplayerchallenges <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetplayerchallenges <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -803,7 +803,7 @@ public Action:Admin_ResetMapRecords(client, args)
 {
 	if(args != 1)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetmaptimes <mapname>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetmaptimes <mapname>");
 		return Plugin_Handled;
 	}
 	if(args == 1)
@@ -819,7 +819,7 @@ public Action:Admin_ResetLadderJumpRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetladderjumprecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetladderjumprecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -841,7 +841,7 @@ public Action:Admin_ResetLjRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetljrecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetljrecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -864,7 +864,7 @@ public Action:Admin_ResetCjRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetcjrecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetcjrecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -887,7 +887,7 @@ public Action:Admin_ResetLjBlockRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetljblockrecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetljblockrecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -910,7 +910,7 @@ public Action:Admin_DeleteProReplay(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetproreplay <mapname>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetproreplay <mapname>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -933,7 +933,7 @@ public Action:Admin_DeleteTpReplay(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resettpreplay <mapname>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resettpreplay <mapname>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -956,7 +956,7 @@ public Action:Admin_ResetWjRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetwjrecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetwjrecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -979,7 +979,7 @@ public Action:Admin_ResetPlayerJumpstats(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetplayerjumpstats <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetplayerjumpstats <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -1002,7 +1002,7 @@ public Action:Admin_ResetDropBhopRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetdropbhoprecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetdropbhoprecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -1026,7 +1026,7 @@ public Action:Admin_ResetBhopRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetbhoprecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetbhoprecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)
@@ -1049,7 +1049,7 @@ public Action:Admin_ResetMultiBhopRecords(client, args)
 {
 	if(args == 0)
 	{
-		ReplyToCommand(client, "[KZ] Usage: sm_resetmultibhoprecord <steamid>");
+		ReplyToCommand(client, "FKZ | Usage: sm_resetmultibhoprecord <steamid>");
 		return Plugin_Handled;
 	}
 	if(args > 0)

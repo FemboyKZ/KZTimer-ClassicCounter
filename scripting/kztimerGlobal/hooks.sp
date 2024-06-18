@@ -569,7 +569,7 @@ public Action:Event_PlayerDisconnect(Handle:event, const String:name[], bool:don
 		GetEventString(event, "reason", disconnectReason, sizeof(disconnectReason));  
 		for (new i = 1; i <= MaxClients; i++)
 			if (IsValidClient(i) && i != client && !IsFakeClient(i))
-				PrintToChat(i, "%t", "Disconnected1",WHITE, MOSSGREEN, szName, WHITE, disconnectReason);	
+				PrintToChat(i, "%t", "Disconnected1",WHITE, PINK, szName, WHITE, disconnectReason);	
 		return Plugin_Handled;
 	}
 	else
@@ -912,7 +912,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
 		if (fLastUndo < 1.0 && g_bOnBhopPlattform[client])
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client,"[%cKZ%c] %cUndo-TP is not allowed on bhop blocks!",MOSSGREEN,WHITE,RED);
+			PrintToChat(client,"[%cKZ%c] %cUndo-TP is not allowed on bhop blocks!",PINK,WHITE,RED);
 			g_bOnBhopPlattform[client]=false;
 			DoTeleport(client,0);		
 			new Float:f3pos[3];

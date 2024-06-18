@@ -70,7 +70,7 @@ public SetSoundPath()
 	BuildPath(Path_SM, sPath, sizeof(sPath), "configs/kztimer/sounds.cfg");
 
 	new i = 0;
-	new String:ssp[9][128];
+	new String:ssp[10][128];
 
 
 	if (FileExists(sPath))
@@ -80,7 +80,7 @@ public SetSoundPath()
 		{
 			do
 			{
-				if (i < 9)
+				if (i < 10)
 				{
 					KvGetString(hKeyValues, "path", ssp[i], 128);
 				}
@@ -116,6 +116,9 @@ public SetSoundPath()
 
 		Format(GOLDEN_FULL_SOUND_PATH, sizeof(GOLDEN_FULL_SOUND_PATH), "sound/%s", ssp[8]);
 		Format(GOLDEN_RELATIVE_SOUND_PATH, sizeof(GOLDEN_RELATIVE_SOUND_PATH), "*%s", ssp[8]);
+
+		Format(WRECKER_FULL_SOUND_PATH, sizeof(WRECKER_FULL_SOUND_PATH), "sound/%s", ssp[9]);
+		Format(WRECKER_RELATIVE_SOUND_PATH, sizeof(WRECKER_RELATIVE_SOUND_PATH), "*%s", ssp[9]);
 
 		if (hKeyValues != INVALID_HANDLE)
 			CloseHandle(hKeyValues);
@@ -169,12 +172,12 @@ public SetServerConvars()
 		SetConVarFloat(g_hAccelerate, 6.5);
 		SetConVarFloat(g_hMaxVelocity, 2000.0);
 		SetConVarFloat(g_hBhopSpeedCap, 380.0);
-		SetConVarFloat(g_hWaterAccelerate, 10.0);
+		//SetConVarFloat(g_hWaterAccelerate, 10.0);
 		SetConVarInt(g_hCheats, 0);
 		SetConVarInt(g_hDropKnifeEnable, 0);
-		SetConVarInt(g_hEnableBunnyhoping, 1);
-		SetConVarInt(g_hAutoBhop, 0);
-		SetConVarInt(g_hClampVel, 0);
+		//SetConVarInt(g_hEnableBunnyhoping, 1);
+		//SetConVarInt(g_hAutoBhop, 0);
+		//SetConVarInt(g_hClampVel, 0);
 		SetConVarFloat(g_hsv_ladder_scale_speed, 1.0);
 	}
 
@@ -431,56 +434,56 @@ public PrintConsoleInfo(client)
 	PrintToConsole(client, "%s (%ip), %s (%ip), %s (%ip), %s (%ip)",g_szSkillGroups[5], g_pr_rank_Percentage[5], g_szSkillGroups[6],g_pr_rank_Percentage[6], g_szSkillGroups[7], g_pr_rank_Percentage[7], g_szSkillGroups[8], g_pr_rank_Percentage[8]);
 	PrintToConsole(client, "-----------------------------------------------------------------------------------------------------------");
 	if (!g_global_Access)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is not whitelisted.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is not whitelisted.");
 	else
 	if (g_hDbGlobal == INVALID_HANDLE)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: No connection to the global database.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: No connection to the global database.");
 	else
 	if (g_global_Disabled)
-		PrintToConsole(client, "[KZ] Global Records have been temporarily disabled. For more information visit the KZTimer steam group!");
+		PrintToConsole(client, "FKZ | Global Records have been temporarily disabled. For more information visit the KZTimer steam group!");
 	else
 	if(!StrEqual(g_szMapPrefix[0],"kz") && !StrEqual(g_szMapPrefix[0],"xc") && !StrEqual(g_szMapPrefix[0],"bkz")  && !StrEqual(g_szMapPrefix[0],"kzpro"))
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!");
 	else
 	if (g_global_VersionBlocked)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!");
 	else
 	if (!g_global_KZTimerFileSize)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: KZTimer filesize check failed.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: KZTimer filesize check failed.");
 	else
 	if (g_bGlobalBeta)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Map is under construction. (alpha/beta version)");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Map is under construction. (alpha/beta version)");
 	else
 	if (g_global_SelfBuiltButtons)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
 	else
 	if (!g_global_IntegratedButtons)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This map does not provide built-in climb buttons.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This map does not provide built-in climb buttons.");
 	else
 	if (!g_bEnforcer)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Server settings enforcer disabled.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Server settings enforcer disabled.");
 	else
 	if (!g_global_ValidFileSize && g_global_IntegratedButtons)
 	{
 		if (g_global_WrongMapVersion)
-			PrintToConsole(client, "[KZ] Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");
+			PrintToConsole(client, "FKZ | Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");
 		else
-			PrintToConsole(client, "[KZ] Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");
+			PrintToConsole(client, "FKZ | Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");
 	}
 	else
 	if (g_bAutoTimer)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_auto_timer enabled.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_auto_timer enabled.");
 	else
 	if (g_bDoubleDuckCvar)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_double_duck is set to 1.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_double_duck is set to 1.");
 	else
 	if (g_bAutoBhop)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: AutoBhop enabled.");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: AutoBhop enabled.");
 	else
 	if (!g_global_ValidedMap)
-		PrintToConsole(client, "[KZ] Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
+		PrintToConsole(client, "FKZ | Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
 	else
-		PrintToConsole(client, "[KZ] Global records are enabled.");
+		PrintToConsole(client, "FKZ | Global records are enabled.");
 	PrintToConsole(client," ");
 }
 stock FakePrecacheSound( const String:szPath[] )
@@ -724,13 +727,13 @@ public CreateButton(client,String:targetname[])
 			if (StrEqual(targetname, "climb_startbuttonx"))
 			{
 				g_fStartButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,MOSSGREEN,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,PINK,WHITE);
 				g_bFirstStartButtonPush=false;
 			}
 			else
 			{
 				g_fEndButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,MOSSGREEN,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,PINK,WHITE);
 				g_bFirstEndButtonPush = false;
 			}
 			g_global_SelfBuiltButtons=true;
@@ -776,7 +779,7 @@ public CreateButton(client,String:targetname[])
 		}
 	}
 	else
-		PrintToChat(client, "%t", "AdminSetButton", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "AdminSetButton", PINK,WHITE);
 	KzAdminMenu(client);
 }
 
@@ -991,7 +994,7 @@ public PlayLeetJumpSound(client)
 					else
 						if (g_js_GODLIKE_Count[client]==5)
 						{
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATING_RELATIVE_SOUND_PATH);
+							Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATINGE_RELATIVE_SOUND_PATH);
 							ClientCommand(i, buffer);
 						}
 			}
@@ -1041,6 +1044,31 @@ public PlayGoldenJumpSound(client)
 		if(IsValidClient(client) && !IsFakeClient(client) && g_EnableQuakeSounds[client] >= 1)
 		{
 			Format(buffer, sizeof(buffer), "play %s", GOLDEN_RELATIVE_SOUND_PATH);
+			ClientCommand(client, buffer);
+		}
+	}
+}
+
+public PlayWreckerJumpSound(client)
+{
+	decl String:buffer[255];
+
+	//all sound
+	for (new i = 1; i <= MaxClients; i++)
+	{
+		if(IsValidClient(i) && !IsFakeClient(i) && i != client && g_ColorChat[i] >= 1 && g_EnableQuakeSounds[i] == 1)
+		{
+			Format(buffer, sizeof(buffer), "play %s", WRECKER_RELATIVE_SOUND_PATH);
+			ClientCommand(i, buffer);
+		}
+	}
+
+	//client sound
+	if 	(IsValidClient(client) && !IsFakeClient(client) && g_EnableQuakeSounds[client] >= 1)
+	{
+		if(IsValidClient(client) && !IsFakeClient(client) && g_EnableQuakeSounds[client] >= 1)
+		{
+			Format(buffer, sizeof(buffer), "play %s", WRECKER_RELATIVE_SOUND_PATH);
 			ClientCommand(client, buffer);
 		}
 	}
@@ -1102,6 +1130,8 @@ public InitPrecache()
 	FakePrecacheSound( IMPRESSIVE_RELATIVE_SOUND_PATH );
 	AddFileToDownloadsTable( GOLDEN_FULL_SOUND_PATH ); // golden
 	FakePrecacheSound( GOLDEN_RELATIVE_SOUND_PATH ); // golden
+	AddFileToDownloadsTable( WRECKER_FULL_SOUND_PATH ); // wrecker
+	FakePrecacheSound( WRECKER_RELATIVE_SOUND_PATH ); // wrecker
 	AddFileToDownloadsTable("models/props/switch001.mdl");
 	AddFileToDownloadsTable("models/props/switch001.vvd");
 	AddFileToDownloadsTable("models/props/switch001.phy");
@@ -1187,9 +1217,9 @@ public PrintMapRecords(client)
 			FormatTimeFloat(client, g_fGlobalRecordPro_Time, 3,szTime,sizeof(szTime));
 			switch(g_Server_Tickrate)
 			{
-				case 64: PrintToChat(client, "%t", "GlobalRecord1_Pro",MOSSGREEN,WHITE, DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
-				case 102: PrintToChat(client, "%t", "GlobalRecord2_Pro",MOSSGREEN,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
-				case 128: PrintToChat(client, "%t", "GlobalRecord3_Pro",MOSSGREEN,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 64: PrintToChat(client, "%t", "GlobalRecord1_Pro",PINK,WHITE, DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 102: PrintToChat(client, "%t", "GlobalRecord2_Pro",PINK,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 128: PrintToChat(client, "%t", "GlobalRecord3_Pro",PINK,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
 			}
 		}
 
@@ -1198,9 +1228,9 @@ public PrintMapRecords(client)
 			FormatTimeFloat(client, g_fGlobalRecordTp_Time, 3,szTime,sizeof(szTime));
 			switch(g_Server_Tickrate)
 			{
-				case 64: PrintToChat(client, "%t", "GlobalRecord1_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
-				case 102: PrintToChat(client, "%t", "GlobalRecord2_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
-				case 128: PrintToChat(client, "%t", "GlobalRecord3_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 64: PrintToChat(client, "%t", "GlobalRecord1_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 102: PrintToChat(client, "%t", "GlobalRecord2_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 128: PrintToChat(client, "%t", "GlobalRecord3_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
 			}
 		}
 	}
@@ -1208,12 +1238,12 @@ public PrintMapRecords(client)
 	if (g_fRecordTimePro != 9999999.0)
 	{
 		FormatTimeFloat(client, g_fRecordTimePro, 3,szTime,sizeof(szTime));
-		PrintToChat(client, "%t", "ProRecord",MOSSGREEN,WHITE,DARKBLUE,WHITE, szTime, g_szRecordPlayerPro);
+		PrintToChat(client, "%t", "ProRecord",PINK,WHITE,DARKBLUE,WHITE, szTime, g_szRecordPlayerPro);
 	}
 	if (g_fRecordTime != 9999999.0)
 	{
 		FormatTimeFloat(client, g_fRecordTime, 3,szTime,sizeof(szTime));
-		PrintToChat(client, "%t", "TpRecord",MOSSGREEN,WHITE,YELLOW,WHITE, szTime, g_szRecordPlayer);
+		PrintToChat(client, "%t", "TpRecord",PINK,WHITE,YELLOW,WHITE, szTime, g_szRecordPlayer);
 	}
 }
 
@@ -1245,37 +1275,37 @@ public MapFinishedMsgs(client, type)
 			{
 				if (g_Time_Type[client] == 0)
 				{
-					PrintToChat(i, "%t", "MapFinished0",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,  LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+					PrintToChat(i, "%t", "MapFinished0",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,  LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 					PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],rank,count,szTime);
 				}
 				else
 				if (g_Time_Type[client] == 1)
 				{
-					PrintToChat(i, "%t", "MapFinished1",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+					PrintToChat(i, "%t", "MapFinished1",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 					PrintToConsole(i, "%s finished with a PRO TIME of (%s). [rank #%i/%i | record %s]",szName,g_szFinalTime[client],rank,count,szTime);
 				}
 				else
 					if (g_Time_Type[client] == 2)
 					{
-						PrintToChat(i, "%t", "MapFinished2",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+						PrintToChat(i, "%t", "MapFinished2",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 						PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). Improving their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],g_szTimeDifference[client],rank,count,szTime);
 					}
 					else
 						if (g_Time_Type[client] == 3)
 						{
-							PrintToChat(i, "%t", "MapFinished3",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+							PrintToChat(i, "%t", "MapFinished3",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 							PrintToConsole(i, "%s finished with a PRO TIME of (%s). Improving their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_szTimeDifference[client],rank,count,szTime);
 						}
 						else
 							if (g_Time_Type[client] == 4)
 							{
-								PrintToChat(i, "%t", "MapFinished4",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+								PrintToChat(i, "%t", "MapFinished4",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 								PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). Missing their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],g_szTimeDifference[client],rank,count,szTime);
 							}
 							else
 								if (g_Time_Type[client] == 5)
 								{
-									PrintToChat(i, "%t", "MapFinished5",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+									PrintToChat(i, "%t", "MapFinished5",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 									PrintToConsole(i, "%s finished with a PRO TIME of (%s). Missing their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_szTimeDifference[client],rank,count,szTime);
 								}
 
@@ -1288,18 +1318,18 @@ public MapFinishedMsgs(client, type)
 						{
 							case 64:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord64_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (64)",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord64_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD (64)",szName);
 							}
 							case 102:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord102_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (102)",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord102_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD (102)",szName);
 							}
 							case 128:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord128_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord128_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD",szName);
 							}
 						}
 					}
@@ -1309,37 +1339,37 @@ public MapFinishedMsgs(client, type)
 						{
 							case 64:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord64_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (64)",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord64_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD (64)",szName);
 							}
 							case 102:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord102_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (102)",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord102_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD (102)",szName);
 							}
 							case 128:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord128_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD",szName);
+								PrintToChat(i, "%t", "NewGlobalRecord128_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD",szName);
 							}
 						}
 					}
 					case 2:
 					{
-						PrintToChat(i, "%t", "NewProRecord",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE);
-						PrintToConsole(i, "[KZ] %s has beaten the PRO RECORD",szName);
+						PrintToChat(i, "%t", "NewProRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE);
+						PrintToConsole(i, "FKZ | %s has beaten the PRO RECORD",szName);
 					}
 					case 1:
 					{
-						PrintToChat(i, "%t", "NewTpRecord",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW);
-						PrintToConsole(i, "[KZ] %s has beaten the TP RECORD",szName);
+						PrintToChat(i, "%t", "NewTpRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW);
+						PrintToConsole(i, "FKZ | %s has beaten the TP RECORD",szName);
 					}
 				}
 			}
 		}
 
 		if (rank==99999 && IsValidClient(client))
-			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",MOSSGREEN,WHITE,DARKRED,RED,DARKRED);
+			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
 		else
 		{
 			Call_StartForward(g_hFWD_TimerStoppedValid);
@@ -1352,7 +1382,7 @@ public MapFinishedMsgs(client, type)
 
 		//noclip MsgMsg
 		if (IsValidClient(client) && g_bMapFinished[client] == false && !StrEqual(g_pr_rankname[client],g_szSkillGroups[8]) && !(GetUserFlagBits(client) & ADMFLAG_RESERVATION) && !(GetUserFlagBits(client) & ADMFLAG_ROOT) && !(GetUserFlagBits(client) & ADMFLAG_GENERIC) && g_bNoClipS)
-			PrintToChat(client, "%t", "NoClipUnlocked",MOSSGREEN,WHITE,YELLOW);
+			PrintToChat(client, "%t", "NoClipUnlocked",PINK,WHITE,YELLOW);
 		g_bMapFinished[client] = true;
 		CreateTimer(0.0, UpdatePlayerProfile, client,TIMER_FLAG_NO_MAPCHANGE);
 
@@ -2451,7 +2481,7 @@ public MenuTitleRefreshing(client)
 				g_bMissedProBest[client]=true;
 				FormatTimeFloat(client, g_fPersonalRecordPro[client], 3,szTime, sizeof(szTime));
 				if (g_fPersonalRecordPro[client] > 0.0)
-					PrintToChat(client, "%t", "MissedProBest", MOSSGREEN,WHITE,GRAY,DARKBLUE,szTime,GRAY);
+					PrintToChat(client, "%t", "MissedProBest", PINK,WHITE,GRAY,DARKBLUE,szTime,GRAY);
 				EmitSoundToClient(client,"buttons/button18.wav",client);
 			}
 			else
@@ -2461,7 +2491,7 @@ public MenuTitleRefreshing(client)
 					g_bMissedTpBest[client]=true;
 					FormatTimeFloat(client, g_fPersonalRecord[client], 3, szTime, sizeof(szTime));
 					if (g_fPersonalRecord[client] > 0.0)
-						PrintToChat(client, "%t", "MissedTpBest", MOSSGREEN,WHITE,GRAY,YELLOW,szTime,GRAY);
+						PrintToChat(client, "%t", "MissedTpBest", PINK,WHITE,GRAY,YELLOW,szTime,GRAY);
 					EmitSoundToClient(client,"buttons/button18.wav",client);
 				}
 		}
@@ -2490,7 +2520,7 @@ public MovementCheck(client)
 		{
 			if (g_bTimeractivated[client])
 			{
-				PrintToChat(client,"[KZ] Timer stopped. Reason: m_flVelocityModifier modified.")
+				PrintToChat(client,"FKZ | Timer stopped. Reason: m_flVelocityModifier modified.")
 				g_bTimeractivated[client] = false;
 			}
 			if (g_js_bPlayerJumped[client])
@@ -2501,7 +2531,7 @@ public MovementCheck(client)
 		{
 			if (g_bTimeractivated[client])
 			{
-				PrintToChat(client,"[KZ] Timer stopped. Reason: m_flLaggedMovementValue modified.")
+				PrintToChat(client,"FKZ | Timer stopped. Reason: m_flLaggedMovementValue modified.")
 				g_bTimeractivated[client] = false;
 			}
 			if (g_js_bPlayerJumped[client])
@@ -2514,7 +2544,7 @@ public MovementCheck(client)
 	{
 		if (g_bTimeractivated[client])
 		{
-			PrintToChat(client,"[KZ] Timer stopped. Reason: MOVETYPE 'FLYGRAVITY' detected.")
+			PrintToChat(client,"FKZ | Timer stopped. Reason: MOVETYPE 'FLYGRAVITY' detected.")
 			g_bTimeractivated[client] = false;
 		}
 		if (g_js_bPlayerJumped[client])
@@ -2572,7 +2602,7 @@ public NoClipCheck(client)
 	{
 		if (g_js_bPlayerJumped[client])
 			ResetJump(client);
-		PrintToConsole(client, "[KZ] Timer stopped. Reason: MOVETYPE 'NOCLIP' detected");
+		PrintToConsole(client, "FKZ | Timer stopped. Reason: MOVETYPE 'NOCLIP' detected");
 		g_bTimeractivated[client] = false;
 	}
 }
@@ -2944,7 +2974,7 @@ public SpecListMenuDead(client)
 				if (g_bSpecInfo[client] && IsFakeClient(ObservedUser))
 				{
 					g_bSpecInfo[client]=false;
-					PrintToChat(client, "%t", "SpecInfo",MOSSGREEN, WHITE,GREEN,WHITE);
+					PrintToChat(client, "%t", "SpecInfo",PINK, WHITE,GREEN,WHITE);
 				}
 				if (g_bTimeractivated[ObservedUser])
 				{
@@ -3132,12 +3162,12 @@ public PerformStats(client, target,bool:console_only)
 		decl String:banstats[512];
 		GetClientStats(target, banstats, sizeof(banstats));
 		if (!console_only)
-			PrintToChat(client, "[%cKZ%c] %s",MOSSGREEN,WHITE,banstats);
-		PrintToConsole(client, "[KZ] %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
+			PrintToChat(client, "[%cKZ%c] %s",PINK,WHITE,banstats);
+		PrintToConsole(client, "FKZ | %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
 		if (g_bAutoBhop)
 		{
-			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",MOSSGREEN,WHITE);
-			PrintToConsole(client, "[KZ] AutoBhop enabled");
+			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",PINK,WHITE);
+			PrintToConsole(client, "FKZ | AutoBhop enabled");
 		}
 	}
 }
@@ -3824,7 +3854,7 @@ GetPos(client,arg)
 	if(!TR_DidHit(trace))
 	{
 		CloseHandle(trace);
-		PrintToChat(client, "%t", "Measure3",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Measure3",PINK,WHITE);
 		return;
 	}
 	TR_GetEndPosition(origin,trace);
@@ -3832,7 +3862,7 @@ GetPos(client,arg)
 	g_fvMeasurePos[client][arg][0] = origin[0];
 	g_fvMeasurePos[client][arg][1] = origin[1];
 	g_fvMeasurePos[client][arg][2] = origin[2];
-	PrintToChat(client, "%t", "Measure4",MOSSGREEN,WHITE,arg+1,origin[0],origin[1],origin[2]);
+	PrintToChat(client, "%t", "Measure4",PINK,WHITE,arg+1,origin[0],origin[1],origin[2]);
 	if(arg == 0)
 	{
 		if(g_hP2PRed[client] != INVALID_HANDLE)
@@ -4435,7 +4465,7 @@ public RegServerConVars()
 	g_bMapEnd     = GetConVarBool(g_hMapEnd);
 	HookConVarChange(g_hMapEnd, OnSettingChanged);
 
-	g_hTransPlayerModels = CreateConVar("kz_player_transparency", "80", "Modifies the transparency of players. 0 is invisible and 255 is visible", FCVAR_NOTIFY, true, 0.0, true, 255.0);
+	g_hTransPlayerModels = CreateConVar("kz_player_transparency", "255", "Modifies the transparency of players. 0 is invisible and 255 is visible", FCVAR_NOTIFY, true, 0.0, true, 255.0);
 	g_TransPlayerModels = GetConVarInt(g_hTransPlayerModels);
 	HookConVarChange(g_hTransPlayerModels, OnSettingChanged);
 
@@ -4539,7 +4569,7 @@ public RegServerConVars()
 	g_bDynamicTimelimit     = GetConVarBool(g_hDynamicTimelimit);
 	HookConVarChange(g_hDynamicTimelimit, OnSettingChanged);
 
-	g_hBhopSpeedCap   = CreateConVar("kz_prespeed_cap", "380.0", "Limits player's pre speed (kz_settings_enforcer must be disabled)", FCVAR_NOTIFY, true, 300.0, true, 5000.0);
+	g_hBhopSpeedCap   = CreateConVar("kz_prespeed_cap", "380.0", "Limits player's pre speed (kz_settings_enforcer must be disabled)", FCVAR_NOTIFY, true, 200.0, true, 5000.0);
 	g_fBhopSpeedCap    = GetConVarFloat(g_hBhopSpeedCap);
 	HookConVarChange(g_hBhopSpeedCap, OnSettingChanged);
 
@@ -4624,17 +4654,17 @@ public RegServerConVars()
 	g_hGravity = FindConVar("sv_gravity");
 	g_hAirAccelerate = FindConVar("sv_airaccelerate");
 	g_hMaxSpeed = FindConVar("sv_maxspeed");
-	g_hWaterAccelerate = FindConVar("sv_wateraccelerate");
+	//g_hWaterAccelerate = FindConVar("sv_wateraccelerate");
 	g_hFriction = FindConVar("sv_friction");
 	g_hAccelerate = FindConVar("sv_accelerate");
 	g_hMaxVelocity = FindConVar("sv_maxvelocity");
 	g_hCheats = FindConVar("sv_cheats");
 	g_hDropKnifeEnable = FindConVar("sv_cheats");
-	g_hEnableBunnyhoping = FindConVar("sv_enablebunnyhopping");
+	//g_hEnableBunnyhoping = FindConVar("sv_enablebunnyhopping");
 
   // New convars
-	g_hAutoBhop= FindConVar("sv_autobunnyhopping");
-	g_hClampVel= FindConVar("sv_clamp_unsafe_velocities");
+	//g_hAutoBhop= FindConVar("sv_autobunnyhopping");
+	//g_hClampVel= FindConVar("sv_clamp_unsafe_velocities");
 
 	g_hsv_ladder_scale_speed = FindConVar("sv_ladder_scale_speed");
 	g_hMaxRounds = FindConVar("mp_maxrounds");
@@ -4657,127 +4687,148 @@ public RegServerConVars()
 
 	if (g_Server_Tickrate == 64)
 	{
-		g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "325.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 300.0, true, 400.0);
+		g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "286.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 200.0, true, 400.0);
 		g_hdist_good_countjump    	= CreateConVar("kz_dist_min_cj", "240.0", "Minimum distance for count jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 		g_hdist_perfect_countjump   	= CreateConVar("kz_dist_perfect_cj", "240.0", "Minimum distance for count jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 		g_hdist_impressive_countjump   	= CreateConVar("kz_dist_impressive_cj", "245.0", "Minimum distance for count jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 		g_hdist_godlike_countjump    	= CreateConVar("kz_dist_god_cj", "250.0", "Minimum distance for count jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
-		g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "235.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "250.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-		g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "255.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-		g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "260.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
-		g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "250.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "260.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "265.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_godlike_weird   = CreateConVar("kz_dist_god_wj", "270.0", "Minimum distance for weird jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_good_dropbhop  = CreateConVar("kz_dist_min_dropbhop", "240.0", "Minimum distance for drop bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_perfect_dropbhop  = CreateConVar("kz_dist_perfect_dropbhop", "285.0", "Minimum distance for drop bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_impressive_dropbhop  = CreateConVar("kz_dist_impressive_dropbhop", "290.0", "Minimum distance for drop bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_godlike_dropbhop   = CreateConVar("kz_dist_god_dropbhop", "290.0", "Minimum distance for drop bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_good_bhop  = CreateConVar("kz_dist_min_bhop", "240.0", "Minimum distance for bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_perfect_bhop  = CreateConVar("kz_dist_perfect_bhop", "285.0", "Minimum distance for bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_impressive_bhop  = CreateConVar("kz_dist_impressive_bhop", "290.0", "Minimum distance for bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_godlike_bhop   = CreateConVar("kz_dist_god_bhop", "295.0", "Minimum distance for bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-		g_hdist_good_multibhop  = CreateConVar("kz_dist_min_multibhop", "300.0", "Minimum distance for multi-bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-		g_hdist_perfect_multibhop  = CreateConVar("kz_dist_perfect_multibhop", "330.0", "Minimum distance for multi-bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-		g_hdist_impressive_multibhop  = CreateConVar("kz_dist_impressive_multibhop", "335.0", "Minimum distance for multi-bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-		g_hdist_godlike_multibhop   = CreateConVar("kz_dist_god_multibhop", "340.0", "Minimum distance for multi-bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-		g_hdist_good_ladder  = CreateConVar("kz_dist_min_ladder", "100.0", "Minimum distance for ladder jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 70.0, true, 9999.0);
-		g_hdist_perfect_ladder  = CreateConVar("kz_dist_perfect_ladder", "150.0", "Minimum distance for ladder jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-		g_hdist_impressive_ladder  = CreateConVar("kz_dist_impressive_ladder", "155.0", "Minimum distance for ladder jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-		g_hdist_godlike_ladder   = CreateConVar("kz_dist_god_ladder", "160.0", "Minimum distance for ladder jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-		// Golden jumpstats
-		g_hdist_golden_countjump = 260.0;
-		g_hdist_golden_lj = 265.0;
-		g_hdist_golden_weird = 285.0;
-		g_hdist_golden_dropbhop = 300.0;
-		g_hdist_golden_bhop = 310.0;
-		g_hdist_golden_multibhop = 350.0;
-		g_hdist_golden_ladder = 175.0;
+		g_hdist_golden_countjump    	= CreateConVar("kz_dist_golden_cj", "260.0", "Minimum distance for count jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
+		g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "210.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "240.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
+		g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "230.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
+		g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "240.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 230.0, true, 999.0);
+		g_hdist_golden_lj    	= CreateConVar("kz_dist_golden_lj", "244.0", "Minimum distance for long jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
+		g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "150.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 150.0, true, 999.0);
+		g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "233.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "230.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_godlike_weird   = CreateConVar("kz_dist_god_wj", "235.0", "Minimum distance for weird jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_golden_weird   = CreateConVar("kz_dist_golden_wj", "237.0", "Minimum distance for weird jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_good_dropbhop  = CreateConVar("kz_dist_min_dropbhop", "150.0", "Minimum distance for drop bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 150.0, true, 999.0);
+		g_hdist_perfect_dropbhop  = CreateConVar("kz_dist_perfect_dropbhop", "233.0", "Minimum distance for drop bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_impressive_dropbhop  = CreateConVar("kz_dist_impressive_dropbhop", "230.0", "Minimum distance for drop bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_godlike_dropbhop   = CreateConVar("kz_dist_god_dropbhop", "235.0", "Minimum distance for drop bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_golden_dropbhop   = CreateConVar("kz_dist_golden_dropbhop", "238.0", "Minimum distance for drop bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_good_bhop  = CreateConVar("kz_dist_min_bhop", "150.0", "Minimum distance for bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 150.0, true, 999.0);
+		g_hdist_perfect_bhop  = CreateConVar("kz_dist_perfect_bhop", "233.0", "Minimum distance for bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_impressive_bhop  = CreateConVar("kz_dist_impressive_bhop", "230.0", "Minimum distance for bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_godlike_bhop   = CreateConVar("kz_dist_god_bhop", "235.0", "Minimum distance for bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_golden_bhop   = CreateConVar("kz_dist_golden_bhop", "238.0", "Minimum distance for bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+		g_hdist_good_multibhop  = CreateConVar("kz_dist_min_multibhop", "150.0", "Minimum distance for multi-bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 150.0, true, 9999.0);
+		g_hdist_perfect_multibhop  = CreateConVar("kz_dist_perfect_multibhop", "237.0", "Minimum distance for multi-bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+		g_hdist_impressive_multibhop  = CreateConVar("kz_dist_impressive_multibhop", "232.0", "Minimum distance for multi-bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+		g_hdist_godlike_multibhop   = CreateConVar("kz_dist_god_multibhop", "242.0", "Minimum distance for multi-bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+		g_hdist_golden_multibhop   = CreateConVar("kz_dist_golden_multibhop", "244.0", "Minimum distance for multi-bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+		g_hdist_good_ladder  = CreateConVar("kz_dist_min_ladder", "50.0", "Minimum distance for ladder jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 50.0, true, 9999.0);
+		g_hdist_perfect_ladder  = CreateConVar("kz_dist_perfect_ladder", "90.0", "Minimum distance for ladder jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 90.0, true, 9999.0);
+		g_hdist_impressive_ladder  = CreateConVar("kz_dist_impressive_ladder", "80.0", "Minimum distance for ladder jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 80.0, true, 9999.0);
+		g_hdist_godlike_ladder   = CreateConVar("kz_dist_god_ladder", "100.0", "Minimum distance for ladder jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+		g_hdist_golden_ladder   = CreateConVar("kz_dist_golden_ladder", "105.0", "Minimum distance for ladder jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+		// Wrecker jumpstats
+		g_hdist_wrecker_countjump = 260.0;
+		g_hdist_wrecker_lj = 246.0;
+		g_hdist_wrecker_weird = 240.0;
+		g_hdist_wrecker_dropbhop = 240.0;
+		g_hdist_wrecker_bhop = 240.0;
+		g_hdist_wrecker_multibhop = 246.0;
+		g_hdist_wrecker_ladder = 108.0;
 
 	}
 	else
 	{
 		if (g_Server_Tickrate == 128)
 		{
-			g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "360.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 300.0, true, 400.0);
+			g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "286.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 150.0, true, 400.0);
 			g_hdist_good_countjump    	= CreateConVar("kz_dist_min_cj", "240.0", "Minimum distance for count jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_countjump   	= CreateConVar("kz_dist_perfect_cj", "285.0", "Minimum distance for count jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_impressive_countjump   	= CreateConVar("kz_dist_impressive_cj", "290.0", "Minimum distance for count jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_godlike_countjump    	= CreateConVar("kz_dist_god_cj", "295.0", "Minimum distance for count jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
-			g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "240.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "265.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-			g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "270.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-			g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "275.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
-			g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "250.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "280.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "285.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_godlike_weird   = CreateConVar("kz_dist_god_wj", "290.0", "Minimum distance for weird jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_good_dropbhop  = CreateConVar("kz_dist_min_dropbhop", "240.0", "Minimum distance for drop bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_perfect_dropbhop  = CreateConVar("kz_dist_perfect_dropbhop", "315.0", "Minimum distance for drop bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_impressive_dropbhop  = CreateConVar("kz_dist_impressive_dropbhop", "320.0", "Minimum distance for drop bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_godlike_dropbhop   = CreateConVar("kz_dist_god_dropbhop", "325.0", "Minimum distance for drop bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_good_bhop  = CreateConVar("kz_dist_min_bhop", "240.0", "Minimum distance for bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_perfect_bhop  = CreateConVar("kz_dist_perfect_bhop", "320.0", "Minimum distance for bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_impressive_bhop  = CreateConVar("kz_dist_impressive_bhop", "325.0", "Minimum distance for bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_godlike_bhop   = CreateConVar("kz_dist_god_bhop", "330.0", "Minimum distance for bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
-			g_hdist_good_multibhop  = CreateConVar("kz_dist_min_multibhop", "300.0", "Minimum distance for multi-bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-			g_hdist_perfect_multibhop  = CreateConVar("kz_dist_perfect_multibhop", "340.0", "Minimum distance for multi-bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-			g_hdist_impressive_multibhop  = CreateConVar("kz_dist_impressive_multibhop", "345.0", "Minimum distance for multi-bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-			g_hdist_godlike_multibhop   = CreateConVar("kz_dist_god_multibhop", "350.0", "Minimum distance for multi-bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
-			g_hdist_good_ladder  = CreateConVar("kz_dist_min_ladder", "100.0", "Minimum distance for ladder jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 70.0, true, 9999.0);
-			g_hdist_perfect_ladder  = CreateConVar("kz_dist_perfect_ladder", "155.0", "Minimum distance for ladder jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-			g_hdist_impressive_ladder  = CreateConVar("kz_dist_impressive_ladder", "165.0", "Minimum distance for ladder jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-			g_hdist_godlike_ladder   = CreateConVar("kz_dist_god_ladder", "175.0", "Minimum distance for ladder jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
-			// Golden jumpstats
-			g_hdist_golden_countjump = 305.0;
-			g_hdist_golden_lj = 285.0;
-			g_hdist_golden_weird = 300.0;
-			g_hdist_golden_dropbhop = 340.0;
-			g_hdist_golden_bhop = 342.0;
-			g_hdist_golden_multibhop = 358.0;
-			g_hdist_golden_ladder = 193.0;
+			g_hdist_golden_countjump    	= CreateConVar("kz_dist_golden_cj", "305.0", "Minimum distance for count jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
+			g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "170.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 170.0, true, 999.0);
+			g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "240.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
+			g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "235.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
+			g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "245.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
+			g_hdist_golden_lj    	= CreateConVar("kz_dist_golden_lj", "248.0", "Minimum distance for long jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
+			g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "150.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 100.0, true, 999.0);
+			g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "240.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "235.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_godlike_weird   = CreateConVar("kz_dist_god_wj", "245.0", "Minimum distance for weird jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_weird   = CreateConVar("kz_dist_golden_wj", "248.0", "Minimum distance for weird jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_good_dropbhop  = CreateConVar("kz_dist_min_dropbhop", "150.0", "Minimum distance for drop bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 100.0, true, 999.0);
+			g_hdist_perfect_dropbhop  = CreateConVar("kz_dist_perfect_dropbhop", "233.0", "Minimum distance for drop bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_impressive_dropbhop  = CreateConVar("kz_dist_impressive_dropbhop", "230.0", "Minimum distance for drop bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_godlike_dropbhop   = CreateConVar("kz_dist_god_dropbhop", "235.0", "Minimum distance for drop bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_dropbhop   = CreateConVar("kz_dist_golden_dropbhop", "235.0", "Minimum distance for drop bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_good_bhop  = CreateConVar("kz_dist_min_bhop", "150.0", "Minimum distance for bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 100.0, true, 999.0);
+			g_hdist_perfect_bhop  = CreateConVar("kz_dist_perfect_bhop", "233.0", "Minimum distance for bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_impressive_bhop  = CreateConVar("kz_dist_impressive_bhop", "230.0", "Minimum distance for bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_godlike_bhop   = CreateConVar("kz_dist_god_bhop", "235.0", "Minimum distance for bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_bhop   = CreateConVar("kz_dist_golden_bhop", "238.0", "Minimum distance for bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_good_multibhop  = CreateConVar("kz_dist_min_multibhop", "150.0", "Minimum distance for multi-bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+			g_hdist_perfect_multibhop  = CreateConVar("kz_dist_perfect_multibhop", "240.0", "Minimum distance for multi-bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+			g_hdist_impressive_multibhop  = CreateConVar("kz_dist_impressive_multibhop", "235.0", "Minimum distance for multi-bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+			g_hdist_godlike_multibhop   = CreateConVar("kz_dist_god_multibhop", "245.0", "Minimum distance for multi-bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+			g_hdist_golden_multibhop   = CreateConVar("kz_dist_golden_multibhop", "248.0", "Minimum distance for multi-bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+			g_hdist_good_ladder  = CreateConVar("kz_dist_min_ladder", "50.0", "Minimum distance for ladder jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 50.0, true, 9999.0);
+			g_hdist_perfect_ladder  = CreateConVar("kz_dist_perfect_ladder", "90.0", "Minimum distance for ladder jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+			g_hdist_impressive_ladder  = CreateConVar("kz_dist_impressive_ladder", "80.0", "Minimum distance for ladder jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 80.0, true, 9999.0);
+			g_hdist_godlike_ladder   = CreateConVar("kz_dist_god_ladder", "105.0", "Minimum distance for ladder jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+			g_hdist_golden_ladder   = CreateConVar("kz_dist_golden_ladder", "109.0", "Minimum distance for ladder jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+			// wrecker jumpstats
+			g_hdist_wrecker_countjump = 305.0;
+			g_hdist_wrecker_lj = 250.0;
+			g_hdist_wrecker_weird = 252.0;
+			g_hdist_wrecker_dropbhop = 240.0;
+			g_hdist_wrecker_bhop = 240.0;
+			g_hdist_wrecker_multibhop = 250.0;
+			g_hdist_wrecker_ladder = 111.0;
 
 		}
 		else
 		{
-			g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "350.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 300.0, true, 400.0);
+			g_hMaxBhopPreSpeed   = CreateConVar("kz_max_prespeed_bhop_dropbhop", "350.0", "Max counted pre speed for bhop,dropbhop (no speed limiter)", FCVAR_NOTIFY, true, 200.0, true, 400.0);
 			g_hdist_good_countjump    	= CreateConVar("kz_dist_min_cj", "230.0", "Minimum distance for count jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_countjump   	= CreateConVar("kz_dist_perfect_cj", "270.0", "Minimum distance for count jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_impressive_countjump   	= CreateConVar("kz_dist_impressive_cj", "275.0", "Minimum distance for count jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_godlike_countjump    	= CreateConVar("kz_dist_god_cj", "280.0", "Minimum distance for count jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
+			g_hdist_golden_countjump    	= CreateConVar("kz_dist_golden_cj", "290.0", "Minimum distance for count jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
 			g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "240.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "260.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "265.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
 			g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "270.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
+			g_hdist_golden_lj    	= CreateConVar("kz_dist_golden_lj", "280.0", "Minimum distance for long jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
 			g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "250.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "270.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "275.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_godlike_weird   = CreateConVar("kz_dist_god_wj", "280.0", "Minimum distance for weird jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_weird   = CreateConVar("kz_dist_golden_wj", "290.0", "Minimum distance for weird jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_good_dropbhop  = CreateConVar("kz_dist_min_dropbhop", "240.0", "Minimum distance for drop bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_dropbhop  = CreateConVar("kz_dist_perfect_dropbhop", "300.0", "Minimum distance for drop bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_impressive_dropbhop  = CreateConVar("kz_dist_impressive_dropbhop", "305.0", "Minimum distance for drop bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_godlike_dropbhop   = CreateConVar("kz_dist_god_dropbhop", "310.0", "Minimum distance for drop bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_dropbhop	 = CreateConVar("kz_dist_golden_dropbhop", "325.0", "Minimum distance for drop bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0)
 			g_hdist_good_bhop  = CreateConVar("kz_dist_min_bhop", "240.0", "Minimum distance for bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_perfect_bhop  = CreateConVar("kz_dist_perfect_bhop", "305.0", "Minimum distance for bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_impressive_bhop  = CreateConVar("kz_dist_impressive_bhop", "310.0", "Minimum distance for bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_godlike_bhop   = CreateConVar("kz_dist_god_bhop", "315.0", "Minimum distance for bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
+			g_hdist_golden_bhop   = CreateConVar("kz_dist_golden_bhop", "325.0", "Minimum distance for bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_good_multibhop  = CreateConVar("kz_dist_min_multibhop", "300.0", "Minimum distance for multi-bhops to be considered good [Client Message]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
 			g_hdist_perfect_multibhop  = CreateConVar("kz_dist_perfect_multibhop", "330.0", "Minimum distance for multi-bhops to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
 			g_hdist_impressive_multibhop  = CreateConVar("kz_dist_impressive_multibhop", "335.0", "Minimum distance for multi-bhops to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
 			g_hdist_godlike_multibhop   = CreateConVar("kz_dist_god_multibhop", "340.0", "Minimum distance for multi-bhops to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
+			g_hdist_golden_multibhop   = CreateConVar("kz_dist_golden_multibhop", "350.0", "Minimum distance for multi-bhops to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 9999.0);
 			g_hdist_good_ladder  = CreateConVar("kz_dist_min_ladder", "100.0", "Minimum distance for ladder jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 70.0, true, 9999.0);
 			g_hdist_perfect_ladder  = CreateConVar("kz_dist_perfect_ladder", "150.0", "Minimum distance for ladder jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
 			g_hdist_impressive_ladder  = CreateConVar("kz_dist_impressive_ladder", "155.0", "Minimum distance for ladder jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
 			g_hdist_godlike_ladder   = CreateConVar("kz_dist_god_ladder", "165.0", "Minimum distance for ladder jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
+			g_hdist_golden_ladder   = CreateConVar("kz_dist_golden_ladder", "180.0", "Minimum distance for ladder jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 100.0, true, 9999.0);
 			// Golden jumpstats
-			g_hdist_golden_countjump = 290.0;
-			g_hdist_golden_lj = 280.0;
-			g_hdist_golden_weird = 290.0;
-			g_hdist_golden_dropbhop = 325.0;
-			g_hdist_golden_bhop = 325.0;
-			g_hdist_golden_multibhop = 350.0;
-			g_hdist_golden_ladder = 180.0;
+			g_hdist_wrecker_countjump = 294.0;
+			g_hdist_wrecker_lj = 282.0;
+			g_hdist_wrecker_weird = 294.0;
+			g_hdist_wrecker_dropbhop = 327.0;
+			g_hdist_wrecker_bhop = 327.0;
+			g_hdist_wrecker_multibhop = 354.0;
+			g_hdist_wrecker_ladder = 190.0;
 		}
 	}
 
@@ -4799,6 +4850,9 @@ public RegServerConVars()
 	g_dist_god_countjump    = GetConVarFloat(g_hdist_godlike_countjump);
 	HookConVarChange(g_hdist_godlike_countjump, OnSettingChanged);
 
+	g_dist_golden_countjump    = GetConVarFloat(g_hdist_golden_countjump);
+	HookConVarChange(g_hdist_golden_countjump, OnSettingChanged);
+
 	g_dist_min_weird	= GetConVarFloat(g_hdist_good_weird);
 	HookConVarChange(g_hdist_good_weird, OnSettingChanged);
 
@@ -4810,6 +4864,9 @@ public RegServerConVars()
 
 	g_dist_god_weird    = GetConVarFloat(g_hdist_godlike_weird);
 	HookConVarChange(g_hdist_godlike_weird, OnSettingChanged);
+
+	g_dist_golden_weird    = GetConVarFloat(g_hdist_golden_weird);
+	HookConVarChange(g_hdist_golden_weird, OnSettingChanged);
 
 	g_dist_min_dropbhop	= GetConVarFloat(g_hdist_good_dropbhop);
 	HookConVarChange(g_hdist_good_dropbhop, OnSettingChanged);
@@ -4823,6 +4880,9 @@ public RegServerConVars()
 	g_dist_god_dropbhop    = GetConVarFloat(g_hdist_godlike_dropbhop);
 	HookConVarChange(g_hdist_godlike_dropbhop, OnSettingChanged);
 
+	g_dist_golden_dropbhop    = GetConVarFloat(g_hdist_golden_dropbhop);
+	HookConVarChange(g_hdist_golden_dropbhop, OnSettingChanged);
+
 	g_dist_min_bhop	= GetConVarFloat(g_hdist_good_bhop);
 	HookConVarChange(g_hdist_good_bhop, OnSettingChanged);
 
@@ -4834,6 +4894,9 @@ public RegServerConVars()
 
 	g_dist_god_bhop    = GetConVarFloat(g_hdist_godlike_bhop);
 	HookConVarChange(g_hdist_godlike_bhop, OnSettingChanged);
+
+	g_dist_golden_bhop    = GetConVarFloat(g_hdist_golden_bhop);
+	HookConVarChange(g_hdist_golden_bhop, OnSettingChanged);
 
 	g_dist_min_multibhop	= GetConVarFloat(g_hdist_good_multibhop);
 	HookConVarChange(g_hdist_good_multibhop, OnSettingChanged);
@@ -4847,6 +4910,9 @@ public RegServerConVars()
 	g_dist_god_multibhop    = GetConVarFloat(g_hdist_godlike_multibhop);
 	HookConVarChange(g_hdist_godlike_multibhop, OnSettingChanged);
 
+	g_dist_golden_multibhop    = GetConVarFloat(g_hdist_golden_multibhop);
+	HookConVarChange(g_hdist_golden_multibhop, OnSettingChanged);
+
 	g_dist_min_lj      = GetConVarFloat(g_hdist_good_lj);
 	HookConVarChange(g_hdist_good_lj, OnSettingChanged);
 
@@ -4859,6 +4925,9 @@ public RegServerConVars()
 	g_dist_god_lj      = GetConVarFloat(g_hdist_godlike_lj);
 	HookConVarChange(g_hdist_godlike_lj, OnSettingChanged);
 
+	g_dist_golden_lj      = GetConVarFloat(g_hdist_golden_lj);
+	HookConVarChange(g_hdist_golden_lj, OnSettingChanged);
+
 	g_dist_min_ladder      = GetConVarFloat(g_hdist_good_ladder);
 	HookConVarChange(g_hdist_good_ladder, OnSettingChanged);
 
@@ -4870,6 +4939,9 @@ public RegServerConVars()
 
 	g_dist_god_ladder      = GetConVarFloat(g_hdist_godlike_ladder);
 	HookConVarChange(g_hdist_godlike_ladder, OnSettingChanged);
+
+	g_dist_golden_ladder      = GetConVarFloat(g_hdist_golden_ladder);
+	HookConVarChange(g_hdist_golden_ladder, OnSettingChanged);
 }
 
 public RegConsoleCmds()
