@@ -714,7 +714,7 @@ public Action:Event_OnRoundStart(Handle:event, const String:name[], bool:dontBro
 	
 	g_bRoundEnd=false;
 	db_selectMapButtons();
-	OnPluginPauseChange(false);
+	//OnPluginPauseChange(false);
 	return Plugin_Continue; 
 }
 
