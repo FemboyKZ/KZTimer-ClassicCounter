@@ -4672,16 +4672,16 @@ public RegServerConVars()
 	HookConVarChange(g_hStaminaJumpCost, OnSettingChanged);
 	HookConVarChange(g_hMaxSpeed, OnSettingChanged);
 	HookConVarChange(g_hGravity, OnSettingChanged);
-	HookConVarChange(g_hWaterAccelerate, OnSettingChanged);
+	//HookConVarChange(g_hWaterAccelerate, OnSettingChanged);
 	HookConVarChange(g_hAirAccelerate, OnSettingChanged);
 	HookConVarChange(g_hFriction, OnSettingChanged);
 	HookConVarChange(g_hAccelerate, OnSettingChanged);
 	HookConVarChange(g_hMaxVelocity, OnSettingChanged);
 	HookConVarChange(g_hCheats, OnSettingChanged);
 	HookConVarChange(g_hDropKnifeEnable, OnSettingChanged);
-	HookConVarChange(g_hEnableBunnyhoping, OnSettingChanged);
-	HookConVarChange(g_hAutoBhop, OnSettingChanged);
-	HookConVarChange(g_hClampVel, OnSettingChanged);
+	//HookConVarChange(g_hEnableBunnyhoping, OnSettingChanged);
+	//HookConVarChange(g_hAutoBhop, OnSettingChanged);
+	//HookConVarChange(g_hClampVel, OnSettingChanged);
 	HookConVarChange(g_hsv_ladder_scale_speed, OnSettingChanged);
 	HookConVarChange(g_hMaxRounds, OnSettingChanged);
 
