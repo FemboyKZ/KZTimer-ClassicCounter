@@ -4744,10 +4744,10 @@ public RegServerConVars()
 			g_hdist_godlike_countjump    	= CreateConVar("kz_dist_god_cj", "225.0", "Minimum distance for count jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
 			g_hdist_golden_countjump    	= CreateConVar("kz_dist_golden_cj", "230.0", "Minimum distance for count jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
 			g_hdist_good_lj    	= CreateConVar("kz_dist_min_lj", "170.0", "Minimum distance for long jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 170.0, true, 999.0);
-			g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "240.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-			g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "235.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 220.0, true, 999.0);
-			g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "245.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
-			g_hdist_golden_lj    	= CreateConVar("kz_dist_golden_lj", "248.0", "Minimum distance for long jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
+			g_hdist_perfect_lj   	= CreateConVar("kz_dist_perfect_lj", "240.0", "Minimum distance for long jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 240.0, true, 999.0);
+			g_hdist_impressive_lj   	= CreateConVar("kz_dist_impressive_lj", "235.0", "Minimum distance for long jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 230.0, true, 999.0);
+			g_hdist_godlike_lj    	= CreateConVar("kz_dist_god_lj", "245.0", "Minimum distance for long jumps to be considered godlike [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 245.0, true, 999.0);
+			g_hdist_golden_lj    	= CreateConVar("kz_dist_golden_lj", "248.0", "Minimum distance for long jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 248.0, true, 999.0);
 			g_hdist_good_weird  = CreateConVar("kz_dist_min_wj", "150.0", "Minimum distance for weird jumps to be considered good [Client Message]", FCVAR_NOTIFY, true, 100.0, true, 999.0);
 			g_hdist_perfect_weird  = CreateConVar("kz_dist_perfect_wj", "243.0", "Minimum distance for weird jumps to be considered perfect [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
 			g_hdist_impressive_weird  = CreateConVar("kz_dist_impressive_wj", "240.0", "Minimum distance for weird jumps to be considered impressive [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 200.0, true, 999.0);
@@ -4775,11 +4775,11 @@ public RegServerConVars()
 			g_hdist_golden_ladder   = CreateConVar("kz_dist_golden_ladder", "108.0", "Minimum distance for ladder jumps to be considered ownage [JumpStats Colorchat All]", FCVAR_NOTIFY, true, 90.0, true, 9999.0);
 			// wrecker jumpstats
 			g_hdist_wrecker_countjump = 235.0;
-			g_hdist_wrecker_lj = 249.0;
-			g_hdist_wrecker_weird = 249.0;
+			g_hdist_wrecker_lj = 250.0;
+			g_hdist_wrecker_weird = 250.0;
 			g_hdist_wrecker_dropbhop = 240.0;
 			g_hdist_wrecker_bhop = 240.0;
-			g_hdist_wrecker_multibhop = 249.0;
+			g_hdist_wrecker_multibhop = 250.0;
 			g_hdist_wrecker_ladder = 110.0;
 
 		}
