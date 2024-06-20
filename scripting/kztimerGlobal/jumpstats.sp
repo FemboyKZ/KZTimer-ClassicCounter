@@ -904,7 +904,7 @@ public Postthink(client)
 							return;
 						}
 						ValidJump = true;
-						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
+						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
@@ -948,7 +948,7 @@ public Postthink(client)
 							return;
 						}
 						ValidJump = true;
-						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
+						Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
@@ -1270,7 +1270,7 @@ public Postthink(client)
 							return;
 						}
 						ValidJump=true;
-						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
@@ -1320,7 +1320,7 @@ public Postthink(client)
 							return;
 						}
 						ValidJump=true;
-						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+						Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
@@ -1559,10 +1559,10 @@ public Postthink(client)
 								return;
 							}
 							ValidJump=true;
-							Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToConsole(client, "%FKZ%c | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);			
 						
@@ -1577,7 +1577,7 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToConsole(i, "%FKZ%c | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
@@ -1603,7 +1603,7 @@ public Postthink(client)
 								return;
 							}
 							ValidJump=true;
-							Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+							Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
@@ -1865,7 +1865,7 @@ public Postthink(client)
 							return;
 						}
 						ValidJump = true;
-						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
+						Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
@@ -2084,7 +2084,7 @@ public Postthink(client)
 									return;
 								}
 								ValidJump = true;
-								Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
+								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
@@ -2127,7 +2127,7 @@ public Postthink(client)
 									return;
 								}
 								ValidJump = true;
-								Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
+								Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
@@ -2344,7 +2344,7 @@ public Postthink(client)
 									return;
 								}
 								ValidJump = true;
-								Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -2385,7 +2385,7 @@ public Postthink(client)
 									return;
 								}
 								ValidJump = true;
-								Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+								Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -2595,7 +2595,7 @@ public Postthink(client)
 								PostThinkPost(client, ground_frames);
 								return;
 							}
-							Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -2636,7 +2636,7 @@ public Postthink(client)
 								PostThinkPost(client, ground_frames);
 								return;
 							}
-							Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
+							Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
