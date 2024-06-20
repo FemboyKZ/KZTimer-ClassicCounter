@@ -677,7 +677,6 @@ public Action:Client_Undo(client, args)
 		{
 			g_fLastUndo[client] = GetEngineTime();
 			DoValidTeleport(client, g_fPlayerCordsUndoTp[client],g_fPlayerAnglesUndoTp[client], Float:{0.0,0.0,-100.0});
-			g_js_GODLIKE_Count[client] = 0;
 		}
 		else
 		{
@@ -1965,8 +1964,6 @@ public DoTeleport(client,pos)
 			SetEntPropVector(client, Prop_Data, "m_vecVelocity", fVelocity);
 			GetClientAbsOrigin(client, g_fPlayerCordsUndoTp[client]);
 			GetClientEyeAngles(client,g_fPlayerAnglesUndoTp[client]);
-			if (!(GetEntityFlags(client) & FL_ONGROUND))
-				g_js_GODLIKE_Count[client] = 0;
 
 			if (GetEntityMoveType(client) == MOVETYPE_LADDER)
 				g_bInvalidUndoGround[client]=true;

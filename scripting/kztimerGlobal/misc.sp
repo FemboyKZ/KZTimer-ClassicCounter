@@ -870,7 +870,7 @@ public SetClientDefaults(client)
 	g_js_fJump_JumpOff_PosLastHeight[client] = -1.012345;
 	g_js_Good_Sync_Frames[client] = 0.0;
 	g_js_Sync_Frames[client] = 0.0;
-	g_js_GODLIKE_Count[client] = 0;
+	//g_js_GODLIKE_Count[client] = 0;
 	g_fPauseTime[client] = 0.0;
 	g_MapRankTp[client] = 99999;
 	g_MapRankPro[client] = 99999;
@@ -979,48 +979,11 @@ public PlayLeetJumpSound(client)
 {
 	decl String:buffer[255];
 
-	//all sound
-	if (g_js_GODLIKE_Count[client] == 3 || g_js_GODLIKE_Count[client] == 5)
-	{
-		for (new i = 1; i <= MaxClients; i++)
-		{
-			if(IsValidClient(i) && !IsFakeClient(i) && i != client && g_ColorChat[i] >= 1 && g_EnableQuakeSounds[i] == 1)
-			{
-					if (g_js_GODLIKE_Count[client]==3)
-					{
-						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RAMPAGE_RELATIVE_SOUND_PATH);
-						ClientCommand(i, buffer);
-					}
-					else
-						if (g_js_GODLIKE_Count[client]==5)
-						{
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATING_RELATIVE_SOUND_PATH);
-							ClientCommand(i, buffer);
-						}
-			}
-		}
-	}
-
 	//client sound
 	if 	(IsValidClient(client) && !IsFakeClient(client) && g_EnableQuakeSounds[client] >= 1)
 	{
-		if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5 && g_EnableQuakeSounds[client])
-		{
-			Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH);
-			ClientCommand(client, buffer);
-		}
-			else
-			if (g_js_GODLIKE_Count[client]==3 && g_EnableQuakeSounds[client])
-			{
-				Format(buffer, sizeof(buffer), "play %s", GODLIKE_RAMPAGE_RELATIVE_SOUND_PATH);
-				ClientCommand(client, buffer);
-			}
-			else
-			if (g_js_GODLIKE_Count[client]==5 && g_EnableQuakeSounds[client])
-			{
-				Format(buffer, sizeof(buffer), "play %s", GODLIKE_DOMINATING_RELATIVE_SOUND_PATH);
-				ClientCommand(client, buffer);
-			}
+		Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH);
+		ClientCommand(client, buffer);
 	}
 }
 

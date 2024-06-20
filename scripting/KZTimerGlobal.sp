@@ -639,7 +639,7 @@ new g_js_GroundFrames[MAXPLAYERS+1];
 new g_js_LadderFrames[MAXPLAYERS+1];
 new g_js_StrafeCount[MAXPLAYERS+1];
 new g_js_Strafes_Final[MAXPLAYERS+1];
-new g_js_GODLIKE_Count[MAXPLAYERS+1];
+//new g_js_GODLIKE_Count[MAXPLAYERS+1];
 new g_js_MultiBhop_Count[MAXPLAYERS+1];
 new g_js_Last_Ground_Frames[MAXPLAYERS+1];
 new g_js_DuckCounter[MAXPLAYERS+1];

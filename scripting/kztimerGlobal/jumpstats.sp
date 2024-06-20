@@ -887,6 +887,7 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						PlayGoldenJumpSound(client);
 							
 					}		
@@ -930,6 +931,7 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						PlayWreckerJumpSound(client);
 					}		
 					//godlike
@@ -972,6 +974,7 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 						PlayQuakeSound_Spec(client,buffer);							
@@ -1249,6 +1252,7 @@ public Postthink(client)
 									}
 								}
 							}
+						PlayLeetJumpSound(client);
 						PlayGoldenJumpSound(client);
 						
 					}else 
@@ -1297,6 +1301,7 @@ public Postthink(client)
 									}
 								}
 							}
+						PlayLeetJumpSound(client);
 						PlayWreckerJumpSound(client);	
 						
 					}else 
@@ -1345,7 +1350,7 @@ public Postthink(client)
 									}
 								}
 							}
-					
+						PlayLeetJumpSound(client);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 						PlayQuakeSound_Spec(client,buffer);
@@ -1535,8 +1540,8 @@ public Postthink(client)
 										}
 									}
 								}
-							PlayGoldenJumpSound(client);
-							
+							PlayLeetJumpSound(client);
+							PlayGoldenJumpSound(client);	
 						}
 						// Wrecker mhop
 						else
@@ -1578,6 +1583,7 @@ public Postthink(client)
 										}
 									}
 								}
+							PlayLeetJumpSound(client);
 							PlayWreckerJumpSound(client);
 						}
 						//godlike?
@@ -1621,6 +1627,7 @@ public Postthink(client)
 										}
 									}
 								}
+								PlayLeetJumpSound(client);
 								decl String:buffer[255];
 								Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 								PlayQuakeSound_Spec(client,buffer);
@@ -1794,6 +1801,7 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						PlayGoldenJumpSound(client);
 						
 					}
@@ -1838,8 +1846,8 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						PlayWreckerJumpSound(client);
-						
 					}
 					//godlike
 					else
@@ -1881,10 +1889,10 @@ public Postthink(client)
 									}
 								}	
 							}
+						PlayLeetJumpSound(client);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 						PlayQuakeSound_Spec(client,buffer);
-						
 					}		
 			
 		//strafesync chat
@@ -2055,8 +2063,8 @@ public Postthink(client)
 											}
 										}	
 									}
+								PlayLeetJumpSound(client);
 								PlayGoldenJumpSound(client);
-							
 							}
 							//Wrecker
 							else
@@ -2097,8 +2105,8 @@ public Postthink(client)
 											}
 										}	
 									}
-								PlayWreckerJumpSound(client);
-								
+								PlayLeetJumpSound(client);
+								PlayWreckerJumpSound(client);	
 							}
 							//godlike
 							else
@@ -2141,11 +2149,10 @@ public Postthink(client)
 											}
 										}	
 									}
-
+								PlayLeetJumpSound(client);
 								decl String:buffer[255];
 								Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 								PlayQuakeSound_Spec(client,buffer);
-								
 							}		
 					
 				//strafesync chat
@@ -2317,8 +2324,8 @@ public Postthink(client)
 											}
 										}
 									}
-								PlayGoldenJumpSound(client);
-														
+								PlayLeetJumpSound(client);
+								PlayGoldenJumpSound(client);						
 							}//Wrecker?
 							else
 							if (g_js_fJump_Distance[client] >= g_hdist_wrecker_weird)	
@@ -2359,6 +2366,7 @@ public Postthink(client)
 											}
 										}
 									}
+									PlayLeetJumpSound(client);
 									PlayWreckerJumpSound(client);															
 							}//godlike?
 							else
@@ -2395,10 +2403,11 @@ public Postthink(client)
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest)
+													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
 											}
 										}
 									}
+									PlayLeetJumpSound(client);
 									decl String:buffer[255];
 									Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 									PlayQuakeSound_Spec(client,buffer);							
@@ -2564,6 +2573,7 @@ public Postthink(client)
 										}
 									}
 								}
+							PlayLeetJumpSound(client);
 							PlayGoldenJumpSound(client);					
 						}
 						//Wrecker?
@@ -2605,6 +2615,7 @@ public Postthink(client)
 										}
 									}
 								}
+							PlayLeetJumpSound(client);
 							PlayWreckerJumpSound(client);						
 						}
 						//godlike?
@@ -2646,6 +2657,7 @@ public Postthink(client)
 										}
 									}
 								}
+							PlayLeetJumpSound(client);
 							decl String:buffer[255];
 							Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 							PlayQuakeSound_Spec(client,buffer);
