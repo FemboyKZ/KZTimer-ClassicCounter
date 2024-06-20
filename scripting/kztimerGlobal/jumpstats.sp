@@ -769,8 +769,7 @@ public Postthink(client)
 		if (g_js_fJump_Distance[client] >= g_dist_min_ladder && g_js_fJump_Distance[client] < g_dist_impressive_ladder)	
 		{
 			ValidJump = true;
-			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-			g_js_GODLIKE_Count[client]=0;	
+			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);	
 			PrintToChat(client, "%t", "ClientLadderJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
 			PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
@@ -781,7 +780,6 @@ public Postthink(client)
 			if (g_js_fJump_Distance[client] >= g_dist_impressive_ladder && g_js_fJump_Distance[client] < g_dist_perfect_ladder)
 			{		
 				ValidJump = true;
-				g_js_GODLIKE_Count[client]=0;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
 				PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -818,7 +816,6 @@ public Postthink(client)
 				if (g_js_fJump_Distance[client] >= g_dist_perfect_ladder && g_js_fJump_Distance[client] < g_dist_god_ladder)
 				{		
 					ValidJump = true;
-					g_js_GODLIKE_Count[client]=0;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
 					PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -863,17 +860,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -892,21 +883,12 @@ public Postthink(client)
 										}
 										else								
 											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
-										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
+									
 									}
 								}	
 							}
+						PlayGoldenJumpSound(client);
 							
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayGoldenJumpSound(client);
-						}
 					}		
 					//wrecker
 					else
@@ -921,17 +903,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -951,20 +927,10 @@ public Postthink(client)
 										else								
 											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client], YELLOW,PURPLE,sDirection,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
-							
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayWreckerJumpSound(client);
-						}
+						PlayWreckerJumpSound(client);
 					}		
 					//godlike
 					else 
@@ -979,17 +945,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -1009,25 +969,13 @@ public Postthink(client)
 										else								
 											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
-							
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							decl String:buffer[255];
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-							PlayQuakeSound_Spec(client,buffer);
-						}
+						decl String:buffer[255];
+						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
+						PlayQuakeSound_Spec(client,buffer);							
 					}		
-					else
-						g_js_GODLIKE_Count[client]=0;
 		
 		//strafesync chat
 		if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_ladder)
@@ -1268,7 +1216,6 @@ public Postthink(client)
 						}
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]++;
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
@@ -1277,11 +1224,6 @@ public Postthink(client)
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 
 						//all
 						if (!IsFakeClient(client))
@@ -1304,19 +1246,11 @@ public Postthink(client)
 										else
 											PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,sBlockDist,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-											PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}
 							}
-						PlayLeetJumpSound(client);
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayGoldenJumpSound(client);
-						}
+						PlayGoldenJumpSound(client);
+						
 					}else 
 					// Wrecker=?
 					if (g_js_fJump_Distance[client] >= g_hdist_wrecker_lj)	
@@ -1330,7 +1264,6 @@ public Postthink(client)
 						}
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#97f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]++;
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
@@ -1339,11 +1272,6 @@ public Postthink(client)
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 
 						//all
 						if (!IsFakeClient(client))
@@ -1366,19 +1294,11 @@ public Postthink(client)
 										else
 											PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client],YELLOW,PURPLE,sDirection,sBlockDist,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-											PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}
 							}
-						PlayLeetJumpSound(client);
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayWreckerJumpSound(client);
-						}
+						PlayWreckerJumpSound(client);	
+						
 					}else 
 					if (g_js_fJump_Distance[client] >= g_dist_god_lj  && g_js_fJump_Distance[client] < g_dist_golden_lj)	
 					{
@@ -1391,7 +1311,6 @@ public Postthink(client)
 						}
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]++;
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
@@ -1400,11 +1319,6 @@ public Postthink(client)
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 
 						//all
 						if (!IsFakeClient(client))
@@ -1427,21 +1341,15 @@ public Postthink(client)
 										else
 											PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,sBlockDist,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-											PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
+
 									}
 								}
 							}
-						PlayLeetJumpSound(client);
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							decl String:buffer[255];
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-							PlayQuakeSound_Spec(client,buffer);
-						}
+					
+						decl String:buffer[255];
+						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
+						PlayQuakeSound_Spec(client,buffer);
+						
 					}
 					else
 						CreateTimer(0.1, BhopCheck, client,TIMER_FLAG_NO_MAPCHANGE);
@@ -1505,7 +1413,6 @@ public Postthink(client)
 			{
 				ValidJump=true;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.1f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-				g_js_GODLIKE_Count[client]=0;
 				PrintToChat(client, "%t", "ClientMultiBhop1",PINK,WHITE, GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 				PrintToConsole(client, "        ");
 				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %3.f Pre | %3.f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
@@ -1517,7 +1424,6 @@ public Postthink(client)
 				{	
 					ValidJump=true;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-					g_js_GODLIKE_Count[client]=0;
 					//Client
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
@@ -1556,7 +1462,6 @@ public Postthink(client)
 					{	
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]=0;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
@@ -1602,17 +1507,11 @@ public Postthink(client)
 							}
 							ValidJump=true;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);						
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);			
 						
 							//all
 							if (!IsFakeClient(client))
@@ -1632,21 +1531,12 @@ public Postthink(client)
 											else
 												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
 											
-											if (g_js_GODLIKE_Count[client]==3)
-													PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 										}
 									}
 								}
-								
-							PlayLeetJumpSound(client);	
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
-								PlayGoldenJumpSound(client);
-							}
+							PlayGoldenJumpSound(client);
+							
 						}
 						// Wrecker mhop
 						else
@@ -1661,17 +1551,11 @@ public Postthink(client)
 							}
 							ValidJump=true;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);						
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);					
 						
 							//all
 							if (!IsFakeClient(client))
@@ -1689,23 +1573,12 @@ public Postthink(client)
 												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client],YELLOW,PURPLE,sDirection,szPersonalBest);
-											
-											if (g_js_GODLIKE_Count[client]==3)
-													PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client],YELLOW,PURPLE,sDirection,szPersonalBest);	
 											
 										}
 									}
 								}
-								
-							PlayLeetJumpSound(client);	
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
-								PlayWreckerJumpSound(client);
-							}
+							PlayWreckerJumpSound(client);
 						}
 						//godlike?
 						else
@@ -1720,17 +1593,11 @@ public Postthink(client)
 							}
 							ValidJump=true;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);						
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);;						
 						
 							//all
 							if (!IsFakeClient(client))
@@ -1750,26 +1617,15 @@ public Postthink(client)
 											else
 												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
 											
-											if (g_js_GODLIKE_Count[client]==3)
-													PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 										}
 									}
 								}
-								
-							PlayLeetJumpSound(client);	
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
 								decl String:buffer[255];
 								Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
 								PlayQuakeSound_Spec(client,buffer);
-							}
 						}	
-						else
-							g_js_GODLIKE_Count[client]=0;
+
 			
 			//strafe sync chat
 			if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_multibhop)
@@ -1820,7 +1676,6 @@ public Postthink(client)
 		{
 			ValidJump = true;
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-			g_js_GODLIKE_Count[client]=0;	
 			PrintToChat(client, "%t", "ClientCountJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
 			PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
@@ -1831,7 +1686,6 @@ public Postthink(client)
 			if (g_js_fJump_Distance[client] >= g_dist_impressive_countjump && g_js_fJump_Distance[client] < g_dist_perfect_countjump)
 			{		
 				ValidJump = true;
-				g_js_GODLIKE_Count[client]=0;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
 				PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
@@ -1868,7 +1722,6 @@ public Postthink(client)
 				if (g_js_fJump_Distance[client] >= g_dist_perfect_countjump && g_js_fJump_Distance[client] < g_dist_god_countjump)
 				{		
 					ValidJump = true;
-					g_js_GODLIKE_Count[client]=0;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
 					PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
@@ -1914,17 +1767,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -1944,19 +1791,11 @@ public Postthink(client)
 										else
 											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayGoldenJumpSound(client);
-						}
+						PlayGoldenJumpSound(client);
+						
 					}
 					//wrecker
 					else
@@ -1972,17 +1811,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -2002,19 +1835,11 @@ public Postthink(client)
 										else
 											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client], YELLOW,PURPLE,sDirection,szPersonalBest);
 										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							PlayWreckerJumpSound(client);
-						}
+						PlayWreckerJumpSound(client);
+						
 					}
 					//godlike
 					else
@@ -2030,17 +1855,11 @@ public Postthink(client)
 						}
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
-						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-						else
-							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -2059,25 +1878,14 @@ public Postthink(client)
 										}
 										else
 											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
-										
-										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-										else
-											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
-						PlayLeetJumpSound(client);	
-						if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-						{
-							decl String:buffer[255];
-							Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-							PlayQuakeSound_Spec(client,buffer);
-						}
+						decl String:buffer[255];
+						Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
+						PlayQuakeSound_Spec(client,buffer);
+						
 					}		
-					else
-						g_js_GODLIKE_Count[client]=0;
 			
 		//strafesync chat
 		if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_countjump)
@@ -2129,8 +1937,7 @@ public Postthink(client)
 				if (g_js_fJump_Distance[client] >= g_dist_min_dropbhop && g_js_fJump_Distance[client] < g_dist_impressive_dropbhop)	
 				{
 					ValidJump = true;
-					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-					g_js_GODLIKE_Count[client]=0;	
+					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);	
 					PrintToChat(client, "%t", "ClientDropBhop1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
@@ -2141,7 +1948,6 @@ public Postthink(client)
 					if (g_js_fJump_Distance[client] >= g_dist_impressive_dropbhop && g_js_fJump_Distance[client] < g_dist_perfect_dropbhop)
 					{		
 						ValidJump = true;
-						g_js_GODLIKE_Count[client]=0;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
@@ -2178,7 +1984,6 @@ public Postthink(client)
 						if (g_js_fJump_Distance[client] >= g_dist_perfect_dropbhop && g_js_fJump_Distance[client] < g_dist_god_dropbhop)
 						{		
 							ValidJump = true;
-							g_js_GODLIKE_Count[client]=0;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
@@ -2224,17 +2029,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 										
 								//all
 								if (!IsFakeClient(client))
@@ -2253,20 +2052,11 @@ public Postthink(client)
 												}
 												else
 													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
-												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}	
 									}
-								PlayLeetJumpSound(client);	
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
-									PlayGoldenJumpSound(client);
-								}
+								PlayGoldenJumpSound(client);
+							
 							}
 							//Wrecker
 							else
@@ -2282,18 +2072,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
-										
 								//all
 								if (!IsFakeClient(client))
 									for (new i = 1; i <= MaxClients; i++)
@@ -2311,20 +2094,11 @@ public Postthink(client)
 												}
 												else
 													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client], YELLOW,PURPLE,sDirection,szPersonalBest);
-												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}	
 									}
-								PlayLeetJumpSound(client);	
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
-									PlayWreckerJumpSound(client);
-								}
+								PlayWreckerJumpSound(client);
+								
 							}
 							//godlike
 							else
@@ -2340,17 +2114,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);		
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 										
 								//all
 								if (!IsFakeClient(client))
@@ -2370,24 +2138,15 @@ public Postthink(client)
 												else
 													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
 												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-												else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}	
 									}
-								PlayLeetJumpSound(client);	
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
-									decl String:buffer[255];
-									Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-									PlayQuakeSound_Spec(client,buffer);
-								}
+
+								decl String:buffer[255];
+								Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
+								PlayQuakeSound_Spec(client,buffer);
+								
 							}		
-							else
-								g_js_GODLIKE_Count[client]=0;
 					
 				//strafesync chat
 				if (g_bStrafeSync[client] && g_js_fJump_Distance[client] >= g_dist_min_dropbhop)
@@ -2440,7 +2199,6 @@ public Postthink(client)
 					{
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]=0;
 						PrintToChat(client, "%t", "ClientWeirdJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 						PrintToConsole(client, "        ");
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
@@ -2452,7 +2210,6 @@ public Postthink(client)
 						{
 							ValidJump = true;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]=0;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -2490,7 +2247,6 @@ public Postthink(client)
 						{
 							ValidJump = true;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]=0;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
@@ -2535,17 +2291,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 													
 								//all
 								if (!IsFakeClient(client))
@@ -2564,20 +2314,11 @@ public Postthink(client)
 												}
 												else
 													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
-												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-													else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}
 									}
-								PlayLeetJumpSound(client);
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
-									PlayGoldenJumpSound(client);
-								}								
+								PlayGoldenJumpSound(client);
+														
 							}//Wrecker?
 							else
 							if (g_js_fJump_Distance[client] >= g_hdist_wrecker_weird)	
@@ -2591,17 +2332,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 													
 								//all
 								if (!IsFakeClient(client))
@@ -2621,19 +2356,10 @@ public Postthink(client)
 												else
 													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client],YELLOW,PURPLE,sDirection,szPersonalBest);
 												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-													else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}
 									}
-								PlayLeetJumpSound(client);
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
-									PlayWreckerJumpSound(client);
-								}								
+									PlayWreckerJumpSound(client);															
 							}//godlike?
 							else
 							if (g_js_fJump_Distance[client] >= g_dist_god_weird && g_js_fJump_Distance[client] < g_dist_golden_weird)	
@@ -2647,17 +2373,11 @@ public Postthink(client)
 								}
 								ValidJump = true;
 								Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
-								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-								else
-									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 													
 								//all
 								if (!IsFakeClient(client))
@@ -2675,26 +2395,14 @@ public Postthink(client)
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
-												
-												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-													else
-													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
+													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest)
 											}
 										}
 									}
-								PlayLeetJumpSound(client);
-								if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-								{
 									decl String:buffer[255];
 									Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-									PlayQuakeSound_Spec(client,buffer);
-								}								
-							}		
-							else
-								g_js_GODLIKE_Count[client]=0;		
+									PlayQuakeSound_Spec(client,buffer);							
+							}				
 					
 					//strafesync chat
 					if (g_bStrafeSync[client]  && g_js_fJump_Distance[client] >= g_dist_min_weird)
@@ -2738,7 +2446,6 @@ public Postthink(client)
 				{
 					ValidJump=true;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-					g_js_GODLIKE_Count[client]=0;
 					PrintToChat(client, "%t", "ClientBunnyhop1",PINK,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
@@ -2750,7 +2457,6 @@ public Postthink(client)
 					{
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]=0;
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
@@ -2787,7 +2493,6 @@ public Postthink(client)
 					{
 						ValidJump=true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-						g_js_GODLIKE_Count[client]=0;
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
@@ -2833,17 +2538,11 @@ public Postthink(client)
 								return;
 							}
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 							//all
 							if (!IsFakeClient(client))
@@ -2861,21 +2560,11 @@ public Postthink(client)
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);										
-											
-											if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-											else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);										
+												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);																				
 										}
 									}
 								}
-							PlayLeetJumpSound(client);
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
-								PlayGoldenJumpSound(client);
-							}						
+							PlayGoldenJumpSound(client);					
 						}
 						//Wrecker?
 						if (g_js_fJump_Distance[client] >= g_hdist_wrecker_bhop)	
@@ -2889,17 +2578,11 @@ public Postthink(client)
 								return;
 							}
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 							//all
 							if (!IsFakeClient(client))
@@ -2918,20 +2601,11 @@ public Postthink(client)
 											}
 											else
 												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,PURPLE,szName, YELLOW,PURPLE, g_js_fJump_Distance[client],YELLOW,PURPLE,sDirection,szPersonalBest);										
-											
-											if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-											else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);										
+																					
 										}
 									}
 								}
-							PlayLeetJumpSound(client);
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
-								PlayWreckerJumpSound(client);
-							}						
+							PlayWreckerJumpSound(client);						
 						}
 						//godlike?
 						else if (g_js_fJump_Distance[client] >= g_dist_god_bhop && g_js_fJump_Distance[client] < g_dist_golden_bhop)	
@@ -2945,17 +2619,11 @@ public Postthink(client)
 								return;
 							}
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
-							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-							else
-							if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 							//all
 							if (!IsFakeClient(client))
@@ -2974,27 +2642,15 @@ public Postthink(client)
 											}
 											else
 												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);										
-											
-											if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
-											else
-												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);										
+																				
 										}
 									}
 								}
-							PlayLeetJumpSound(client);
-							if (g_js_GODLIKE_Count[client] != 3 && g_js_GODLIKE_Count[client] != 5)
-							{
-								decl String:buffer[255];
-								Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
-								PlayQuakeSound_Spec(client,buffer);
-							}						
+							decl String:buffer[255];
+							Format(buffer, sizeof(buffer), "play %s", GODLIKE_RELATIVE_SOUND_PATH); 	
+							PlayQuakeSound_Spec(client,buffer);
+													
 						}		
-						else
-						{
-							g_js_GODLIKE_Count[client]=0;
-						}
 					}
 							
 				//strafe sync chat
@@ -3011,8 +2667,6 @@ public Postthink(client)
 				}
 			}
 	}
-	if (!ValidJump)
-		g_js_GODLIKE_Count[client]=0;
 	PostThinkPost(client, ground_frames);						
 }
 
