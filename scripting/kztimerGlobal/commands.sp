@@ -39,7 +39,7 @@ public Action:Command_Specs(client, args)
 
 public Action:Client_RankingSystem(client, args)
 {
-	PrintToChat(client,"%cFKZ%c |%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
+	PrintToChat(client,"[%cKZ%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
 	ShowMOTDPanel(client, "rankingsystem" ,"http://kuala-lumpur-court-8417.pancakeapps.com/ranking_index.html", 2);
 	return Plugin_Handled;
 }
@@ -105,7 +105,7 @@ public Action:Command_Stats(client, args)
 {
 	if (args < 1)
 	{
-	ReplyToCommand(client, "%cFKZ%c | Usage: !bhopcheck <name> | @all | @me",PINK,WHITE);
+	ReplyToCommand(client, "[%cKZ%c] Usage: !bhopcheck <name> | @all | @me",PINK,WHITE);
 	return Plugin_Handled;
 	}
 	decl String:arg[65];
@@ -126,7 +126,7 @@ public Action:Command_Stats(client, args)
 	return Plugin_Handled;
 	}
 	if (target_count > 3)
-	PrintToChat(client, "%cFKZ%c | See console for output!", PINK,WHITE);
+	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);
 	for (new i = 0; i < target_count; i++)
 	{
 	if (target_count > 3)
@@ -335,12 +335,12 @@ public Action:Client_Abort(client, args)
 		if (g_bChallenge_Abort[client])
 		{
 			g_bChallenge_Abort[client]=false;
-			PrintToChat(client, "%cFKZ%c | You have disagreed to abort the challenge.",RED,WHITE);
+			PrintToChat(client, "[%cKZ%c] You have disagreed to abort the challenge.",RED,WHITE);
 		}
 		else
 		{
 			g_bChallenge_Abort[client]=true;
-			PrintToChat(client, "%cFKZ%c | You have agreed to abort the challenge. Waiting for your opponent..",RED,WHITE, GREEN);
+			PrintToChat(client, "[%cKZ%c] You have agreed to abort the challenge. Waiting for your opponent..",RED,WHITE, GREEN);
 		}
 	}
 	return Plugin_Handled;
@@ -387,8 +387,8 @@ public Action:Client_Accept(client, args)
 				else
 					Format(szCP, sizeof(szCP), "Forbidden");
 				new points = g_Challenge_Bet[i]*2*g_pr_PointUnit;
-				PrintToChatAll("%cFKZ%c | Challenge: %c%s%c vs. %c%s%c",RED,WHITE,PINK,szPlayer1,WHITE,PINK,szPlayer2,WHITE);
-				PrintToChatAll("%cFKZ%c | Checkpoints: %c%s%c, Pot: %c%ip",RED,WHITE,GRAY,szCP,WHITE,GRAY,points);
+				PrintToChatAll("[%cKZ%c] Challenge: %c%s%c vs. %c%s%c",RED,WHITE,PINK,szPlayer1,WHITE,PINK,szPlayer2,WHITE);
+				PrintToChatAll("[%cKZ%c] Checkpoints: %c%s%c, Pot: %c%ip",RED,WHITE,GRAY,szCP,WHITE,GRAY,points);
 
 				new r1 = GetRandomInt(55, 255);
 				new r2 = GetRandomInt(55, 255);
@@ -535,7 +535,7 @@ public Action:Client_Surrender (client, args)
 						new lostpoints = g_Challenge_Bet[client] * g_pr_PointUnit;
 						for (new j = 1; j <= MaxClients; j++)
 							if (IsValidClient(j) && IsValidEntity(j))
-								PrintToChat(j, "%cFKZ%c | %c%s%c has lost %c%i %cpoints!", PINK, WHITE, PURPLE,szName, GRAY, RED, lostpoints,GRAY);
+								PrintToChat(j, "[%cKZ%c] %c%s%c has lost %c%i %cpoints!", PINK, WHITE, PURPLE,szName, GRAY, RED, lostpoints,GRAY);
 					}
 					//db update
 					CreateTimer(0.0, UpdatePlayerProfile, i,TIMER_FLAG_NO_MAPCHANGE);
@@ -1103,7 +1103,7 @@ public CompareMenu(client,args)
 			DisplayMenu(menu, client, MENU_TIME_FOREVER);
 		}
 		else
-			PrintToChat(client,"%cFKZ%c | No valid players found",PINK,WHITE);
+			PrintToChat(client,"[%cKZ%c] No valid players found",PINK,WHITE);
 		return;
 	}
 	else
@@ -1369,7 +1369,7 @@ public Action:Client_Help(client, args)
 public Action:Client_Ranks(client, args)
 {
 	if (IsValidClient(client))
-		PrintToChat(client, "%cFKZ%c | %c%s (0p)  %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)",
+		PrintToChat(client, "[%cKZ%c] %c%s (0p)  %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)",
 		PINK,WHITE, WHITE, g_szSkillGroups[0],WHITE,g_szSkillGroups[1],WHITE,g_pr_rank_Percentage[1], GRAY, g_szSkillGroups[2],GRAY,g_pr_rank_Percentage[2],LIGHTBLUE,
 		g_szSkillGroups[3],LIGHTBLUE,g_pr_rank_Percentage[3],BLUE, g_szSkillGroups[4],BLUE,g_pr_rank_Percentage[4],DARKBLUE,g_szSkillGroups[5],DARKBLUE,g_pr_rank_Percentage[5],
 		PINK,g_szSkillGroups[6],PINK,g_pr_rank_Percentage[6],LIGHTRED,g_szSkillGroups[7],LIGHTRED,g_pr_rank_Percentage[7],DARKRED,g_szSkillGroups[8],DARKRED,g_pr_rank_Percentage[8]);
@@ -1848,7 +1848,7 @@ public DoCheckpoint(client)
 	if (StrEqual("kzpro", g_szMapPrefix[0]) && g_bTimeractivated[client])
 	{
 		EmitSoundToClient(client,"buttons/button10.wav",client);
-		PrintToChat(client, "%cFKZ%c | %cCheckpoint not supported while your timer is running (kzpro_ map)", PINK,WHITE,RED);
+		PrintToChat(client, "[%cKZ%c] %cCheckpoint not supported while your timer is running (kzpro_ map)", PINK,WHITE,RED);
 		return;
 	}
 
@@ -1990,7 +1990,7 @@ public Action_NoClip(client)
 			{
 				if (g_bTimeractivated[client])
 				{
-					PrintToConsole(client, "FKZ | Timer stopped. Reason: +noclip used.");
+					PrintToConsole(client, "[KZ] Timer stopped. Reason: +noclip used.");
 					g_bTimeractivated[client] = false;
 					g_fStartTime[client] = -1.0;
 					g_fCurrentRunTime[client] = -1.0;
@@ -2721,7 +2721,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "sv_staminajumpcost %.2f", flStamJump);
 	//PrintToConsole(client, "sv_wateraccelerate %.1f", flWaterA);
 	PrintToConsole(client, "-------------------------------------");
-	PrintToChat(client, "%cFKZ%c | See console for output!", PINK,WHITE);
+	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);
 }
 
 public SetClientLang(client)

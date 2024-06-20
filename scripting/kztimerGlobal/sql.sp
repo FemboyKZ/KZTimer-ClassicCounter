@@ -254,40 +254,40 @@ public sql_selectChallengesCompareCallback(Handle:owner, Handle:hndl, const Stri
 		if (winratio>0)
 		{
 			if (pointratio>0)
-				PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+				PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 			else
 					if (pointratio<0)
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, GREEN,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 		}
 		else
 		{
 			if (winratio<0)
 			{
 				if (pointratio>0)
-					PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+					PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 				else
 					if (pointratio<0)
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, RED,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 		
 			}
 			else
 			{
 				if (pointratio>0)
-					PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
+					PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,GREEN,szPointsRatio,GRAY);
 				else
 					if (pointratio<0)
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,RED,szPointsRatio,GRAY);
 					else
-						PrintToChat(client,"%cFKZ%c | %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
+						PrintToChat(client,"[%cKZ%c] %cYou have played %c%i%c challenges against %c%s%c (win/loss ratio: %c%s%c, points ratio: %c%s%c)", PINK,WHITE,GRAY,PURPLE,challenges,GRAY,PURPLE, szName,GRAY, YELLOW,szWinRatio,GRAY,YELLOW,szPointsRatio,GRAY);	
 			}
 		}	
 	}
 	else
-		PrintToChat(client,"%cFKZ%c | No challenges againgst %s found", szName);
+		PrintToChat(client,"[%cKZ%c] No challenges againgst %s found", szName);
 }
 
 //COMPARE
@@ -732,7 +732,7 @@ public SQL_ViewJumpStatsCallback2(Handle:owner, Handle:hndl, const String:error[
 				AddMenuItem(menu, szVr, szVr);	
 			}				
 			if (ljtrue && !g_bPreStrafe)
-				PrintToChat(client,"%cFKZ%c | %cJUMPSTATS INFO%c: %cLJ PRE%c = JumpOff",PINK,WHITE,GRAY,WHITE,YELLOW,WHITE);	
+				PrintToChat(client,"[%cKZ%c] %cJUMPSTATS INFO%c: %cLJ PRE%c = JumpOff",PINK,WHITE,GRAY,WHITE,YELLOW,WHITE);	
 			SetMenuPagination(menu, 5);
 			//SetMenuPagination(menu, MENU_NO_PAGINATION); 
 			SetMenuOptionFlags(menu, MENUFLAG_BUTTON_EXIT);
@@ -1534,7 +1534,7 @@ public SQL_viewBhop2RecordCallback2(Handle:owner, Handle:hndl, const String:erro
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 					
 					PrintToChat(i, "%t", "Jumpstats_BhopTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_Bhop_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_Bhop_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_Bhop_Record[client]);
 				}
 			}
 			g_pr_showmsg[client]=true;
@@ -1564,7 +1564,7 @@ public SQL_viewDropBhop2RecordCallback2(Handle:owner, Handle:hndl, const String:
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 			
 					PrintToChat(i, "%t", "Jumpstats_DropBhopTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_DropBhop_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Drop-Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_DropBhop_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Drop-Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_DropBhop_Record[client]);
 				}
 			}
 			g_pr_showmsg[client]=true;
@@ -1594,7 +1594,7 @@ public SQL_viewCountJump2RecordCallback2(Handle:owner, Handle:hndl, const String
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 			
 					PrintToChat(i, "%t", "Jumpstats_CountJumpTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_CJ_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the CountJump Top 20! [%.3f units]", szName, rank, g_js_fPersonal_CJ_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the CountJump Top 20! [%.3f units]", szName, rank, g_js_fPersonal_CJ_Record[client]);
 				}
 			}
 			g_pr_showmsg[client]=true;
@@ -1651,7 +1651,7 @@ public SQL_viewMultiBhop2RecordCallback2(Handle:owner, Handle:hndl, const String
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 					
 					PrintToChat(i, "%t", "Jumpstats_MultiBhopTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_MultiBhop_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Multi-Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_MultiBhop_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Multi-Bunnyhop Top 20! [%.3f units]", szName, rank, g_js_fPersonal_MultiBhop_Record[client]);
 				}
 			}
 			g_pr_showmsg[client]=true;
@@ -1763,7 +1763,7 @@ public SQL_viewLjBlock2RecordCallback2(Handle:owner, Handle:hndl, const String:e
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 		
 					PrintToChat(i, "%t", "Jumpstats_LjBlockTop", PINK, WHITE, YELLOW, szName, rank, g_js_Personal_LjBlock_Record[client],g_js_fPersonal_LjBlockRecord_Dist[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Longjump 20! [%i units block/%.3f units jump]", szName, rank, g_js_Personal_LjBlock_Record[client],g_js_fPersonal_LjBlockRecord_Dist[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Longjump 20! [%i units block/%.3f units jump]", szName, rank, g_js_Personal_LjBlock_Record[client],g_js_fPersonal_LjBlockRecord_Dist[client]);
 				}
 			}
 			g_pr_showmsg[client] = true;
@@ -1794,7 +1794,7 @@ public SQL_viewLj2RecordCallback2(Handle:owner, Handle:hndl, const String:error[
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 		
 					PrintToChat(i, "%t", "Jumpstats_LjTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_Lj_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Longjump 20! [%.3f units]", szName, rank, g_js_fPersonal_Lj_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Longjump 20! [%.3f units]", szName, rank, g_js_fPersonal_Lj_Record[client]);
 				}
 			}
 			g_pr_showmsg[client] = true;
@@ -1825,7 +1825,7 @@ public SQL_viewLadderJump2RecordCallback2(Handle:owner, Handle:hndl, const Strin
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 		
 					PrintToChat(i, "%t", "Jumpstats_LadderJumpTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_LadderJump_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Ladderjump 20! [%.3f units]", szName, rank, g_js_fPersonal_LadderJump_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Ladderjump 20! [%.3f units]", szName, rank, g_js_fPersonal_LadderJump_Record[client]);
 				}
 			}
 			g_pr_showmsg[client] = true;
@@ -1892,7 +1892,7 @@ public SQL_viewWj2RecordCallback2(Handle:owner, Handle:hndl, const String:error[
 				if(IsValidClient(i) && !IsFakeClient(i)) 
 				{ 		
 					PrintToChat(i, "%t", "Jumpstats_WjTop", PINK, WHITE, YELLOW, szName, rank, g_js_fPersonal_Wj_Record[client]);
-					PrintToConsole(i, "FKZ | %s is now #%i in the Weirdjump 20! [%.3f units]", szName, rank, g_js_fPersonal_Wj_Record[client]);
+					PrintToConsole(i, "[KZ] %s is now #%i in the Weirdjump 20! [%.3f units]", szName, rank, g_js_fPersonal_Wj_Record[client]);
 				}
 			}
 			g_pr_showmsg[client] = true;
@@ -1976,7 +1976,7 @@ public db_viewChallengeHistory(client, String:szSteamId[32])
 	}
 	else
 		if (IsClientInGame(client))
-			PrintToChat(client,"%cFKZ%c | Invalid SteamID found.",RED,WHITE);
+			PrintToChat(client,"[%cKZ%c] Invalid SteamID found.",RED,WHITE);
 	ProfileMenu(client, -1);
 }
 
@@ -2056,7 +2056,7 @@ public sql_selectChallengesCallback(Handle:owner, Handle:hndl, const String:erro
 	if(!bHeader)
 	{
 		ProfileMenu(client, -1);
-		PrintToChat(client, "%cFKZ%c | No challenges found.",PINK,WHITE);
+		PrintToChat(client, "[%cKZ%c] No challenges found.",PINK,WHITE);
 	}
 }
 
@@ -2121,7 +2121,7 @@ public db_viewAllRecords(client, String:szSteamId[32])
 		SQL_TQuery(g_hDb, SQL_ViewAllRecordsCallback, szQuery, client,DBPrio_Low);
 	else
 		if (IsClientInGame(client))
-			PrintToChat(client,"%cFKZ%c | Invalid SteamID found.",RED,WHITE);
+			PrintToChat(client,"[%cKZ%c] Invalid SteamID found.",RED,WHITE);
 	ProfileMenu(client, -1);
 }
 
@@ -2665,7 +2665,7 @@ public sql_selectLatestRecordsCallback(Handle:owner, Handle:hndl, const String:e
 	else
 		PrintToConsole(client,"No records found.");
 	PrintToConsole(client, "----------------------------------------------------------------------------------------------------");
-	PrintToChat(client, "%cFKZ%c | See console for output!", PINK,WHITE);	
+	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);	
 }
 
 			
@@ -3004,7 +3004,7 @@ public ProfileMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 			{
 				if(g_bRecalcRankInProgess[param1])
 				{
-					PrintToChat(param1, "%cFKZ%c | %cRecalculation in progress. Please wait!", PINK,WHITE,GRAY);
+					PrintToChat(param1, "[%cKZ%c] %cRecalculation in progress. Please wait!", PINK,WHITE,GRAY);
 				}
 				else
 				{

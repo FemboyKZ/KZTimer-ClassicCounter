@@ -434,56 +434,56 @@ public PrintConsoleInfo(client)
 	PrintToConsole(client, "%s (%ip), %s (%ip), %s (%ip), %s (%ip)",g_szSkillGroups[5], g_pr_rank_Percentage[5], g_szSkillGroups[6],g_pr_rank_Percentage[6], g_szSkillGroups[7], g_pr_rank_Percentage[7], g_szSkillGroups[8], g_pr_rank_Percentage[8]);
 	PrintToConsole(client, "-----------------------------------------------------------------------------------------------------------");
 	if (!g_global_Access)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is not whitelisted.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is not whitelisted.");
 	else
 	if (g_hDbGlobal == INVALID_HANDLE)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: No connection to the global database.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: No connection to the global database.");
 	else
 	if (g_global_Disabled)
-		PrintToConsole(client, "FKZ | Global Records have been temporarily disabled. For more information visit the KZTimer steam group!");
+		PrintToConsole(client, "[KZ] Global Records have been temporarily disabled. For more information visit the KZTimer steam group!");
 	else
 	if(!StrEqual(g_szMapPrefix[0],"kz") && !StrEqual(g_szMapPrefix[0],"xc") && !StrEqual(g_szMapPrefix[0],"bkz")  && !StrEqual(g_szMapPrefix[0],"kzpro"))
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!");
 	else
 	if (g_global_VersionBlocked)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!");
 	else
 	if (!g_global_KZTimerFileSize)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: KZTimer filesize check failed.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: KZTimer filesize check failed.");
 	else
 	if (g_bGlobalBeta)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Map is under construction. (alpha/beta version)");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Map is under construction. (alpha/beta version)");
 	else
 	if (g_global_SelfBuiltButtons)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
 	else
 	if (!g_global_IntegratedButtons)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: This map does not provide built-in climb buttons.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: This map does not provide built-in climb buttons.");
 	else
 	if (!g_bEnforcer)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: Server settings enforcer disabled.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: Server settings enforcer disabled.");
 	else
 	if (!g_global_ValidFileSize && g_global_IntegratedButtons)
 	{
 		if (g_global_WrongMapVersion)
-			PrintToConsole(client, "FKZ | Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");
+			PrintToConsole(client, "[KZ] Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");
 		else
-			PrintToConsole(client, "FKZ | Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");
+			PrintToConsole(client, "[KZ] Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");
 	}
 	else
 	if (g_bAutoTimer)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_auto_timer enabled.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_auto_timer enabled.");
 	else
 	if (g_bDoubleDuckCvar)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_double_duck is set to 1.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_double_duck is set to 1.");
 	else
 	if (g_bAutoBhop)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: AutoBhop enabled.");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: AutoBhop enabled.");
 	else
 	if (!g_global_ValidedMap)
-		PrintToConsole(client, "FKZ | Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
+		PrintToConsole(client, "[KZ] Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
 	else
-		PrintToConsole(client, "FKZ | Global records are enabled.");
+		PrintToConsole(client, "[KZ] Global records are enabled.");
 	PrintToConsole(client," ");
 }
 stock FakePrecacheSound( const String:szPath[] )
@@ -727,13 +727,13 @@ public CreateButton(client,String:targetname[])
 			if (StrEqual(targetname, "climb_startbuttonx"))
 			{
 				g_fStartButtonPos = location3;
-				PrintToChat(client,"%c%cFKZ%c | Start button built!", WHITE,PINK,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,PINK,WHITE);
 				g_bFirstStartButtonPush=false;
 			}
 			else
 			{
 				g_fEndButtonPos = location3;
-				PrintToChat(client,"%c%cFKZ%c | Stop button built!", WHITE,PINK,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,PINK,WHITE);
 				g_bFirstEndButtonPush = false;
 			}
 			g_global_SelfBuiltButtons=true;
@@ -1282,17 +1282,17 @@ public MapFinishedMsgs(client, type)
 							case 64:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord64_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD (64)",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (64)",szName);
 							}
 							case 102:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord102_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD (102)",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (102)",szName);
 							}
 							case 128:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord128_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL TP RECORD",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD",szName);
 							}
 						}
 					}
@@ -1303,36 +1303,36 @@ public MapFinishedMsgs(client, type)
 							case 64:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord64_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD (64)",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (64)",szName);
 							}
 							case 102:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord102_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD (102)",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (102)",szName);
 							}
 							case 128:
 							{
 								PrintToChat(i, "%t", "NewGlobalRecord128_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
-								PrintToConsole(i, "FKZ | %s has beaten the GLOBAL PRO RECORD",szName);
+								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD",szName);
 							}
 						}
 					}
 					case 2:
 					{
 						PrintToChat(i, "%t", "NewProRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE);
-						PrintToConsole(i, "FKZ | %s has beaten the PRO RECORD",szName);
+						PrintToConsole(i, "[KZ] %s has beaten the PRO RECORD",szName);
 					}
 					case 1:
 					{
 						PrintToChat(i, "%t", "NewTpRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW);
-						PrintToConsole(i, "FKZ | %s has beaten the TP RECORD",szName);
+						PrintToConsole(i, "[KZ] %s has beaten the TP RECORD",szName);
 					}
 				}
 			}
 		}
 
 		if (rank==99999 && IsValidClient(client))
-			PrintToChat(client, "%cFKZ%c | %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
+			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
 		else
 		{
 			Call_StartForward(g_hFWD_TimerStoppedValid);
@@ -2483,7 +2483,7 @@ public MovementCheck(client)
 		{
 			if (g_bTimeractivated[client])
 			{
-				PrintToChat(client,"FKZ | Timer stopped. Reason: m_flVelocityModifier modified.")
+				PrintToChat(client,"[KZ] Timer stopped. Reason: m_flVelocityModifier modified.")
 				g_bTimeractivated[client] = false;
 			}
 			if (g_js_bPlayerJumped[client])
@@ -2494,7 +2494,7 @@ public MovementCheck(client)
 		{
 			if (g_bTimeractivated[client])
 			{
-				PrintToChat(client,"FKZ | Timer stopped. Reason: m_flLaggedMovementValue modified.")
+				PrintToChat(client,"[KZ] Timer stopped. Reason: m_flLaggedMovementValue modified.")
 				g_bTimeractivated[client] = false;
 			}
 			if (g_js_bPlayerJumped[client])
@@ -2507,7 +2507,7 @@ public MovementCheck(client)
 	{
 		if (g_bTimeractivated[client])
 		{
-			PrintToChat(client,"FKZ | Timer stopped. Reason: MOVETYPE 'FLYGRAVITY' detected.")
+			PrintToChat(client,"[KZ] Timer stopped. Reason: MOVETYPE 'FLYGRAVITY' detected.")
 			g_bTimeractivated[client] = false;
 		}
 		if (g_js_bPlayerJumped[client])
@@ -2565,7 +2565,7 @@ public NoClipCheck(client)
 	{
 		if (g_js_bPlayerJumped[client])
 			ResetJump(client);
-		PrintToConsole(client, "FKZ | Timer stopped. Reason: MOVETYPE 'NOCLIP' detected");
+		PrintToConsole(client, "[KZ] Timer stopped. Reason: MOVETYPE 'NOCLIP' detected");
 		g_bTimeractivated[client] = false;
 	}
 }
@@ -3125,12 +3125,12 @@ public PerformStats(client, target,bool:console_only)
 		decl String:banstats[512];
 		GetClientStats(target, banstats, sizeof(banstats));
 		if (!console_only)
-			PrintToChat(client, "%cFKZ%c | %s",PINK,WHITE,banstats);
-		PrintToConsole(client, "FKZ | %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
+			PrintToChat(client, "[%cKZ%c] %s",PINK,WHITE,banstats);
+		PrintToConsole(client, "[KZ] %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
 		if (g_bAutoBhop)
 		{
-			PrintToChat(client, "%cFKZ%c | AutoBhop enabled",PINK,WHITE);
-			PrintToConsole(client, "FKZ | AutoBhop enabled");
+			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",PINK,WHITE);
+			PrintToConsole(client, "[KZ] AutoBhop enabled");
 		}
 	}
 }

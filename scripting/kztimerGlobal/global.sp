@@ -124,7 +124,7 @@ public Action:Client_Join(client, args)
 {
 	if (IsValidClient(client))
 	{
-		PrintToChat(client,"%cFKZ%c |%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
+		PrintToChat(client,"[%cKZ%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
 		ShowMOTDPanel(client, "globaltop" ,"http://kuala-lumpur-court-8417.pancakeapps.com/steamgroup.html", 2);
 	}
 	return Plugin_Handled;
@@ -134,7 +134,7 @@ public Action:Client_GlobalTop(client, args)
 {
 	if (IsValidClient(client))
 	{
-		PrintToChat(client,"%cFKZ%c |%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
+		PrintToChat(client,"[%cKZ%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
 		ShowMOTDPanel(client, "globaltop" ,"http://kuala-lumpur-court-8417.pancakeapps.com/global_index.html", 2);
 	}
 	return Plugin_Handled;
@@ -590,9 +590,9 @@ public sql_selectGlobalTopClimbersCallback(Handle:owner, Handle:hndl, const Stri
 			{
 				switch(top_type)
 				{
-					case 0: PrintToChat(client, "%cFKZ%c | No global records (overall) found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
-					case 1: PrintToChat(client, "%cFKZ%c | No global pro records found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
-					case 2: PrintToChat(client, "%cFKZ%c | No global tp records found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
+					case 0: PrintToChat(client, "[%cKZ%c] No global records (overall) found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
+					case 1: PrintToChat(client, "[%cKZ%c] No global pro records found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
+					case 2: PrintToChat(client, "[%cKZ%c] No global tp records found. (Tickrate %i, Map: %s)", PINK,WHITE, g_Server_Tickrate, mapname);
 				}
 			}
 		}
@@ -1077,101 +1077,101 @@ public Action:Client_GlobalCheck(client, args)
 {
 	if (!g_global_Access)
 	{
-		PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: This server is not whitelisted.",PINK,WHITE,RED);
+		PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: This server is not whitelisted.",PINK,WHITE,RED);
 		return Plugin_Handled;
 	}
 	if (g_hDbGlobal == INVALID_HANDLE)
 	{
-		PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: No connection to the global database.",PINK,WHITE,RED);
+		PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: No connection to the global database.",PINK,WHITE,RED);
 		return Plugin_Handled;
 	}
 	else
 		if (g_global_Disabled)
 		{
-			PrintToChat(client, "%cFKZ%c | %cGlobal Records have been temporarily disabled. For more information visit the KZTimer steam group!",PINK,WHITE,RED);
+			PrintToChat(client, "[%cKZ%c] %cGlobal Records have been temporarily disabled. For more information visit the KZTimer steam group!",PINK,WHITE,RED);
 			return Plugin_Handled;
 		}
 		else
 			if(!StrEqual(g_szMapPrefix[0],"kz") && !StrEqual(g_szMapPrefix[0],"xc") && !StrEqual(g_szMapPrefix[0],"bkz")  && !StrEqual(g_szMapPrefix[0],"kzpro"))
 			{
-				PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!",PINK,WHITE,RED);
+				PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Only bkz_, kz_,kzpro_ and xc_ maps supported!",PINK,WHITE,RED);
 				return Plugin_Handled;
 			}
 			else
 				if (g_global_VersionBlocked)
 				{
-					PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!",PINK,WHITE,RED);
+					PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: This server is running an outdated KZTimer version. Contact an server admin!",PINK,WHITE,RED);
 					return Plugin_Handled;
 				}
 				else
 				if (!g_global_KZTimerFileSize)
 				{
-					PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: KZTimer filesize check failed.",PINK,WHITE,RED);
+					PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: KZTimer filesize check failed.",PINK,WHITE,RED);
 					return Plugin_Handled;
 				}
 				else
 					if (g_bGlobalBeta)
 					{
-						PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Map is under construction. (alpha/beta version)!",PINK,WHITE,RED);
+						PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Map is under construction. (alpha/beta version)!",PINK,WHITE,RED);
 						return Plugin_Handled;
 					}
 					else
 						if (g_global_SelfBuiltButtons)
 						{
-							PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)",PINK,WHITE,RED);
+							PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)",PINK,WHITE,RED);
 							return Plugin_Handled;
 						}
 						else
 							if (!g_global_IntegratedButtons)
 							{
-								PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: This map does not provide built-in climb buttons.",PINK,WHITE,RED);
+								PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: This map does not provide built-in climb buttons.",PINK,WHITE,RED);
 								return Plugin_Handled;
 							}
 							else
 								if (!g_bEnforcer)
 								{
-									PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Server settings enforcer disabled.",PINK,WHITE,RED);
+									PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Server settings enforcer disabled.",PINK,WHITE,RED);
 									return Plugin_Handled;
 								}
 								else
 									if (!g_global_ValidFileSize && g_global_IntegratedButtons)
 									{
 										if (g_global_WrongMapVersion)
-											PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)",PINK,WHITE,RED);
+											PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)",PINK,WHITE,RED);
 										else
-											PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!",PINK,WHITE,RED);
+											PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!",PINK,WHITE,RED);
 										return Plugin_Handled;
 									}
 									else
 										if (g_bAutoTimer)
 										{
-											PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: kz_auto_timer enabled.",PINK,WHITE,RED);
+											PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: kz_auto_timer enabled.",PINK,WHITE,RED);
 											return Plugin_Handled;
 										}
 										else
 											if (g_bDoubleDuckCvar)
 											{
-												PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: kz_double_duck is set to 1.",PINK,WHITE,RED);
+												PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: kz_double_duck is set to 1.",PINK,WHITE,RED);
 												return Plugin_Handled;
 											}
 											else
 												if (g_bAutoBhop)
 												{
-													PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: AutoBhop enabled.",PINK,WHITE,RED);
+													PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: AutoBhop enabled.",PINK,WHITE,RED);
 													return Plugin_Handled;
 												}
 												else
 													if (!g_global_EntityCheck)
 													{
-														PrintToChat(client, "%cFKZ%c | %cCustom entities/objects on the current map detected.",PINK,WHITE,RED);
+														PrintToChat(client, "[%cKZ%c] %cCustom entities/objects on the current map detected.",PINK,WHITE,RED);
 														return Plugin_Handled;
 													}
 													else
 													if (!g_global_ValidedMap)
 													{
-														PrintToChat(client, "%cFKZ%c | %cGlobal Records disabled. Reason: The current map is not approved by a kztimer map tester!",PINK,WHITE,RED);
+														PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: The current map is not approved by a kztimer map tester!",PINK,WHITE,RED);
 														return Plugin_Handled;
 													}
-	PrintToChat(client, "%cFKZ%c | %cGlobal records are enabled.",PINK,WHITE,GREEN);
+	PrintToChat(client, "[%cKZ%c] %cGlobal records are enabled.",PINK,WHITE,GREEN);
 	return Plugin_Handled;
 }

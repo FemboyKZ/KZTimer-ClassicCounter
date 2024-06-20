@@ -565,7 +565,7 @@ public Postthink(client)
 		for (new i = 1; i <= strafes; i++)
 		{
 			if (i==1)
-				Format(szStrafeSync, 255, "%cFKZ%c | %cSync:",PINK,WHITE,GRAY);
+				Format(szStrafeSync, 255, "[%cKZ%c] %cSync:",PINK,WHITE,GRAY);
 			if (g_js_Strafe_Frames[client][i] == 0 || g_js_Strafe_Good_Sync[client][i] == 0.0) 
 				strafe_sync = 0;
 			else
@@ -772,7 +772,7 @@ public Postthink(client)
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);	
 			PrintToChat(client, "%t", "ClientLadderJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
-			PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+			PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 			PrintToConsole(client, "%s", szStrafeStats);
 		}	
 		else
@@ -783,7 +783,7 @@ public Postthink(client)
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
 				PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 				PrintToConsole(client, "%s", szStrafeStats);
 				decl String:buffer[255];
 				Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -802,7 +802,7 @@ public Postthink(client)
 								{
 									PrintToConsole(i, "        ");
 									PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-									PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+									PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 									PrintToConsole(i, "%s", szStrafeStats);						
 								}
 								else
@@ -819,7 +819,7 @@ public Postthink(client)
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
 					PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 					decl String:buffer[255];
 					Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -838,7 +838,7 @@ public Postthink(client)
 									{
 										PrintToConsole(i, "        ");
 										PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-										PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 										PrintToConsole(i, "%s", szStrafeStats);						
 									}
 									else
@@ -863,7 +863,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -878,7 +878,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);						
 										}
 										else								
@@ -908,7 +908,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -923,7 +923,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);						
 										}
 										else								
@@ -952,7 +952,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -967,7 +967,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);						
 										}
 										else								
@@ -1107,9 +1107,9 @@ public Postthink(client)
 	
 			PrintToConsole(client, "        ");
 			if (ljblock)
-				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 			else
-				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
+				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 			PrintToConsole(client, "%s", szStrafeStats);
 			}
 		else
@@ -1122,9 +1122,9 @@ public Postthink(client)
 				//chat & sound client		
 				PrintToConsole(client, "        ");
 				if (ljblock)
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 				else
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre| %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);			
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre| %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);			
 				PrintToConsole(client, "%s", szStrafeStats);	
 				PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 			
@@ -1146,9 +1146,9 @@ public Postthink(client)
 								{
 									PrintToConsole(i, "        ");				
 									if (ljblock)
-										PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 									else
-										PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);									
+										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);									
 									PrintToConsole(i, "%s", szStrafeStats);	
 									PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 							}
@@ -1168,9 +1168,9 @@ public Postthink(client)
 					//chat & sound client		
 					PrintToConsole(client, "        ");
 					if (ljblock)
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 					else
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 					PrintToConsole(client, "%s", szStrafeStats);	
 					PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 	
@@ -1192,9 +1192,9 @@ public Postthink(client)
 									{
 										PrintToConsole(i, "        ");				
 										if (ljblock)
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 										else
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);									
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);									
 										PrintToConsole(i, "%s", szStrafeStats);	
 										PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 									}
@@ -1221,9 +1221,9 @@ public Postthink(client)
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 						else
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 
@@ -1239,9 +1239,9 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											if (ljblock)
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 											else
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
 											PrintToConsole(i, "%s", szStrafeStats);		
 											PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 										}							
@@ -1274,9 +1274,9 @@ public Postthink(client)
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 						else
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 
@@ -1292,9 +1292,9 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											if (ljblock)
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 											else
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
 											PrintToConsole(i, "%s", szStrafeStats);		
 											PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 										}							
@@ -1324,9 +1324,9 @@ public Postthink(client)
 						//client		
 						PrintToConsole(client, "        ");
 						if (ljblock)
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 						else
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
 						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 
@@ -1342,9 +1342,9 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											if (ljblock)
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | JumpOff Edge %.3f | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client],sPerfectTakeOff,sBlockDistCon);
 											else
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
 											PrintToConsole(i, "%s", szStrafeStats);		
 											PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 										}							
@@ -1422,7 +1422,7 @@ public Postthink(client)
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.1f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToChat(client, "%t", "ClientMultiBhop1",PINK,WHITE, GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 				PrintToConsole(client, "        ");
-				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %3.f Pre | %3.f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
+				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %3.f Pre | %3.f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 				PrintToConsole(client, "%s", szStrafeStats);
 			}	
 			else
@@ -1433,7 +1433,7 @@ public Postthink(client)
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					//Client
 					PrintToConsole(client, "        ");
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 					PrintToConsole(client, "%s", szStrafeStats);					
 					PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 					
@@ -1453,7 +1453,7 @@ public Postthink(client)
 									if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 									{
 										PrintToConsole(i, "        ");
-										PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
+										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 										PrintToConsole(i, "%s", szStrafeStats);					
 										PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 									}
@@ -1471,7 +1471,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						//Client
 						PrintToConsole(client, "        ");
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 						PrintToConsole(client, "%s", szStrafeStats);					
 						PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						
@@ -1491,7 +1491,7 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 											PrintToConsole(i, "%s", szStrafeStats);					
 											PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 										}
@@ -1516,7 +1516,7 @@ public Postthink(client)
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#9a0909'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);						
 						
@@ -1531,7 +1531,7 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
@@ -1562,7 +1562,7 @@ public Postthink(client)
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#7f6b00'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);			
 						
@@ -1577,7 +1577,7 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
@@ -1606,7 +1606,7 @@ public Postthink(client)
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#800080'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);					
 						
@@ -1621,7 +1621,7 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
@@ -1687,7 +1687,7 @@ public Postthink(client)
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 			PrintToChat(client, "%t", "ClientCountJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
-			PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+			PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 			PrintToConsole(client, "%s", szStrafeStats);
 		}	
 		else
@@ -1698,7 +1698,7 @@ public Postthink(client)
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
 				PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-				PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 				PrintToConsole(client, "%s", szStrafeStats);
 				decl String:buffer[255];
 				Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -1717,7 +1717,7 @@ public Postthink(client)
 								{
 									PrintToConsole(i, "        ");
 									PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-									PrintToConsole(i, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+									PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 									PrintToConsole(i, "%s", szStrafeStats);
 								}
 								else
@@ -1734,7 +1734,7 @@ public Postthink(client)
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
 					PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 					decl String:buffer[255];
 					Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -1753,7 +1753,7 @@ public Postthink(client)
 									{
 										PrintToConsole(i, "        ");
 										PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-										PrintToConsole(i, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 										PrintToConsole(i, "%s", szStrafeStats);
 									}
 									else
@@ -1779,7 +1779,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -1794,7 +1794,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -1824,7 +1824,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -1839,7 +1839,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -1869,7 +1869,7 @@ public Postthink(client)
 						//Client
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 								
 						//all
@@ -1884,7 +1884,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -1950,7 +1950,7 @@ public Postthink(client)
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);	
 					PrintToChat(client, "%t", "ClientDropBhop1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 				}	
 				else
@@ -1961,7 +1961,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -1980,7 +1980,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -1997,7 +1997,7 @@ public Postthink(client)
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
 							Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -2016,7 +2016,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
@@ -2042,7 +2042,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 										
 								//all
@@ -2057,7 +2057,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2088,7 +2088,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 										
 								//all
@@ -2103,7 +2103,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2131,7 +2131,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 								//all
 								if (!IsFakeClient(client))
@@ -2145,7 +2145,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2211,7 +2211,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToChat(client, "%t", "ClientWeirdJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 						PrintToConsole(client, "        ");
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);	
 					}	
 					//impressive?
@@ -2223,7 +2223,7 @@ public Postthink(client)
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
 							Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -2242,7 +2242,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
@@ -2260,7 +2260,7 @@ public Postthink(client)
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
 							Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -2279,7 +2279,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
@@ -2304,7 +2304,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 													
 								//all
@@ -2319,7 +2319,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2348,7 +2348,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 													
 								//all
@@ -2363,7 +2363,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2389,7 +2389,7 @@ public Postthink(client)
 								//Client
 								PrintToConsole(client, "        ");
 								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-								PrintToConsole(client, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 													
 								//all
@@ -2404,7 +2404,7 @@ public Postthink(client)
 												{
 													PrintToConsole(i, "        ");
 													PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-													PrintToConsole(i, "FKZ | %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
+													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
@@ -2461,7 +2461,7 @@ public Postthink(client)
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToChat(client, "%t", "ClientBunnyhop1",PINK,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
-					PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
+					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 				}	
 				else
@@ -2472,7 +2472,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -2491,7 +2491,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -2508,7 +2508,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToConsole(client, "        ");
 						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-						PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
+						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -2527,7 +2527,7 @@ public Postthink(client)
 										{
 											PrintToConsole(i, "        ");
 											PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-											PrintToConsole(i, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
+											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
@@ -2554,7 +2554,7 @@ public Postthink(client)
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 											
 							//all
@@ -2569,7 +2569,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
@@ -2599,7 +2599,7 @@ public Postthink(client)
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 											
 							//all
@@ -2614,7 +2614,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
@@ -2640,7 +2640,7 @@ public Postthink(client)
 							//Client
 							PrintToConsole(client, "        ");
 							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 											
 							//all
@@ -2655,7 +2655,7 @@ public Postthink(client)
 											{
 												PrintToConsole(i, "        ");
 												PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,PURPLE,GRAY,PURPLE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
-												PrintToConsole(i, "FKZ | %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
+												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else

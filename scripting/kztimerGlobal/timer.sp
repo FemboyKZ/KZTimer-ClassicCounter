@@ -42,8 +42,8 @@ public Action:CheckTeleport(Handle:timer, any:client)
 		{
 			decl Float:org[3];
 			GetClientAbsOrigin(client,org);
-			PrintToChat(client,"%cFKZ%c | Unverified client teleport detected. Your position: %f, %f, %f on %s",PINK,WHITE,org[0],org[1],org[2],g_szMapName);
-			PrintToConsole(client,"FKZ | Unverified client teleport detected. Your position: %f, %f, %f on %s",org[0],org[1],org[2],g_szMapName);
+			PrintToChat(client,"[%cKZ%c] Unverified client teleport detected. Your position: %f, %f, %f on %s",PINK,WHITE,org[0],org[1],org[2],g_szMapName);
+			PrintToConsole(client,"[KZ] Unverified client teleport detected. Your position: %f, %f, %f on %s",org[0],org[1],org[2],g_szMapName);
 			Client_Stop(client,0);
 		}	
 	}
@@ -555,7 +555,7 @@ public Action:Timer_Countdown(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && g_bChallenge[client] && !IsFakeClient(client))
 	{
-		PrintToChat(client,"%cFKZ%c | %c%i",RED,WHITE,YELLOW,g_CountdownTime[client]);
+		PrintToChat(client,"[%cKZ%c] %c%i",RED,WHITE,YELLOW,g_CountdownTime[client]);
 		g_CountdownTime[client]--;
 		if(g_CountdownTime[client] <= 0) 
 		{

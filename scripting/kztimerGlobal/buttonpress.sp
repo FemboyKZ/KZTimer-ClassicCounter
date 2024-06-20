@@ -480,72 +480,72 @@ public CL_OnEndTimerPress(client)
 		if(StrEqual(g_szMapPrefix[0],"kz") || StrEqual(g_szMapPrefix[0],"xc") || StrEqual(g_szMapPrefix[0],"bkz")  || StrEqual(g_szMapPrefix[0],"kzpro"))
 		{
 			if (!g_global_Access)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is not whitelisted.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is not whitelisted.");
 			else
 			if (g_hDbGlobal == INVALID_HANDLE)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: No connection to the global database.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: No connection to the global database.");
 			else
 			if (g_global_Disabled)
-				PrintToConsole(client, "FKZ | Global Records has been temporarily disabled. For more information visit the KZTimer steam group!");
+				PrintToConsole(client, "[KZ] Global Records has been temporarily disabled. For more information visit the KZTimer steam group!");
 			else
 			if (g_global_VersionBlocked)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an admin!");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: This server is running an outdated KZTimer version. Contact an admin!");
 			else
 			if (!g_global_KZTimerFileSize)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: KZTimer filesize check failed.");			
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: KZTimer filesize check failed.");			
 			else
 			if (g_global_SelfBuiltButtons)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Self-built climb buttons detected. (only built-in buttons supported)");
 			else
 			if (!g_global_IntegratedButtons)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: This map does not provide built-in climb buttons.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: This map does not provide built-in climb buttons.");
 			else
 			if (!g_bEnforcer)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_settings_enforcer is disabled.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_settings_enforcer is disabled.");
 			else
 			if (!g_global_ValidFileSize && g_global_IntegratedButtons)
 			{
 				if (g_global_WrongMapVersion)
-					PrintToConsole(client, "FKZ | Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");	
+					PrintToConsole(client, "[KZ] Global Records disabled. Reason: Wrong map version. (requires latest+offical workshop version)");	
 				else
-					PrintToConsole(client, "FKZ | Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");	
+					PrintToConsole(client, "[KZ] Global Records disabled. Reason: Filesize of the current map does not match with the stored global filesize. Please upload the latest workshop version on your server!");	
 			}
 			else
 			if (g_bAutoTimer || g_global_AutoTimerOnStart[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_auto_timer is enabled.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_auto_timer is enabled.");
 			else
 			if (g_global_AutoBhopDetected[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_auto_bhop was enabled during your run.");			
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_auto_bhop was enabled during your run.");			
 			else
 			if (!g_global_EntityCheck)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Custom entities/objects on the current map detected.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Custom entities/objects on the current map detected.");
 			else
 			if (!g_bLegitButtons[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Custom start or end zone detected. (Reconnected?)");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Custom start or end zone detected. (Reconnected?)");
 			else
 			if (g_bFlagged[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Bhop script detected");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Bhop script detected");
 			else
 			if (g_bGlobalBeta)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason:  Map is under construction. (alpha/beta version)");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason:  Map is under construction. (alpha/beta version)");
 			else
 			if (hax >= 0.05)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Server-sided bunnyhop script detected.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Server-sided bunnyhop script detected.");
 			else
 			if (g_bDoubleDuckCvar)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_double_duck is set to 1.");	
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_double_duck is set to 1.");	
 			else
 			if (!g_global_Enforcer[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_settings_enforcer was disabled during your run.");	
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_settings_enforcer was disabled during your run.");	
 			else
 			if (g_global_DoubleDuck[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: kz_double_duck was enabled during your run.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_double_duck was enabled during your run.");
 			else
 			if (g_bPositionRestored[client])
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: Reconnecting is not allowed.");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: Reconnecting is not allowed.");
 			else
 			if (!g_global_ValidedMap)
-				PrintToConsole(client, "FKZ | Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
+				PrintToConsole(client, "[KZ] Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
 		}
 	}	
 	//delete tmp

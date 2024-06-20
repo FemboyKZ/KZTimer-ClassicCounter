@@ -890,7 +890,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
 			{
 				if ((GetEngineTime()-g_fSpawnTime[client]) > 3.0)
 				{
-					PrintToChat(client, "%cFKZ%c |%c You have been slayed for using a strafe/turn bind",RED,WHITE,GRAY);
+					PrintToChat(client, "[%cKZ%c]%c You have been slayed for using a strafe/turn bind",RED,WHITE,GRAY);
 					ForcePlayerSuicide(client);
 					ResetJump(client);
 				}
@@ -912,7 +912,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
 		if (fLastUndo < 1.0 && g_bOnBhopPlattform[client])
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client,"%cFKZ%c | %cUndo-TP is not allowed on bhop blocks!",PINK,WHITE,RED);
+			PrintToChat(client,"[%cKZ%c] %cUndo-TP is not allowed on bhop blocks!",PINK,WHITE,RED);
 			g_bOnBhopPlattform[client]=false;
 			DoTeleport(client,0);		
 			new Float:f3pos[3];
