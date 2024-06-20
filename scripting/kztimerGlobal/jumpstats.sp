@@ -1597,7 +1597,7 @@ public Postthink(client)
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "FKZ | %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);;						
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);						
 						
 							//all
 							if (!IsFakeClient(client))
