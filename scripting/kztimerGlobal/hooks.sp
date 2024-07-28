@@ -189,6 +189,7 @@ PlayerSpawn(client)
 	SetEntityRenderColor(client, _,_,_, g_TransPlayerModels);  	
 	
 	//strip weapons
+	/*
 	StripAllWeapons(client);
 	new weapon = GetPlayerWeaponSlot(client, 2);
 	if (IsFakeClient(client))
@@ -200,7 +201,7 @@ PlayerSpawn(client)
 	}
 	else
 		CreateTimer(0.1, GiveUsp, client,TIMER_FLAG_NO_MAPCHANGE);
-	
+	*/
 	//godmode
 	if (g_bgodmode || IsFakeClient(client))
 		SetEntProp(client, Prop_Data, "m_takedamage", 0, 1);
@@ -280,7 +281,7 @@ PlayerSpawn(client)
 	Format(g_szPlayerPanelText[client], 512, "");	
 	CreateTimer(0.0, ClimbersMenuTimer, client,TIMER_FLAG_NO_MAPCHANGE);
 	CreateTimer(0.0, HideRadar, client,TIMER_FLAG_NO_MAPCHANGE);
-	CreateTimer(1.5, SetClanTag, client,TIMER_FLAG_NO_MAPCHANGE);	
+	//CreateTimer(1.5, SetClanTag, client,TIMER_FLAG_NO_MAPCHANGE);	
 	QueryClientConVar(client, "fps_max", ConVarQueryFinished:FPSCheck, client);	
 	g_fSpawnTime[client] = GetEngineTime();
 	g_fLastSpeed[client] = GetSpeed(client);
@@ -415,6 +416,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 			g_bSayHook[client]=false;
 			return Plugin_Handled;
 		}
+		/*
 		else
 		{
 			decl String:szChatRank[64];
@@ -448,7 +450,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 						CPrintToChatAllEx(client,"%s {teamcolor}*DEAD* %s{default}: %s",szChatRank,szName,sText);
 					g_bSayHook[client]=false;						
 					return Plugin_Handled;							
-				}
+				} 
 				else
 					if (g_bCountry)
 					{
@@ -466,6 +468,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 					}								
 			}
 		}	
+		*/
 	}
 	g_bSayHook[client]=false;
 	return Plugin_Continue;

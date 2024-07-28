@@ -73,7 +73,7 @@ public Action:SpecAdvertTimer(Handle:timer)
 		PrintToChatAll(" %c>>%c Spectators (%c%i%c):%c %s",YELLOW,GRAY,LIMEGREEN,count,GRAY,WHITE,szNameList);
 	return Plugin_Continue;
 }
-
+/*
 public Action:GiveUsp(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && IsPlayerAlive(client))
@@ -87,7 +87,7 @@ public Action:GiveUsp(Handle:timer, any:client)
 		}
 	}
 }
-
+*/
 public Action:OpenOptionsMenu(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))
@@ -131,7 +131,7 @@ public Action:RefreshAdminMenu(Handle:timer, any:client)
 	if (IsValidEntity(client) && !IsFakeClient(client))
 		KzAdminMenu(client);
 }
-
+/*
 public Action:SetPlayerWeapons(Handle:timer, any:client)
 {
 	if ((GetClientTeam(client) > 1) && IsValidClient(client))
@@ -147,7 +147,7 @@ public Action:SetPlayerWeapons(Handle:timer, any:client)
 		}
 	}	
 }
-
+*/
 public Action:UpdatePlayerProfile(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))	
@@ -405,8 +405,8 @@ public Action:KZTimer2(Handle:timer)
 				Client_SetDeaths(i,0);
 				Client_SetAssists(i,0);
 			}
-			if (!IsFakeClient(i) && !g_pr_Calculating[i])
-				CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);		
+			//if (!IsFakeClient(i) && !g_pr_Calculating[i])
+				//CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);		
 		}
 		
 		
@@ -645,7 +645,7 @@ public Action:LoadReplaysTimer(Handle:timer)
 	if (g_bReplayBot)
 		LoadReplays();
 }
-
+/*
 public Action:SetClanTag(Handle:timer, any:client)
 {
 	if (!IsValidClient(client) || IsFakeClient(client) || g_pr_Calculating[client])
@@ -685,7 +685,7 @@ public Action:SetClanTag(Handle:timer, any:client)
 		if (!StrEqual(g_pr_rankname[client], old_pr_rankname, false) && IsValidClient(client))
 			CPrintToChat(client,"%t","SkillGroup", PINK, WHITE, GRAY,GRAY, g_pr_chat_coloredrank[client]);
 }
-
+*/
 public Action:TerminateRoundTimer(Handle:timer)
 {
 	CS_TerminateRound(1.0, CSRoundEnd_CTWin, true);

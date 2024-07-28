@@ -461,7 +461,7 @@ public HideViewModel(client)
 		Client_SetDrawViewModel(client,false);
 	}
 }
-
+/*
 public Action:Client_Usp(client, args)
 {
 	if(!IsValidClient(client) || !IsPlayerAlive(client))
@@ -492,7 +492,7 @@ InstantSwitch(client, weapon, timer = 0)
 	new ViewModel = GetEntPropEnt(client, Prop_Send, "m_hViewModel");
 	SetEntProp(ViewModel, Prop_Send, "m_nSequence", 0);
 }
-
+*/
 public Action:Client_Surrender (client, args)
 {
 	decl String:szSteamIdOpponent[32];
@@ -2606,7 +2606,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "-----------------");
 	PrintToConsole(client, "KZ Timer settings");
 	PrintToConsole(client, "-----------------");
-	PrintToConsole(client, "kz_admin_clantag %b", g_bAdminClantag);
+	//PrintToConsole(client, "kz_admin_clantag %b", g_bAdminClantag);
 	PrintToConsole(client, "kz_attack_spam_protection %b", g_bAttackSpamProtection);
 	PrintToConsole(client, "kz_anticheat_ban_duration %.1fh", g_fBanDuration);
 	PrintToConsole(client, "kz_auto_bhop %i (climb maps are not supported)", g_bAutoBhopConVar);
@@ -2616,7 +2616,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "kz_bhop_single_touch %b", g_bSingleTouch);
 	PrintToConsole(client, "kz_challenge_points %b", g_bChallengePoints);
 	PrintToConsole(client, "kz_checkpoints %b", g_bAllowCheckpoints);
-	PrintToConsole(client, "kz_clean_weapons %b", g_bCleanWeapons);
+	//PrintToConsole(client, "kz_clean_weapons %b", g_bCleanWeapons);
 	PrintToConsole(client, "kz_connect_msg %b", g_bConnectMsg);
 	PrintToConsole(client, "kz_country_tag %b", g_bCountry);
 	PrintToConsole(client, "kz_custom_models %b", g_bPlayerSkinChange);
@@ -2680,7 +2680,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "kz_speclist_advert_interval %.1f", g_fSpecsAdvert);
 	PrintToConsole(client, "kz_team_restriction %i", g_Team_Restriction);
 	PrintToConsole(client, "kz_use_radio %b", g_bRadioCommands);
-	PrintToConsole(client, "kz_vip_clantag %b", g_bVipClantag);
+	//PrintToConsole(client, "kz_vip_clantag %b", g_bVipClantag);
 	PrintToConsole(client, "---------------");
 	PrintToConsole(client, "Server settings");
 	PrintToConsole(client, "---------------");
@@ -2919,6 +2919,7 @@ public OptionMenu(client)
 		AddMenuItem(optionmenu, "", buffer);
 	}
 	//12
+	/*
 	if (g_bStartWithUsp[client])
 	{
 		Format(buffer, sizeof(buffer), "%T", "options_start_weapon_usp", client);
@@ -2929,6 +2930,7 @@ public OptionMenu(client)
 		Format(buffer, sizeof(buffer), "%T", "options_start_weapon_knife", client);
 		AddMenuItem(optionmenu, "", buffer);
 	}
+	*/
 	//13
 	if (g_bJumpBeam[client])
 	{
@@ -3018,7 +3020,7 @@ public OptionMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 			case 10: HideSpecs(param1);
 			case 11: InfoPanel(param1);
 			case 12: AdvInfoPanel(param1);
-			case 13: SwitchStartWeapon(param1);
+			//case 13: SwitchStartWeapon(param1);
 			case 14: PlayerJumpBeam(param1);
 			case 15: HideChat(param1);
 			case 16: HideViewModel(param1);
@@ -3040,7 +3042,7 @@ public OptionMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 				CloseHandle(menu);
 			}
 }
-
+/*
 public SwitchStartWeapon(client)
 {
 	if (g_bStartWithUsp[client])
@@ -3048,3 +3050,4 @@ public SwitchStartWeapon(client)
 	else
 		g_bStartWithUsp[client] = true;
 }
+*/

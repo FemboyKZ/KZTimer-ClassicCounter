@@ -85,11 +85,13 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[9.] Autorespawn  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[9.] Autorespawn  -  Disabled"); 		
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bCleanWeapons)
 		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Disabled"); 		
+		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Disabled"); 
+	*/		
 	AddMenuItem(adminmenu, szTmp, szTmp);	
 	if (g_bRestore)
 		Format(szTmp, sizeof(szTmp), "[11.] Restore function  -  Enabled"); 	
@@ -160,6 +162,7 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[24.] AntiCheat auto-ban  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[24.] AntiCheat auto-ban  -  Disabled"); 			
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bAdminClantag)
 		Format(szTmp, sizeof(szTmp), "[25.] Admin clan tag  -  Enabled"); 	
@@ -169,7 +172,8 @@ public KzAdminMenu(client)
 	if (g_bVipClantag)
 		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Disabled"); 			
+		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Disabled"); 
+	*/			
 	AddMenuItem(adminmenu, szTmp, szTmp);		
 	if (g_bMapEnd)
 		Format(szTmp, sizeof(szTmp), "[27.] Allow map changes  -  Enabled"); 	
@@ -304,7 +308,8 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				ServerCommand("kz_autorespawn 1");
 			else
 				ServerCommand("kz_autorespawn 0");
-		}					
+		}
+		/*				
 		if(param2 == 9)
 		{
 			if (!g_bCleanWeapons)
@@ -312,6 +317,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else	
 				ServerCommand("kz_clean_weapons 0");
 		}
+		*/
 		if(param2 == 10)
 		{
 			if (!g_bRestore)
@@ -410,6 +416,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_anticheat_auto_ban 0");
 		}
+		/*
 		if(param2 == 24)
 		{
 			if (!g_bAdminClantag)
@@ -423,7 +430,8 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				ServerCommand("kz_vip_clantag 1");
 			else
 				ServerCommand("kz_vip_clantag 0");
-		}	
+		}
+		*/	
 		if(param2 == 26)
 		{
 			if (!g_bMapEnd)

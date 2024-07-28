@@ -283,12 +283,12 @@ new bool:g_bChallengePoints;
 new Handle:g_hAutoBhopConVar = INVALID_HANDLE;
 new bool:g_bAutoBhopConVar;
 new bool:g_bAutoBhop;
-new Handle:g_hVipClantag = INVALID_HANDLE;
-new bool:g_bVipClantag;
+//new Handle:g_hVipClantag = INVALID_HANDLE;
+//new bool:g_bVipClantag;
 new Handle:g_hDynamicTimelimit = INVALID_HANDLE;
 new bool:g_bDynamicTimelimit;
-new Handle:g_hAdminClantag = INVALID_HANDLE;
-new bool:g_bAdminClantag;
+//new Handle:g_hAdminClantag = INVALID_HANDLE;
+//new bool:g_bAdminClantag;
 new Handle:g_hConnectMsg = INVALID_HANDLE;
 new bool:g_bConnectMsg;
 new Handle:g_hRadioCommands = INVALID_HANDLE;
@@ -314,8 +314,8 @@ new Handle:g_hSingleTouch = INVALID_HANDLE;
 new bool:g_bSingleTouch;
 new Handle:g_hPointSystem = INVALID_HANDLE;
 new bool:g_bPointSystem;
-new Handle:g_hCleanWeapons = INVALID_HANDLE;
-new bool:g_bCleanWeapons;
+//new Handle:g_hCleanWeapons = INVALID_HANDLE;
+//new bool:g_bCleanWeapons;
 new Handle:g_hcvargodmode = INVALID_HANDLE;
 new bool:g_bAutoTimer;
 new Handle:g_hAutoTimer = INVALID_HANDLE;
@@ -530,7 +530,7 @@ new g_EnableQuakeSounds[MAXPLAYERS+1];
 new bool:g_bShowNames[MAXPLAYERS+1];
 new bool:g_bSpecInfo[MAXPLAYERS+1];
 new bool:g_bStrafeSync[MAXPLAYERS+1];
-new bool:g_bStartWithUsp[MAXPLAYERS+1];
+//new bool:g_bStartWithUsp[MAXPLAYERS+1];
 new bool:g_bGoToClient[MAXPLAYERS+1];
 new bool:g_bShowTime[MAXPLAYERS+1];
 new bool:g_bHide[MAXPLAYERS+1];
@@ -550,7 +550,7 @@ new bool:g_borg_AdvInfoPanel[MAXPLAYERS+1];
 new bool:g_borg_ViewModel[MAXPLAYERS+1];
 new bool:g_borg_HideChat[MAXPLAYERS+1];
 new bool:g_borg_JumpBeam[MAXPLAYERS+1];
-new bool:g_borg_StartWithUsp[MAXPLAYERS+1];
+//new bool:g_borg_StartWithUsp[MAXPLAYERS+1];
 new g_org_ColorChat[MAXPLAYERS+1];
 new bool:g_borg_InfoPanel[MAXPLAYERS+1];
 new bool:g_borg_ReplayRoute[MAXPLAYERS+1];
@@ -981,6 +981,7 @@ public OnPluginEnd()
 	DeleteButtons(67);
 
 	//remove clan tags
+	/*
 	for (new x = 1; x <= MaxClients; x++)
 	{
 		if (IsValidClient(x))
@@ -992,7 +993,7 @@ public OnPluginEnd()
 			OnClientDisconnect(x);
 		}
  	}
-
+	*/
 	//unhook
 	UnhookEntityOutput("trigger_teleport", "OnStartTouch", Teleport_OnStartTouch);
 	UnhookEntityOutput("trigger_multiple", "OnStartTouch", Teleport_OnStartTouch);
@@ -1506,6 +1507,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bReplayBot = false;
 		}
 	}
+	/*
 	if(convar == g_hAdminClantag)
 	{
 		if(newValue[0] == '1')
@@ -1540,6 +1542,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 					CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);
 		}
 	}
+	*/
 	if(convar == g_hAutoTimer)
 	{
 		if(newValue[0] == '1')
@@ -1644,6 +1647,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		else
 			g_bPlayerSkinChange = false;
 	}
+	/*
 	if(convar == g_hPointSystem)
 	{
 		if(newValue[0] == '1')
@@ -1664,6 +1668,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bPointSystem = false;
 		}
 	}
+	*/
 	if(convar == g_hAttackSpamProtection)
 	{
 		if(newValue[0] == '1')
@@ -1675,6 +1680,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bAttackSpamProtection = false;
 		}
 	}
+	/*
 	if(convar == g_hCleanWeapons)
 	{
 		if(newValue[0] == '1')
@@ -1705,6 +1711,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		else
 			g_bCleanWeapons = false;
 	}
+	*/
 	if(convar == g_hEnforcer)
 	{
 		if(newValue[0] == '1')
@@ -1787,7 +1794,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bAutoBhop = false;
 		}
 	}
-
+	/*
 	if(convar == g_hCountry)
 	{
 		if(newValue[0] == '1')
@@ -1812,6 +1819,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 						CreateTimer(0.5, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);
 		}
 	}
+	*/
 	if(convar == g_hMinSkillGroup)
 		g_MinSkillGroup = StringToInt(newValue[0]);
 

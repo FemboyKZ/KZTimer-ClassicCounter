@@ -420,7 +420,7 @@ public PrintConsoleInfo(client)
 	PrintToConsole(client, "Player commands:");
 	PrintToConsole(client, "!help, !help2, !menu, !options, !checkpoint, !gocheck, !prev, !next, !undo, !profile, !compare, !specs,");
 	PrintToConsole(client, "!bhopcheck, !maptop, top, !start, !stop, !pause, !challenge, !surrender, !goto, !spec, !wr, !avg,");
-	PrintToConsole(client, "!showsettings, !latest, !measure, !ljblock, !ranks, !flashlight, !usp, !globalcheck, !beam,");
+	PrintToConsole(client, "!showsettings, !latest, !measure, !ljblock, !ranks, !flashlight, !globalcheck, !beam,");
 	PrintToConsole(client, "!adv, !speed, !showkeys, !hide, !sync, !bhop, !hidechat, !hideweapon, !stopsound, !route, !mapinfo");
 	PrintToConsole(client, " ");
 	PrintToConsole(client, "Scoreboard info:");
@@ -566,7 +566,7 @@ public GetCountry(client)
 		}
 	}
 }
-
+/*
 stock StripAllWeapons(client)
 {
 	new iEnt;
@@ -585,7 +585,7 @@ stock StripAllWeapons(client)
 	if (GetPlayerWeaponSlot(client, 2) == -1)
 		GivePlayerItem(client, "weapon_knife");
 }
-
+*/
 public PlayButtonSound(client)
 {
 	if (!IsFakeClient(client))
@@ -902,7 +902,7 @@ public SetClientDefaults(client)
 	g_bShowTime[client]=true;
 	g_bHide[client]=false;
 	g_bCPTextMessage[client]=false;
-	g_bStartWithUsp[client] = false;
+	//g_bStartWithUsp[client] = false;
 	g_bAdvancedClimbersMenu[client]=true;
 	g_ColorChat[client]=1;
 	g_ShowSpecs[client]=0;
@@ -1658,7 +1658,7 @@ public SetPlayerRank(client)
 		g_Skillgroup[client] = 0;
 		Format(g_pr_rankname[client], 32, "");
 	}
-
+	/*
 	// VIP tag
 	if (g_bVipClantag)
 		if ((GetUserFlagBits(client) & ADMFLAG_RESERVATION) && !(GetUserFlagBits(client) & ADMFLAG_ROOT) && !(GetUserFlagBits(client) & ADMFLAG_GENERIC))
@@ -1705,6 +1705,7 @@ public SetPlayerRank(client)
 			}
 		}
 	}
+	*/
 }
 
 stock Action:PrintSpecMessageAll(client)
@@ -1755,7 +1756,7 @@ stock Action:PrintSpecMessageAll(client)
 
 	decl String:szChatRank[64];
 	Format(szChatRank, 64, "%s",g_pr_chat_coloredrank[client]);
-
+	/*
 	if (g_bCountry && (g_bPointSystem || ((StrEqual(g_pr_rankname[client], "ADMIN", false)) && g_bAdminClantag) || ((StrEqual(g_pr_rankname[client], "VIP", false)) && g_bVipClantag)))
 		CPrintToChatAll("{green}%s{default} %s *SPEC* {grey}%s{default}: %s",g_szCountryCode[client], szChatRank, szName,szTextToAll);
 	else
@@ -1780,6 +1781,7 @@ stock Action:PrintSpecMessageAll(client)
 						else
 							PrintToConsole(i, "*SPEC* %s: %s", szName, szTextToAll);
 		}
+	*/
 	return Plugin_Handled;
 }
 
@@ -4448,6 +4450,7 @@ public RegServerConVars()
 	g_bNoClipS     = GetConVarBool(g_hNoClipS);
 	HookConVarChange(g_hNoClipS, OnSettingChanged);
 
+	/*
 	g_hVipClantag = 	CreateConVar("kz_vip_clantag", "1", "on/off - VIP clan tag (necessary flag: a)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bVipClantag     = GetConVarBool(g_hVipClantag);
 	HookConVarChange(g_hVipClantag, OnSettingChanged);
@@ -4455,6 +4458,7 @@ public RegServerConVars()
 	g_hAdminClantag = 	CreateConVar("kz_admin_clantag", "1", "on/off - Admin clan tag (necessary flag: b - z)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bAdminClantag     = GetConVarBool(g_hAdminClantag);
 	HookConVarChange(g_hAdminClantag, OnSettingChanged);
+	*/
 
 	g_hAutoTimer = CreateConVar("kz_auto_timer", "0", "on/off - Timer starts automatically when a player joins a team, dies or uses !start/!r (0 required for global records)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bAutoTimer     = GetConVarBool(g_hAutoTimer);
@@ -4508,17 +4512,21 @@ public RegServerConVars()
 	g_Autohealing_Hp     = GetConVarInt(g_hAutohealing_Hp);
 	HookConVarChange(g_hAutohealing_Hp, OnSettingChanged);
 
+	/*
 	g_hCleanWeapons 	= CreateConVar("kz_clean_weapons", "1", "on/off - Removes all weapons on the ground", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bCleanWeapons     = GetConVarBool(g_hCleanWeapons);
 	HookConVarChange(g_hCleanWeapons, OnSettingChanged);
+	*/
 
 	g_hJumpStats 	= CreateConVar("kz_jumpstats", "1", "on/off - Measuring of jump distances (longjump, weirdjump, bhop, dropbhop, multibhop, ladderjump)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bJumpStats     = GetConVarBool(g_hJumpStats);
 	HookConVarChange(g_hJumpStats, OnSettingChanged);
 
+	/*
 	g_hCountry 	= CreateConVar("kz_country_tag", "1", "on/off - Country clan tag", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bCountry     = GetConVarBool(g_hCountry);
 	HookConVarChange(g_hCountry, OnSettingChanged);
+	*/
 
 	g_hChallengePoints 	= CreateConVar("kz_challenge_points", "1", "on/off - Allows players to bet points on their challenges", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bChallengePoints     = GetConVarBool(g_hChallengePoints);
@@ -4917,7 +4925,7 @@ public RegServerConVars()
 public RegConsoleCmds()
 {
 	RegConsoleCmd("kill", BlockKill);
-	RegConsoleCmd("sm_usp", Client_Usp, "[KZTimer] spawns a usp silencer");
+	//RegConsoleCmd("sm_usp", Client_Usp, "[KZTimer] spawns a usp silencer");
 	RegConsoleCmd("sm_beam", Client_PlayerJumpBeam, "[KZTimer] onf/off - showing the trajectory of the jump");
 	RegConsoleCmd("sm_avg", Client_Avg, "[KZTimer] prints in chat the average time of the current map");
 	RegConsoleCmd("sm_join", Client_Join, "[KZTimer] Opens the kztimer steam group");
