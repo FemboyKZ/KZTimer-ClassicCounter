@@ -476,7 +476,7 @@ public Action:Client_Usp(client, args)
 		GivePlayerItem(client, "weapon_usp_silencer");
 	return Plugin_Handled;
 }
-
+*/
 InstantSwitch(client, weapon, timer = 0)
 {
 	if (weapon==-1)
@@ -492,7 +492,7 @@ InstantSwitch(client, weapon, timer = 0)
 	new ViewModel = GetEntPropEnt(client, Prop_Send, "m_hViewModel");
 	SetEntProp(ViewModel, Prop_Send, "m_nSequence", 0);
 }
-*/
+
 public Action:Client_Surrender (client, args)
 {
 	decl String:szSteamIdOpponent[32];

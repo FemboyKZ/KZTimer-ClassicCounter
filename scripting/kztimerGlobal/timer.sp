@@ -471,7 +471,7 @@ public Action:KZTimer2(Handle:timer)
 	decl maxEntities;
 	maxEntities = GetMaxEntities();
 	decl String:classx[20];
-	if (g_bCleanWeapons)
+	/*if (g_bCleanWeapons)
 	{
 		decl j;
 		for (j = MaxClients + 1; j < maxEntities; j++)
@@ -485,7 +485,7 @@ public Action:KZTimer2(Handle:timer)
 				}
 			}
 		}
-	}
+	}*/
 	if (g_global_EntityCheck)
 	{
 		decl String:classname[32];
