@@ -2618,7 +2618,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "kz_checkpoints %b", g_bAllowCheckpoints);
 	//PrintToConsole(client, "kz_clean_weapons %b", g_bCleanWeapons);
 	PrintToConsole(client, "kz_connect_msg %b", g_bConnectMsg);
-	PrintToConsole(client, "kz_country_tag %b", g_bCountry);
+	//PrintToConsole(client, "kz_country_tag %b", g_bCountry);
 	PrintToConsole(client, "kz_custom_models %b", g_bPlayerSkinChange);
 	PrintToConsole(client, "kz_dist_min_lj %.1f", g_dist_min_lj);
 	PrintToConsole(client, "kz_dist_perfect_lj %.1f", g_dist_perfect_lj);

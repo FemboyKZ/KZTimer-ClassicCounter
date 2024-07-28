@@ -132,11 +132,13 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[18.] Player point system  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[18.] Player point system  -  Disabled"); 	
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);			
 	if (g_bCountry)
 		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Disabled"); 				
+		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Disabled"); 	
+	*/			
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bPlayerSkinChange)
 		Format(szTmp, sizeof(szTmp), "[20.] Allow custom models  -  Enabled"); 	
@@ -374,6 +376,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_point_system 0");
 		}	
+		/*
 		if(param2 == 18)
 		{
 			if (!g_bCountry)
@@ -381,6 +384,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_country_tag 0");
 		}	
+		*/
 		if(param2 == 19)
 		{
 			if (!g_bPlayerSkinChange)

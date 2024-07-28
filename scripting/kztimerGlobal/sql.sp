@@ -2599,11 +2599,12 @@ public SQL_ViewRankedPlayerCallback5(Handle:owner, Handle:hndl, const String:err
 	new String:szID[32][2];
 	ExplodeString(szSteamId,"_",szID,2,32);
 	decl String:szTitle[1024];
+	/*
 	if (g_bCountry)
 		Format(szTitle, 1024, "Player: %s\nSteamID: %s\nNationality: %s \nLast seen: %s\n \n%s\n",  szName,szID[1],szCountry,szLastSeen,g_pr_szrank[client]);		
 	else
 		Format(szTitle, 1024, "Player: %s\nSteamID: %s\nLast seen: %s\n \n%s\n",  szName,szID[1],szLastSeen,g_pr_szrank[client]);				
-			
+	*/
 	new Handle:menu = CreateMenu(ProfileMenuHandler);
 	SetMenuTitle(menu, szTitle);
 	AddMenuItem(menu, "Current map time", "Current map time");
