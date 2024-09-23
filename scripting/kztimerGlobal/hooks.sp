@@ -1032,7 +1032,7 @@ public Action:Event_OnJumpMacroDox(Handle:Event3, const String:Name[], bool:Broa
 {
 	decl client;
 	client = GetClientOfUserId(GetEventInt(Event3, "userid"));	
-	if(IsValidClient(client) && !IsFakeClient(client) && !g_bAutoBhop)
+	if(IsValidClient(client) && !IsFakeClient(client) /*&& !g_bAutoBhop*/)
 	{	
 		g_fafAvgJumps[client] = ( g_fafAvgJumps[client] * 9.0 + float(g_aiJumps[client]) ) / 10.0;	
 		decl Float:vec_vel[3];
