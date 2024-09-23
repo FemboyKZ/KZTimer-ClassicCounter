@@ -269,12 +269,12 @@ new bool:g_bChallengePoints;
 new Handle:g_hAutoBhopConVar = INVALID_HANDLE;
 new bool:g_bAutoBhopConVar;
 new bool:g_bAutoBhop;
-new Handle:g_hVipClantag = INVALID_HANDLE;
-new bool:g_bVipClantag;
+//new Handle:g_hVipClantag = INVALID_HANDLE;
+//new bool:g_bVipClantag;
 new Handle:g_hDynamicTimelimit = INVALID_HANDLE;
 new bool:g_bDynamicTimelimit;
-new Handle:g_hAdminClantag = INVALID_HANDLE;
-new bool:g_bAdminClantag;
+//new Handle:g_hAdminClantag = INVALID_HANDLE;
+//new bool:g_bAdminClantag;
 new Handle:g_hConnectMsg = INVALID_HANDLE;
 new bool:g_bConnectMsg;
 new Handle:g_hRadioCommands = INVALID_HANDLE;
@@ -289,8 +289,8 @@ new Handle:g_hPlayerSkinChange = INVALID_HANDLE;
 new bool:g_bPlayerSkinChange;
 new Handle:g_hJumpStats = INVALID_HANDLE;
 new bool:g_bJumpStats;
-new Handle:g_hCountry = INVALID_HANDLE;
-new bool:g_bCountry;
+//new Handle:g_hCountry = INVALID_HANDLE;
+//new bool:g_bCountry;
 new Handle:g_hAutoRespawn = INVALID_HANDLE;
 new bool:g_bAutoRespawn;
 new Handle:g_hGlobalBanListArray = INVALID_HANDLE;
@@ -300,8 +300,8 @@ new Handle:g_hSingleTouch = INVALID_HANDLE;
 new bool:g_bSingleTouch;
 new Handle:g_hPointSystem = INVALID_HANDLE;
 new bool:g_bPointSystem;
-new Handle:g_hCleanWeapons = INVALID_HANDLE;
-new bool:g_bCleanWeapons;
+//new Handle:g_hCleanWeapons = INVALID_HANDLE;
+//new bool:g_bCleanWeapons;
 new Handle:g_hcvargodmode = INVALID_HANDLE;
 new bool:g_bAutoTimer;
 new Handle:g_hAutoTimer = INVALID_HANDLE;
@@ -516,7 +516,7 @@ new g_EnableQuakeSounds[MAXPLAYERS+1];
 new bool:g_bShowNames[MAXPLAYERS+1];
 new bool:g_bSpecInfo[MAXPLAYERS+1];
 new bool:g_bStrafeSync[MAXPLAYERS+1];
-new bool:g_bStartWithUsp[MAXPLAYERS+1];
+//new bool:g_bStartWithUsp[MAXPLAYERS+1];
 new bool:g_bGoToClient[MAXPLAYERS+1];
 new bool:g_bShowTime[MAXPLAYERS+1];
 new bool:g_bHide[MAXPLAYERS+1];
@@ -536,7 +536,7 @@ new bool:g_borg_AdvInfoPanel[MAXPLAYERS+1];
 new bool:g_borg_ViewModel[MAXPLAYERS+1];
 new bool:g_borg_HideChat[MAXPLAYERS+1];
 new bool:g_borg_JumpBeam[MAXPLAYERS+1];
-new bool:g_borg_StartWithUsp[MAXPLAYERS+1];
+//new bool:g_borg_StartWithUsp[MAXPLAYERS+1];
 new g_org_ColorChat[MAXPLAYERS+1];
 new bool:g_borg_InfoPanel[MAXPLAYERS+1];
 new bool:g_borg_ReplayRoute[MAXPLAYERS+1];
@@ -965,6 +965,7 @@ public OnPluginEnd()
 	DeleteButtons(67);
 
 	//remove clan tags
+	/*
 	for (new x = 1; x <= MaxClients; x++)
 	{
 		if (IsValidClient(x))
@@ -976,6 +977,7 @@ public OnPluginEnd()
 			OnClientDisconnect(x);
 		}
  	}
+	*/
 
 	//unhook
 	UnhookEntityOutput("trigger_teleport", "OnStartTouch", Teleport_OnStartTouch);
@@ -987,7 +989,7 @@ public OnPluginEnd()
 	UnhookEntityOutput("func_button", "OnPressed", ButtonPress);
 
 	//set server convars back to default
-	ServerCommand("sm_cvar sv_enablebunnyhopping 0;sv_friction 5.2;sv_accelerate 5.5;sv_airaccelerate 10;sv_maxvelocity 2000;sv_staminajumpcost .08;sv_staminalandcost .050");
+	ServerCommand("sv_friction 5.2;sv_accelerate 5.5;sv_airaccelerate 10;sv_maxvelocity 2000;sv_staminajumpcost .08;sv_staminalandcost .050");
 	ServerCommand("mp_respawn_on_death_ct 0;mp_respawn_on_death_t 0;mp_respawnwavetime_ct 10.0;mp_respawnwavetime_t 10.0;bot_zombie 0;mp_ignore_round_win_conditions 0");
 	ServerCommand("sv_infinite_ammo 0;mp_endmatch_votenextmap 1;mp_do_warmup_period 1;mp_warmuptime 60;mp_match_can_clinch 1;mp_match_end_changelevel 0");
 	ServerCommand("mp_match_restart_delay 15;mp_endmatch_votenextleveltime 20;mp_endmatch_votenextmap 1;mp_halftime 0;mp_do_warmup_period 1;mp_maxrounds 0;bot_quota 0");
@@ -1490,6 +1492,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bReplayBot = false;
 		}
 	}
+	/*
 	if(convar == g_hAdminClantag)
 	{
 		if(newValue[0] == '1')
@@ -1524,6 +1527,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 					CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);
 		}
 	}
+	*/
 	if(convar == g_hAutoTimer)
 	{
 		if(newValue[0] == '1')
@@ -1659,6 +1663,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bAttackSpamProtection = false;
 		}
 	}
+	/*
 	if(convar == g_hCleanWeapons)
 	{
 		if(newValue[0] == '1')
@@ -1689,6 +1694,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		else
 			g_bCleanWeapons = false;
 	}
+	*/
 	if(convar == g_hEnforcer)
 	{
 		if(newValue[0] == '1')
@@ -1703,12 +1709,12 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			SetConVarFloat(g_hAccelerate, 6.5);
 			SetConVarFloat(g_hMaxVelocity, 2000.0);
 			SetConVarFloat(g_hBhopSpeedCap, 380.0);
-			SetConVarFloat(g_hWaterAccelerate, 10.0);
+			//SetConVarFloat(g_hWaterAccelerate, 10.0);
 			SetConVarInt(g_hCheats, 0);
-			SetConVarInt(g_hEnableBunnyhoping, 1);
+			//SetConVarInt(g_hEnableBunnyhoping, 1);
 			SetConVarInt(g_hDropKnifeEnable, 0);
-			SetConVarInt(g_hAutoBhop, 0);
-			SetConVarInt(g_hClampVel, 0);
+			//SetConVarInt(g_hAutoBhop, 0);
+			//SetConVarInt(g_hClampVel, 0);
 			SetConVarFloat(g_hsv_ladder_scale_speed, 1.0);
 		}
 		else
@@ -1755,6 +1761,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		else
 			g_bSingleTouch = false;
 	}
+	/*
 	if(convar == g_hAutoBhopConVar)
 	{
 		if(newValue[0] == '1')
@@ -1796,6 +1803,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 						CreateTimer(0.5, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);
 		}
 	}
+	*/
 	if(convar == g_hMinSkillGroup)
 		g_MinSkillGroup = StringToInt(newValue[0]);
 
@@ -2096,12 +2104,14 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		if (g_bEnforcer && fTmp != 2000.0)
 			SetConVarFloat(g_hMaxVelocity, 2000.0);
 	}
+	/*
 	if(convar == g_hWaterAccelerate)
 	{
 		new Float:fTmp = StringToFloat(newValue[0]);
 		if (g_bEnforcer && fTmp != 10.0)
 			SetConVarFloat(g_hWaterAccelerate, 10.0);
 	}
+	*/
 	if(convar == g_hCheats)
 	{
 		new iTmp = StringToInt(newValue[0]);
@@ -2119,12 +2129,14 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		if (!g_bAllowRoundEndCvar)
 			SetConVarInt(g_hMaxRounds, 1);
 	}
+	/*
 	if(convar == g_hEnableBunnyhoping)
 	{
 		new iTmp = StringToInt(newValue[0]);
 		if (g_bEnforcer && iTmp != 1)
 			SetConVarInt(g_hEnableBunnyhoping, 1);
 	}
+	*/
 
 	if(convar == g_hsv_ladder_scale_speed)
 	{
@@ -2133,7 +2145,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			SetConVarFloat(g_hsv_ladder_scale_speed, 1.0);
 	}
 
-
+	/*
 	if(convar == g_hAutoBhop)
 	{
 		new iTmp = StringToInt(newValue[0]);
@@ -2146,6 +2158,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		if (g_bEnforcer && iTmp != 0)
 			SetConVarInt(g_hClampVel, 0);
 	}
+	*/
 }
 
 public Native_GetTimerStatus(Handle:plugin, numParams)
@@ -2269,9 +2282,9 @@ public OnGameFrame()
 
 public Plugin:myinfo =
 {
-	name = "KZTimer",
-	author = "1NutWunDeR",
+	name = "KZTimer - FKZ ClassicCounter Ver",
+	author = "1NutWunDeR, jvnipers",
 	description = "timer plugin",
 	version = VERSION,
-	url = "https://forums.alliedmods.net/showthread.php?t=223274"
+	url = "https://github.com/FemboyKZ/KZTimerClassic"
 }
