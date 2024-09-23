@@ -1154,13 +1154,13 @@ public Action:Client_GlobalCheck(client, args)
 												PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: kz_double_duck is set to 1.",PINK,WHITE,RED);
 												return Plugin_Handled;
 											}
-											else
+											else	/*
 												if (g_bAutoBhop)
 												{
 													PrintToChat(client, "[%cKZ%c] %cGlobal Records disabled. Reason: AutoBhop enabled.",PINK,WHITE,RED);
 													return Plugin_Handled;
 												}
-												else
+												else*/
 													if (!g_global_EntityCheck)
 													{
 														PrintToChat(client, "[%cKZ%c] %cCustom entities/objects on the current map detected.",PINK,WHITE,RED);
