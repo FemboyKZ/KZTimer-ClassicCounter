@@ -24,7 +24,7 @@ public Function_BlockJump(client)
 	else
 	{
 		g_bLJBlock[client] = false;
-		PrintToChat(client, "%t", "LJblock1",MOSSGREEN,WHITE,RED);	
+		PrintToChat(client, "%t", "LJblock1",PINK,WHITE,RED);	
 	}
 }
 
@@ -258,7 +258,7 @@ CalculateBlockGap(client, Float:startblock[3], Float:endblock[3])
 	else
 	{
 		g_bLJBlock[client] = false;
-		PrintToChat(client, "%t", "LJblock2",MOSSGREEN,WHITE,RED);	
+		PrintToChat(client, "%t", "LJblock2",PINK,WHITE,RED);	
 		return;
 	}
 	g_fEdgePoint1[client] = Edge[0];	
@@ -286,7 +286,7 @@ CalculateBlockGap(client, Float:startblock[3], Float:endblock[3])
 	surface *= surface;
 	if (surface > 1000000)
 	{
-		PrintToChat(client, "%t", "LJblock3",MOSSGREEN,WHITE,RED);	
+		PrintToChat(client, "%t", "LJblock3",PINK,WHITE,RED);	
 		return;
 	}	
 	
@@ -294,7 +294,7 @@ CalculateBlockGap(client, Float:startblock[3], Float:endblock[3])
 	if(!IsCoordInBlockPoint(Edge[1],g_fDestBlock[client],true))	
 	{	
 		g_bLJBlock[client] = false;
-		PrintToChat(client, "%t", "LJblock4",MOSSGREEN,WHITE,RED);	
+		PrintToChat(client, "%t", "LJblock4",PINK,WHITE,RED);	
 		return;		
 	}
 	TE_SetupBeamPoints(Edge[0], Edge[1], g_Beam[0], 0, 0, 0, 1.0, 1.0, 1.0, 10, 0.0, {0,255,255,155}, 0);
@@ -302,16 +302,16 @@ CalculateBlockGap(client, Float:startblock[3], Float:endblock[3])
 	
 	if(g_BlockDist[client] > 225 && g_BlockDist[client] <= 300)
 	{
-		PrintToChat(client, "%t", "LJblock5", MOSSGREEN,WHITE, LIMEGREEN,GREEN, g_BlockDist[client],LIMEGREEN);
+		PrintToChat(client, "%t", "LJblock5", PINK,WHITE, LIMEGREEN,GREEN, g_BlockDist[client],LIMEGREEN);
 		g_bLJBlock[client] = true;
 	}
 	else
 	{
 		if (g_BlockDist[client] < 225)
-			PrintToChat(client, "%t", "LJblock6", MOSSGREEN,WHITE, RED,DARKRED,g_BlockDist[client],RED);
+			PrintToChat(client, "%t", "LJblock6", PINK,WHITE, RED,DARKRED,g_BlockDist[client],RED);
 		else
 			if (g_BlockDist[client] > 300)
-				PrintToChat(client, "%t", "LJblock7", MOSSGREEN,WHITE, RED,DARKRED,g_BlockDist[client],RED);
+				PrintToChat(client, "%t", "LJblock7", PINK,WHITE, RED,DARKRED,g_BlockDist[client],RED);
 	}
 }
 
@@ -565,7 +565,7 @@ public Postthink(client)
 		for (new i = 1; i <= strafes; i++)
 		{
 			if (i==1)
-				Format(szStrafeSync, 255, "[%cKZ%c] %cSync:",MOSSGREEN,WHITE,GRAY);
+				Format(szStrafeSync, 255, "[%cKZ%c] %cSync:",PINK,WHITE,GRAY);
 			if (g_js_Strafe_Frames[client][i] == 0 || g_js_Strafe_Good_Sync[client][i] == 0.0) 
 				strafe_sync = 0;
 			else
@@ -692,7 +692,7 @@ public Postthink(client)
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#948d8d'>Failed (%.3f)</font>", fFailedDistance);
 			PrintToConsole(client, "[FailStats] Block %i - Distance: %.4f, Pre %.3f, Max %.3f, Height %.1f, Sync %i%c, JumpOff Edge %.3f", g_BlockDist[client],fFailedDistance,g_js_fPreStrafe[client],g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,g_fEdgeDistJumpOff[client]);
 			PrintToConsole(client, "%s", szStrafeStats);
-			PrintToChat(client, "%t", "ClientLongJumpBlockFailstats", MOSSGREEN,WHITE,GRAY,GRAY,LIGHTBLUE,fFailedDistance,GRAY,LIGHTBLUE,strafes,GRAY, LIGHTBLUE,g_js_fPreStrafe[client], GRAY,LIGHTBLUE,g_js_fMax_Speed_Final[client],GRAY,LIGHTBLUE,fJump_Height,GRAY,LIGHTBLUE,sync,PERCENT,GRAY,LIGHTBLUE,g_fEdgeDistJumpOff[client],GRAY,sBlock);				
+			PrintToChat(client, "%t", "ClientLongJumpBlockFailstats", PINK,WHITE,GRAY,GRAY,LIGHTBLUE,fFailedDistance,GRAY,LIGHTBLUE,strafes,GRAY, LIGHTBLUE,g_js_fPreStrafe[client], GRAY,LIGHTBLUE,g_js_fMax_Speed_Final[client],GRAY,LIGHTBLUE,fJump_Height,GRAY,LIGHTBLUE,sync,PERCENT,GRAY,LIGHTBLUE,g_fEdgeDistJumpOff[client],GRAY,sBlock);				
 			PostThinkPost(client, ground_frames);
 			return;
 		}
@@ -771,7 +771,7 @@ public Postthink(client)
 			ValidJump = true;
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 			g_js_GODLIKE_Count[client]=0;	
-			PrintToChat(client, "%t", "ClientLadderJump1",MOSSGREEN,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
+			PrintToChat(client, "%t", "ClientLadderJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
 			PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 			PrintToConsole(client, "%s", szStrafeStats);
@@ -784,7 +784,7 @@ public Postthink(client)
 				g_js_GODLIKE_Count[client]=0;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
-				PrintToChat(client, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+				PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 				PrintToConsole(client, "%s", szStrafeStats);
 				decl String:buffer[255];
@@ -803,12 +803,12 @@ public Postthink(client)
 								if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 								{
 									PrintToConsole(i, "        ");
-									PrintToChat(i, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+									PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 									PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 									PrintToConsole(i, "%s", szStrafeStats);						
 								}
 								else
-									PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+									PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 							}
 						}
 					}
@@ -821,7 +821,7 @@ public Postthink(client)
 					g_js_GODLIKE_Count[client]=0;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
-					PrintToChat(client, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+					PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 					decl String:buffer[255];
@@ -840,12 +840,12 @@ public Postthink(client)
 									if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 									{
 										PrintToConsole(i, "        ");
-										PrintToChat(i, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+										PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 										PrintToConsole(i, "%s", szStrafeStats);						
 									}
 									else
-										PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+										PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 								}
 							}
 						}
@@ -866,14 +866,14 @@ public Postthink(client)
 						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -886,18 +886,18 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+											PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);						
 										}
 										else								
-											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
@@ -924,14 +924,14 @@ public Postthink(client)
 						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+						PrintToChat(client, "%t", "ClientLadderJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -944,18 +944,18 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientLadderJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+											PrintToChat(i, "%t", "ClientLadderJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LadderJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);						
 										}
 										else								
-											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_LadderJumpAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
@@ -979,7 +979,7 @@ public Postthink(client)
 		if (bPersonalBest && ValidJump)
 		{
 			if (g_js_fPersonal_LadderJump_Record[client] > 0.0)
-				PrintToChat(client, "%t", "Jumpstats_BeatLadderJumpBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+				PrintToChat(client, "%t", "Jumpstats_BeatLadderJumpBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 			g_js_fPersonal_LadderJump_Record[client] = g_js_fJump_Distance[client];
 			db_updateLadderJumpRecord(client);
 		}				
@@ -1094,7 +1094,7 @@ public Postthink(client)
 			ValidJump=true;
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 			CreateTimer(0.1, BhopCheck, client,TIMER_FLAG_NO_MAPCHANGE);
-			PrintToChat(client, "%t", "ClientLongJump1", MOSSGREEN,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN,strafes,GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist);			
+			PrintToChat(client, "%t", "ClientLongJump1", PINK,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN,strafes,GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist);			
 	
 			PrintToConsole(client, "        ");
 			if (ljblock)
@@ -1117,7 +1117,7 @@ public Postthink(client)
 				else
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre| %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);			
 				PrintToConsole(client, "%s", szStrafeStats);	
-				PrintToChat(client, "%t", "ClientLongJump3",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+				PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 			
 				decl String:buffer[255];
 				Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 			
@@ -1141,10 +1141,10 @@ public Postthink(client)
 									else
 										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);									
 									PrintToConsole(i, "%s", szStrafeStats);	
-									PrintToChat(i, "%t", "ClientLongJump3",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+									PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 							}
 								else
-									PrintToChat(i, "%t", "Jumpstats_LjAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,sBlockDist,szPersonalBest);
+									PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,sBlockDist,szPersonalBest);
 							}
 						}
 					}				
@@ -1163,7 +1163,7 @@ public Postthink(client)
 					else
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 					PrintToConsole(client, "%s", szStrafeStats);	
-					PrintToChat(client, "%t", "ClientLongJump3",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+					PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 	
 					decl String:buffer[255];
 					Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 			
@@ -1187,10 +1187,10 @@ public Postthink(client)
 										else
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff,sBlockDistCon);									
 										PrintToConsole(i, "%s", szStrafeStats);	
-										PrintToChat(i, "%t", "ClientLongJump3",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+										PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 									}
 									else
-										PrintToChat(i, "%t", "Jumpstats_LjAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,sBlockDist,szPersonalBest);
+										PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,sBlockDist,szPersonalBest);
 								}
 							}
 						}				
@@ -1218,12 +1218,12 @@ public Postthink(client)
 						else
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
-						PrintToChat(client, "%t", "ClientLongJump3",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 
 						//all
 						if (!IsFakeClient(client))
@@ -1241,16 +1241,16 @@ public Postthink(client)
 											else
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
 											PrintToConsole(i, "%s", szStrafeStats);		
-											PrintToChat(i, "%t", "ClientLongJump3",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+											PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 										}							
 										else
-											PrintToChat(i, "%t", "Jumpstats_LjAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,sBlockDist,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,sBlockDist,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-											PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+											PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}
 							}
@@ -1279,12 +1279,12 @@ public Postthink(client)
 						else
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT,sPerfectTakeOff, sBlockDistCon);			
 						PrintToConsole(client, "%s", szStrafeStats);			
-						PrintToChat(client, "%t", "ClientLongJump3",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+						PrintToChat(client, "%t", "ClientLongJump3",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 
 						//all
 						if (!IsFakeClient(client))
@@ -1302,16 +1302,16 @@ public Postthink(client)
 											else
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a LongJump%s [%i Strafes | %.3f Pre | %.0f Max | Height %.1f | %i%c Sync | %s]%s",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT, sPerfectTakeOff,sBlockDistCon);			
 											PrintToConsole(i, "%s", szStrafeStats);		
-											PrintToChat(i, "%t", "ClientLongJump3",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
+											PrintToChat(i, "%t", "ClientLongJump3",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY,LIMEGREEN, sync,PERCENT,GRAY,sBlockDist,szPersonalBest);
 										}							
 										else
-											PrintToChat(i, "%t", "Jumpstats_LjAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,sBlockDist,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_LjAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,sBlockDist,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-											PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+											PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}
 							}
@@ -1336,9 +1336,9 @@ public Postthink(client)
 		if (bPersonalBest && ValidJump)
 		{		
 			if (g_js_fPersonal_Lj_Record[client] > 0.0 && g_js_fPersonal_Lj_Record[client] < g_js_fJump_Distance[client])
-				PrintToChat(client, "%t", "Jumpstats_BeatLjBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+				PrintToChat(client, "%t", "Jumpstats_BeatLjBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 			if (ljblock && g_js_Personal_LjBlock_Record[client] > 0 && ((g_js_Personal_LjBlock_Record[client] < g_BlockDist[client]) || (g_js_Personal_LjBlock_Record[client] == g_BlockDist[client] && g_js_fPersonal_LjBlockRecord_Dist[client] < g_js_fJump_Distance[client])))
-				PrintToChat(client, "%t", "Jumpstats_BeatLjBlockBest",MOSSGREEN,WHITE,YELLOW, g_BlockDist[client],g_js_fJump_Distance[client]);
+				PrintToChat(client, "%t", "Jumpstats_BeatLjBlockBest",PINK,WHITE,YELLOW, g_BlockDist[client],g_js_fJump_Distance[client]);
 			if (g_js_fPersonal_Lj_Record[client] < g_js_fJump_Distance[client])
 			{	
 				g_js_fPersonal_Lj_Record[client] = g_js_fJump_Distance[client];
@@ -1386,7 +1386,7 @@ public Postthink(client)
 				ValidJump=true;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.1f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				g_js_GODLIKE_Count[client]=0;
-				PrintToChat(client, "%t", "ClientMultiBhop1",MOSSGREEN,WHITE, GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
+				PrintToChat(client, "%t", "ClientMultiBhop1",PINK,WHITE, GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 				PrintToConsole(client, "        ");
 				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %3.f Pre | %3.f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 				PrintToConsole(client, "%s", szStrafeStats);
@@ -1402,7 +1402,7 @@ public Postthink(client)
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 					PrintToConsole(client, "%s", szStrafeStats);					
-					PrintToChat(client, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+					PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 					
 					decl String:buffer[255];
 					Format(buffer, sizeof(buffer), "play %s", PERFECT_RELATIVE_SOUND_PATH); 
@@ -1422,10 +1422,10 @@ public Postthink(client)
 										PrintToConsole(i, "        ");
 										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 										PrintToConsole(i, "%s", szStrafeStats);					
-										PrintToChat(i, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+										PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 									}
 									else							
-										PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+										PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 								}
 							}
 						}
@@ -1441,7 +1441,7 @@ public Postthink(client)
 						PrintToConsole(client, "        ");
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 						PrintToConsole(client, "%s", szStrafeStats);					
-						PrintToChat(client, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+						PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						
 						decl String:buffer[255];
 						Format(buffer, sizeof(buffer), "play %s", IMPRESSIVE_RELATIVE_SOUND_PATH); 
@@ -1461,10 +1461,10 @@ public Postthink(client)
 											PrintToConsole(i, "        ");
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max |  Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);				
 											PrintToConsole(i, "%s", szStrafeStats);					
-											PrintToChat(i, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+											PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 										}
 										else							
-											PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 									}
 								}
 							}
@@ -1487,12 +1487,12 @@ public Postthink(client)
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 							else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);						
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);						
 						
 							//all
 							if (!IsFakeClient(client))
@@ -1507,16 +1507,16 @@ public Postthink(client)
 												PrintToConsole(i, "        ");
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
-												PrintToChat(i, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
+												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
 											
 											if (g_js_GODLIKE_Count[client]==3)
-													PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+													PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 												else
 												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 										}
 									}
@@ -1546,12 +1546,12 @@ public Postthink(client)
 							PrintToConsole(client, "        ");
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
-							PrintToChat(client, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 							else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);						
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);						
 						
 							//all
 							if (!IsFakeClient(client))
@@ -1566,16 +1566,16 @@ public Postthink(client)
 												PrintToConsole(i, "        ");
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a MultiBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %s Bhops | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client], fJump_Height,szBhopCount,sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
-												PrintToChat(i, "%t", "ClientMultiBhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientMultiBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN,g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,szBhopCount,GRAY,LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
+												PrintToChat(i, "%t", "Jumpstats_MultiBhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
 											
 											if (g_js_GODLIKE_Count[client]==3)
-													PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+													PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 												else
 												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 										}
 									}
@@ -1600,7 +1600,7 @@ public Postthink(client)
 			if (bPersonalBest && ValidJump)
 			{
 				if (g_js_fPersonal_MultiBhop_Record[client] > 0.0)
-					PrintToChat(client, "%t", "Jumpstats_BeatMultiBhopBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+					PrintToChat(client, "%t", "Jumpstats_BeatMultiBhopBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 				g_js_fPersonal_MultiBhop_Record[client] = g_js_fJump_Distance[client];
 				db_updateMultiBhopRecord(client);
 			}
@@ -1625,7 +1625,7 @@ public Postthink(client)
 		//double countjump test
 		/*if (g_js_DuckCounter[client] > 1)
 		{
-			PrintToChat(client, "[%cKZ BETA%c] DCJ: %f (strafes %i, pre %.3f, max %3.f, sync %ic)",MOSSGREEN,WHITE, g_js_fJump_Distance[client],strafes, g_js_fPreStrafe[client],g_js_fMax_Speed_Final[client],sync,PERCENT);	
+			PrintToChat(client, "[%cKZ BETA%c] DCJ: %f (strafes %i, pre %.3f, max %3.f, sync %ic)",PINK,WHITE, g_js_fJump_Distance[client],strafes, g_js_fPreStrafe[client],g_js_fMax_Speed_Final[client],sync,PERCENT);	
 			PostThinkPost(client, ground_frames);
 			return;
 		}*/
@@ -1642,7 +1642,7 @@ public Postthink(client)
 			ValidJump = true;
 			Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 			g_js_GODLIKE_Count[client]=0;	
-			PrintToChat(client, "%t", "ClientCountJump1",MOSSGREEN,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
+			PrintToChat(client, "%t", "ClientCountJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 			PrintToConsole(client, "        ");
 			PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 			PrintToConsole(client, "%s", szStrafeStats);
@@ -1655,7 +1655,7 @@ public Postthink(client)
 				g_js_GODLIKE_Count[client]=0;
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 				PrintToConsole(client, "        ");
-				PrintToChat(client, "%t", "ClientCountJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+				PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 				PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 				PrintToConsole(client, "%s", szStrafeStats);
 				decl String:buffer[255];
@@ -1674,12 +1674,12 @@ public Postthink(client)
 								if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 								{
 									PrintToConsole(i, "        ");
-									PrintToChat(i, "%t", "ClientCountJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+									PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 									PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 									PrintToConsole(i, "%s", szStrafeStats);
 								}
 								else
-									PrintToChat(i, "%t", "Jumpstats_CountJumpAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+									PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 							}
 						}
 					}
@@ -1692,7 +1692,7 @@ public Postthink(client)
 					g_js_GODLIKE_Count[client]=0;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					PrintToConsole(client, "        ");
-					PrintToChat(client, "%t", "ClientCountJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+					PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
 					decl String:buffer[255];
@@ -1711,12 +1711,12 @@ public Postthink(client)
 									if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 									{
 										PrintToConsole(i, "        ");
-										PrintToChat(i, "%t", "ClientCountJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+										PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 										PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 										PrintToConsole(i, "%s", szStrafeStats);
 									}
 									else
-										PrintToChat(i, "%t", "Jumpstats_CountJumpAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+										PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 								}
 							}
 						}
@@ -1738,14 +1738,14 @@ public Postthink(client)
 						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientCountJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -1758,18 +1758,18 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientCountJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+											PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
-											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
@@ -1796,14 +1796,14 @@ public Postthink(client)
 						g_js_GODLIKE_Count[client]++;
 						//Client
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientCountJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+						PrintToChat(client, "%t", "ClientCountJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 						PrintToConsole(client, "%s", szStrafeStats);
 						if (g_js_GODLIKE_Count[client]==3)
-							PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+							PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 						else
 							if (g_js_GODLIKE_Count[client]==5)
-								PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 								
 						//all
 						if (!IsFakeClient(client))
@@ -1816,18 +1816,18 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientCountJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+											PrintToChat(i, "%t", "ClientCountJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a CountJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
-											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_CountJumpAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
 										
 										if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 										else
 											if (g_js_GODLIKE_Count[client]==5)
-												PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 									}
 								}	
 							}
@@ -1850,7 +1850,7 @@ public Postthink(client)
 		if (bPersonalBest && ValidJump)
 		{
 			if (g_js_fPersonal_CJ_Record[client] > 0.0)
-				PrintToChat(client, "%t", "Jumpstats_BeatCountJumpBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+				PrintToChat(client, "%t", "Jumpstats_BeatCountJumpBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 			g_js_fPersonal_CJ_Record[client] = g_js_fJump_Distance[client];
 			db_updateCountJumpRecord(client);
 		}				
@@ -1864,12 +1864,12 @@ public Postthink(client)
 		if (g_js_fDropped_Units[client] > 132.0)
 		{
 			if (g_js_fDropped_Units[client] < 300.0)
-				PrintToChat(client, "%t", "DropBhop1",MOSSGREEN,WHITE,RED,g_js_fDropped_Units[client],WHITE,GREEN,WHITE,GRAY,WHITE);
+				PrintToChat(client, "%t", "DropBhop1",PINK,WHITE,RED,g_js_fDropped_Units[client],WHITE,GREEN,WHITE,GRAY,WHITE);
 		}
 		else
 		{
 			if (g_js_fPreStrafe[client] > g_fMaxBhopPreSpeed)
-				PrintToChat(client, "%t", "DropBhop2",MOSSGREEN,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,g_fMaxBhopPreSpeed,WHITE,GRAY,WHITE);
+				PrintToChat(client, "%t", "DropBhop2",PINK,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,g_fMaxBhopPreSpeed,WHITE,GRAY,WHITE);
 			else
 			{
 				
@@ -1894,7 +1894,7 @@ public Postthink(client)
 					ValidJump = true;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					g_js_GODLIKE_Count[client]=0;	
-					PrintToChat(client, "%t", "ClientDropBhop1",MOSSGREEN,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
+					PrintToChat(client, "%t", "ClientDropBhop1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
@@ -1907,7 +1907,7 @@ public Postthink(client)
 						g_js_GODLIKE_Count[client]=0;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+						PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
@@ -1926,12 +1926,12 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+											PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
-											PrintToChat(i, "%t", "Jumpstats_DropBhopAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 									}
 								}
 							}
@@ -1944,7 +1944,7 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]=0;
 							Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 							PrintToConsole(client, "        ");
-							PrintToChat(client, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+							PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
@@ -1963,12 +1963,12 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToChat(i, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
+												PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN,sync,PERCENT,GRAY,szPersonalBest);	
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_DropBhopAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+												PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 										}
 									}
 								}
@@ -1990,14 +1990,14 @@ public Postthink(client)
 								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
-								PrintToChat(client, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 								else
 									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 										
 								//all
 								if (!IsFakeClient(client))
@@ -2010,18 +2010,18 @@ public Postthink(client)
 												if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 												{
 													PrintToConsole(i, "        ");
-													PrintToChat(i, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+													PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
+													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client], YELLOW,ORANGE,sDirection,szPersonalBest);
 												
 												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 												else
 													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}	
 									}
@@ -2048,14 +2048,14 @@ public Postthink(client)
 								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
-								PrintToChat(client, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+								PrintToChat(client, "%t", "ClientDropBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 								else
 									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 										
 								//all
 								if (!IsFakeClient(client))
@@ -2068,18 +2068,18 @@ public Postthink(client)
 												if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 												{
 													PrintToConsole(i, "        ");
-													PrintToChat(i, "%t", "ClientDropBhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
+													PrintToChat(i, "%t", "ClientDropBhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);	
 													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a DropBhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
+													PrintToChat(i, "%t", "Jumpstats_DropBhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client], RED,DARKRED,sDirection,szPersonalBest);
 												
 												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 												else
 													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}	
 									}
@@ -2102,7 +2102,7 @@ public Postthink(client)
 				if (bPersonalBest && ValidJump)
 				{
 					if (g_js_fPersonal_DropBhop_Record[client] > 0.0)
-						PrintToChat(client, "%t", "Jumpstats_BeatDropBhopBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+						PrintToChat(client, "%t", "Jumpstats_BeatDropBhopBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 					g_js_fPersonal_DropBhop_Record[client] = g_js_fJump_Distance[client];
 					db_updateDropBhopRecord(client);
 				}				
@@ -2116,12 +2116,12 @@ public Postthink(client)
 			if (g_js_fDropped_Units[client] > 132.0)
 			{
 				if (g_js_fDropped_Units[client] < 300.0)
-					PrintToChat(client, "%t", "Wj1",MOSSGREEN,WHITE,RED,g_js_fDropped_Units[client],WHITE,GREEN,WHITE,GRAY,WHITE);
+					PrintToChat(client, "%t", "Wj1",PINK,WHITE,RED,g_js_fDropped_Units[client],WHITE,GREEN,WHITE,GRAY,WHITE);
 			}
 			else
 			{
 				if (g_js_fPreStrafe[client] > 300)
-					PrintToChat(client, "%t", "Wj2",MOSSGREEN,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,WHITE,GRAY,WHITE);
+					PrintToChat(client, "%t", "Wj2",PINK,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,WHITE,GRAY,WHITE);
 				else
 				{
 					//block invalid bot distances (has something to do with the ground-detection of the replay bot) WORKAROUND
@@ -2146,7 +2146,7 @@ public Postthink(client)
 						ValidJump = true;
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						g_js_GODLIKE_Count[client]=0;
-						PrintToChat(client, "%t", "ClientWeirdJump1",MOSSGREEN,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
+						PrintToChat(client, "%t", "ClientWeirdJump1",PINK,WHITE, GRAY,g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 						PrintToConsole(client, "        ");
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);	
@@ -2160,7 +2160,7 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]=0;
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToChat(client, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
@@ -2179,12 +2179,12 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToChat(i, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_WeirdAll",MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+												PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 										}
 									}
 								}
@@ -2198,7 +2198,7 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]=0;
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToChat(client, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 							PrintToConsole(client, "%s", szStrafeStats);
 							decl String:buffer[255];
@@ -2217,12 +2217,12 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToChat(i, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_WeirdAll",MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+												PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 										}
 									}
 								}
@@ -2243,14 +2243,14 @@ public Postthink(client)
 								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
-								PrintToChat(client, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 								else
 									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 													
 								//all
 								if (!IsFakeClient(client))
@@ -2263,18 +2263,18 @@ public Postthink(client)
 												if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 												{
 													PrintToConsole(i, "        ");
-													PrintToChat(i, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+													PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_WeirdAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
+													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);
 												
 												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 													else
 													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}
 									}
@@ -2299,14 +2299,14 @@ public Postthink(client)
 								g_js_GODLIKE_Count[client]++;
 								//Client
 								PrintToConsole(client, "        ");
-								PrintToChat(client, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+								PrintToChat(client, "%t", "ClientWeirdJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 								PrintToConsole(client, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 								PrintToConsole(client, "%s", szStrafeStats);
 								if (g_js_GODLIKE_Count[client]==3)
-									PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+									PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 								else
 									if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 													
 								//all
 								if (!IsFakeClient(client))
@@ -2319,18 +2319,18 @@ public Postthink(client)
 												if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 												{
 													PrintToConsole(i, "        ");
-													PrintToChat(i, "%t", "ClientWeirdJump2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+													PrintToChat(i, "%t", "ClientWeirdJump2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN,fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 													PrintToConsole(i, "[KZ] %s jumped %0.4f units with a WeirdJump%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);
 													PrintToConsole(i, "%s", szStrafeStats);
 												}
 												else
-													PrintToChat(i, "%t", "Jumpstats_WeirdAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
+													PrintToChat(i, "%t", "Jumpstats_WeirdAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);
 												
 												if (g_js_GODLIKE_Count[client]==3)
-														PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 													else
 													if (g_js_GODLIKE_Count[client]==5)
-														PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+														PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											}
 										}
 									}
@@ -2353,7 +2353,7 @@ public Postthink(client)
 					if (bPersonalBest && ValidJump)
 					{
 						if (g_js_fPersonal_Wj_Record[client] > 0.0)
-							PrintToChat(client, "%t", "Jumpstats_BeatWjBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+							PrintToChat(client, "%t", "Jumpstats_BeatWjBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 						g_js_fPersonal_Wj_Record[client] = g_js_fJump_Distance[client];
 						db_updateWjRecord(client);
 					}
@@ -2372,7 +2372,7 @@ public Postthink(client)
 			}
 			
 			if (g_js_fPreStrafe[client]> g_fMaxBhopPreSpeed)
-					PrintToChat(client, "%t", "Bhop1",MOSSGREEN,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,g_fMaxBhopPreSpeed,WHITE,GRAY,WHITE);
+					PrintToChat(client, "%t", "Bhop1",PINK,WHITE,RED,g_js_fPreStrafe[client],WHITE,GREEN,g_fMaxBhopPreSpeed,WHITE,GRAY,WHITE);
 			else
 			{	
 				Format(g_js_szLastJumpDistance[client], 256, "<font color='#948d8d'>%.3f units%s</font>", g_js_fJump_Distance[client],sDirection);							
@@ -2388,7 +2388,7 @@ public Postthink(client)
 					ValidJump=true;
 					Format(g_js_szLastJumpDistance[client], 256, "<font color='#676060'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 					g_js_GODLIKE_Count[client]=0;
-					PrintToChat(client, "%t", "ClientBunnyhop1",MOSSGREEN,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
+					PrintToChat(client, "%t", "ClientBunnyhop1",PINK,WHITE,GRAY, g_js_fJump_Distance[client],LIMEGREEN, strafes, GRAY, LIMEGREEN, g_js_fPreStrafe[client], GRAY, LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY);	
 					PrintToConsole(client, "        ");
 					PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height,sync,PERCENT);						
 					PrintToConsole(client, "%s", szStrafeStats);
@@ -2401,7 +2401,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#4B75BF'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						g_js_GODLIKE_Count[client]=0;
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
@@ -2420,12 +2420,12 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+											PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,BLUE,GRAY,BLUE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
-											PrintToChat(i, "%t", "Jumpstats_BhopAll",	MOSSGREEN,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_BhopAll",	PINK,WHITE,BLUE,szName, LIGHTBLUE,BLUE, g_js_fJump_Distance[client],LIGHTBLUE,BLUE,sDirection,szPersonalBest);
 									}
 								}
 							}
@@ -2438,7 +2438,7 @@ public Postthink(client)
 						Format(g_js_szLastJumpDistance[client], 256, "<font color='#21982a'><b>%.3f units%s</b></font>", g_js_fJump_Distance[client],sDirection);
 						g_js_GODLIKE_Count[client]=0;
 						PrintToConsole(client, "        ");
-						PrintToChat(client, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+						PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 						PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 						PrintToConsole(client, "%s", szStrafeStats);
 						decl String:buffer[255];
@@ -2457,12 +2457,12 @@ public Postthink(client)
 										if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 										{
 											PrintToConsole(i, "        ");
-											PrintToChat(i, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+											PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,GREEN,GRAY,GREEN,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 											PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);						
 											PrintToConsole(i, "%s", szStrafeStats);
 										}
 										else
-											PrintToChat(i, "%t", "Jumpstats_BhopAll",	MOSSGREEN,WHITE,GREEN,szName, MOSSGREEN,GREEN, g_js_fJump_Distance[client],MOSSGREEN,GREEN,sDirection,szPersonalBest);
+											PrintToChat(i, "%t", "Jumpstats_BhopAll",	PINK,WHITE,GREEN,szName, PINK,GREEN, g_js_fJump_Distance[client],PINK,GREEN,sDirection,szPersonalBest);
 									}
 								}
 							}
@@ -2485,14 +2485,14 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToChat(client, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 							else
 							if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 							//all
 							if (!IsFakeClient(client))
@@ -2505,18 +2505,18 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToChat(i, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,ORANGE,GRAY,ORANGE,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_BhopAll",MOSSGREEN,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);										
+												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,ORANGE,szName, YELLOW,ORANGE, g_js_fJump_Distance[client],YELLOW,ORANGE,sDirection,szPersonalBest);										
 											
 											if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 											else
 												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);										
+													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);										
 										}
 									}
 								}
@@ -2541,14 +2541,14 @@ public Postthink(client)
 							g_js_GODLIKE_Count[client]++;
 							//Client
 							PrintToConsole(client, "        ");
-							PrintToChat(client, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+							PrintToChat(client, "%t", "ClientBunnyhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 							PrintToConsole(client, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 							PrintToConsole(client, "%s", szStrafeStats);
 							if (g_js_GODLIKE_Count[client]==3)
-								PrintToChat(client, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+								PrintToChat(client, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 							else
 							if (g_js_GODLIKE_Count[client]==5)
-										PrintToChat(client, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);
+										PrintToChat(client, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);
 											
 							//all
 							if (!IsFakeClient(client))
@@ -2561,18 +2561,18 @@ public Postthink(client)
 											if (g_SpecTarget[i] == client  && !IsPlayerAlive(i))
 											{
 												PrintToConsole(i, "        ");
-												PrintToChat(i, "%t", "ClientBunnyhop2",MOSSGREEN,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
+												PrintToChat(i, "%t", "ClientBunnyhop2",PINK,WHITE,DARKRED,GRAY,DARKRED,g_js_fJump_Distance[client],GRAY,LIMEGREEN,strafes,GRAY,LIMEGREEN,g_js_fPreStrafe[client],GRAY,LIMEGREEN, g_js_fMax_Speed_Final[client],GRAY,LIMEGREEN, fJump_Height,GRAY, LIMEGREEN, sync,PERCENT,GRAY,szPersonalBest);
 												PrintToConsole(i, "[KZ] %s jumped %0.4f units with a Bhop%s [%i Strafes | %.3f Pre | %.3f Max | Height %.1f | %i%c Sync]",szName, g_js_fJump_Distance[client],sDirection,strafes, g_js_fPreStrafe[client], g_js_fMax_Speed_Final[client],fJump_Height, sync,PERCENT);
 												PrintToConsole(i, "%s", szStrafeStats);
 											}
 											else
-												PrintToChat(i, "%t", "Jumpstats_BhopAll",MOSSGREEN,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);										
+												PrintToChat(i, "%t", "Jumpstats_BhopAll",PINK,WHITE,DARKRED,szName, RED,DARKRED, g_js_fJump_Distance[client],RED,DARKRED,sDirection,szPersonalBest);										
 											
 											if (g_js_GODLIKE_Count[client]==3)
-												PrintToChat(i, "%t", "Jumpstats_OnRampage",MOSSGREEN,WHITE,YELLOW,szName);
+												PrintToChat(i, "%t", "Jumpstats_OnRampage",PINK,WHITE,YELLOW,szName);
 											else
 												if (g_js_GODLIKE_Count[client]==5)
-													PrintToChat(i, "%t", "Jumpstats_IsDominating",MOSSGREEN,WHITE,YELLOW,szName);										
+													PrintToChat(i, "%t", "Jumpstats_IsDominating",PINK,WHITE,YELLOW,szName);										
 										}
 									}
 								}
@@ -2598,7 +2598,7 @@ public Postthink(client)
 				if (bPersonalBest && ValidJump)
 				{
 					if (g_js_fPersonal_Bhop_Record[client] > 0.0)
-						PrintToChat(client, "%t", "Jumpstats_BeatBhopBest",MOSSGREEN,WHITE,YELLOW, g_js_fJump_Distance[client]);
+						PrintToChat(client, "%t", "Jumpstats_BeatBhopBest",PINK,WHITE,YELLOW, g_js_fJump_Distance[client]);
 					g_js_fPersonal_Bhop_Record[client] = g_js_fJump_Distance[client];
 					db_updateBhopRecord(client);
 				}
