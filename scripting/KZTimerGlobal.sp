@@ -527,7 +527,7 @@ new bool:g_bGlobalBeta;
 new bool:g_bMeasurePosSet[MAXPLAYERS+1][2];
 new bool:g_bCPTextMessage[MAXPLAYERS+1];
 new bool:g_bAdvancedClimbersMenu[MAXPLAYERS+1];
-new bool:g_bAutoBhopClient[MAXPLAYERS+1];
+//new bool:g_bAutoBhopClient[MAXPLAYERS+1];
 new bool:g_bJumpBeam[MAXPLAYERS+1];
 new bool:g_bHideChat[MAXPLAYERS+1];
 new bool:g_bViewModel[MAXPLAYERS+1];
@@ -875,7 +875,7 @@ public OnPluginStart()
 	g_Offs_vecOrigin = FindSendPropInfo("CBaseEntity","m_vecOrigin");
 	g_Offs_vecMins = FindSendPropInfo("CBaseEntity","m_vecMins");
 	g_Offs_vecMaxs = FindSendPropInfo("CBaseEntity","m_vecMaxs");
-	g_ownerOffset = FindSendPropInfo("CBaseCombatWeapon", "m_hOwnerEntity");
+	//g_ownerOffset = FindSendPropInfo("CBaseCombatWeapon", "m_hOwnerEntity");
 	g_ragdolls = FindSendPropInfo("CCSPlayer","m_hRagdoll");
 
 	// MultiPlayer Bunny Hops: Source
@@ -1040,7 +1040,7 @@ public OnMapStart()
 	g_ProBot = -1;
 	g_TpBot = -1;
 	g_InfoBot = -1
-	g_bAutoBhop=false;
+	//g_bAutoBhop=false;
 	g_bRoundEnd=false;
 	g_global_EntityCheck = false;
 	g_global_EntCounter = true;
@@ -1109,10 +1109,11 @@ public OnMapStart()
 	}
 
 	//AutoBhop?
+	/*
 	if(StrEqual(g_szMapPrefix[0],"surf") || StrEqual(g_szMapPrefix[0],"bhop") || StrEqual(g_szMapPrefix[0],"mg"))
 		if (g_bAutoBhopConVar)
 			g_bAutoBhop=true;
-
+	*/
 	//server infos
 	CreateTimer(5.0, GetServerInfo);
 
@@ -1216,10 +1217,11 @@ public OnConfigsExecuted()
 	StrToLower(g_szMapPrefix[0]);
 
 	//AutoBhop?
+	/*
 	if(StrEqual(g_szMapPrefix[0],"surf") || StrEqual(g_szMapPrefix[0],"bhop") || StrEqual(g_szMapPrefix[0],"mg"))
 		if (g_bAutoBhopConVar)
 			g_bAutoBhop=true;
-
+	*/
 	ServerCommand("sv_pure 0");
 }
 
@@ -1285,7 +1287,7 @@ public OnClientPutInServer(client)
 	SetClientDefaults(client);
 
 	//client country
-	GetCountry(client);
+	//GetCountry(client);
 
 	//get client data
 	GetClientAuthId(client, AuthId_Steam2, g_szSteamID[client], 32, true);
