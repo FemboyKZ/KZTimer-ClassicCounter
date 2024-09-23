@@ -5140,7 +5140,7 @@ public db_viewPlayerOptionsCallback(Handle:owner, Handle:hndl, const String:erro
 		g_bInfoPanel[client]=IntoBool(SQL_FetchInt(hndl, 1));
 		g_bClimbersMenuSounds[client]=IntoBool(SQL_FetchInt(hndl,2));
 		g_EnableQuakeSounds[client]=SQL_FetchInt(hndl, 3); 
-		g_bAutoBhopClient[client]=IntoBool(SQL_FetchInt(hndl, 4)); //FieldName ShowKeys
+		//g_bAutoBhopClient[client]=IntoBool(SQL_FetchInt(hndl, 4)); //FieldName ShowKeys
 		g_bShowNames[client]=IntoBool(SQL_FetchInt(hndl, 5));
 		g_bStrafeSync[client]=IntoBool(SQL_FetchInt(hndl, 7));
 		g_bGoToClient[client]=IntoBool(SQL_FetchInt(hndl, 6));
@@ -5157,7 +5157,7 @@ public db_viewPlayerOptionsCallback(Handle:owner, Handle:hndl, const String:erro
 		g_bReplayRoute[client]=IntoBool(SQL_FetchInt(hndl, 20));
 		g_ClientLang[client]= SQL_FetchInt(hndl, 21);	
 		//org
-		g_borg_AutoBhopClient[client] = g_bAutoBhopClient[client];
+		//g_borg_AutoBhopClient[client] = g_bAutoBhopClient[client];
 		g_org_ColorChat[client] = g_ColorChat[client];
 		g_borg_InfoPanel[client] = g_bInfoPanel[client];
 		g_borg_ClimbersMenuSounds[client] = g_bClimbersMenuSounds[client];
@@ -5210,7 +5210,7 @@ public db_viewPlayerOptionsCallback(Handle:owner, Handle:hndl, const String:erro
 
 public db_updatePlayerOptions(client)
 {
-	if (g_ClientLang[client] != g_org_ClientLang[client] || g_borg_ReplayRoute[client] != g_bReplayRoute[client] ||g_borg_AdvInfoPanel[client] != g_bAdvInfoPanel[client] || g_borg_ViewModel[client] != g_bViewModel[client] || g_borg_HideChat[client] != g_bHideChat[client] || g_borg_JumpBeam[client] != g_bJumpBeam[client] || /*g_borg_StartWithUsp[client] != g_bStartWithUsp[client] ||*/ g_borg_AutoBhopClient[client] != g_bAutoBhopClient[client] || g_org_ColorChat[client] != g_ColorChat[client] || g_borg_InfoPanel[client] != g_bInfoPanel[client] || g_borg_ClimbersMenuSounds[client] != g_bClimbersMenuSounds[client] ||  g_org_EnableQuakeSounds[client] != g_EnableQuakeSounds[client] || g_borg_ShowNames[client] != g_bShowNames[client] || g_borg_StrafeSync[client] != g_bStrafeSync[client] || g_borg_GoToClient[client] != g_bGoToClient[client] || g_borg_ShowTime[client] != g_bShowTime[client] || g_borg_Hide[client] != g_bHide[client] || g_org_ShowSpecs[client] != g_ShowSpecs[client] || g_borg_CPTextMessage[client] != g_bCPTextMessage[client] || g_borg_AdvancedClimbersMenu[client] != g_bAdvancedClimbersMenu[client])
+	if (g_ClientLang[client] != g_org_ClientLang[client] || g_borg_ReplayRoute[client] != g_bReplayRoute[client] ||g_borg_AdvInfoPanel[client] != g_bAdvInfoPanel[client] || g_borg_ViewModel[client] != g_bViewModel[client] || g_borg_HideChat[client] != g_bHideChat[client] || g_borg_JumpBeam[client] != g_bJumpBeam[client] || /*g_borg_StartWithUsp[client] != g_bStartWithUsp[client] || g_borg_AutoBhopClient[client] != g_bAutoBhopClient[client] ||*/ g_org_ColorChat[client] != g_ColorChat[client] || g_borg_InfoPanel[client] != g_bInfoPanel[client] || g_borg_ClimbersMenuSounds[client] != g_bClimbersMenuSounds[client] ||  g_org_EnableQuakeSounds[client] != g_EnableQuakeSounds[client] || g_borg_ShowNames[client] != g_bShowNames[client] || g_borg_StrafeSync[client] != g_bStrafeSync[client] || g_borg_GoToClient[client] != g_bGoToClient[client] || g_borg_ShowTime[client] != g_bShowTime[client] || g_borg_Hide[client] != g_bHide[client] || g_org_ShowSpecs[client] != g_ShowSpecs[client] || g_borg_CPTextMessage[client] != g_bCPTextMessage[client] || g_borg_AdvancedClimbersMenu[client] != g_bAdvancedClimbersMenu[client])
 	{
 		decl String:szQuery[1024];
 		Format(szQuery, 1024, sql_updatePlayerOptions,g_ColorChat[client],BooltoInt(g_bInfoPanel[client]),BooltoInt(g_bClimbersMenuSounds[client]), g_EnableQuakeSounds[client], BooltoInt(g_bAutoBhopClient[client]),BooltoInt(g_bShowNames[client]),BooltoInt(g_bGoToClient[client]),BooltoInt(g_bStrafeSync[client]),BooltoInt(g_bShowTime[client]),BooltoInt(g_bHide[client]),g_ShowSpecs[client],BooltoInt(g_bCPTextMessage[client]),BooltoInt(g_bAdvancedClimbersMenu[client])/*,"weapon_knife",0,BooltoInt(g_bStartWithUsp[client])*/,BooltoInt(g_bJumpBeam[client]),BooltoInt(g_bHideChat[client]),BooltoInt(g_bViewModel[client]),BooltoInt(g_bAdvInfoPanel[client]), BooltoInt(g_bReplayRoute[client]),g_ClientLang[client],g_szSteamID[client]);
