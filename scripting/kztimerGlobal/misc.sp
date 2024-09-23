@@ -474,9 +474,11 @@ public PrintConsoleInfo(client)
 	if (g_bDoubleDuckCvar)
 		PrintToConsole(client, "[KZ] Global Records disabled. Reason: kz_double_duck is set to 1.");
 	else
+	/*
 	if (g_bAutoBhop)
 		PrintToConsole(client, "[KZ] Global Records disabled. Reason: AutoBhop enabled.");
 	else
+	*/
 	if (!g_global_ValidedMap)
 		PrintToConsole(client, "[KZ] Global Records disabled. Reason: The current map is not approved by a kztimer map tester!");
 	else
@@ -905,7 +907,7 @@ public SetClientDefaults(client)
 	g_bAdvancedClimbersMenu[client]=true;
 	g_ColorChat[client]=1;
 	g_ShowSpecs[client]=0;
-	g_bAutoBhopClient[client]=true;
+	//g_bAutoBhopClient[client]=true;
 	g_bJumpBeam[client]=false;
 	g_bViewModel[client]=true;
 	g_bAdvInfoPanel[client]=false;
@@ -2532,7 +2534,7 @@ public MovementCheck(client)
 
 public TeleportCheck(client, Float: origin[3])
 {
-	if((StrEqual(g_szMapPrefix[0],"kz") || StrEqual(g_szMapPrefix[0],"xc") || StrEqual(g_szMapPrefix[0],"kzpro") || StrEqual(g_szMapPrefix[0],"bkz")) || g_bAutoBhop == false)
+	if((StrEqual(g_szMapPrefix[0],"kz") || StrEqual(g_szMapPrefix[0],"xc") || StrEqual(g_szMapPrefix[0],"kzpro") || StrEqual(g_szMapPrefix[0],"bkz")) /*|| g_bAutoBhop == false*/)
 	{
 		if (!IsFakeClient(client))
 		{
@@ -2806,7 +2808,7 @@ public CalcJumpSync(client, Float: speed, Float: ang, &buttons)
 		g_js_Sync_Frames[client]++;
 	}
 }
-
+/*
 public ServerSidedAutoBhop(client,&buttons)
 {
 	if (!IsValidClient(client))
@@ -2821,7 +2823,7 @@ public ServerSidedAutoBhop(client,&buttons)
 
 	}
 }
-
+*/
 stock bool:IsEven(num)
 {
     return (num & 1) == 0;
@@ -3140,11 +3142,13 @@ public PerformStats(client, target,bool:console_only)
 		if (!console_only)
 			PrintToChat(client, "[%cKZ%c] %s",PINK,WHITE,banstats);
 		PrintToConsole(client, "[KZ] %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
+		/*
 		if (g_bAutoBhop)
 		{
 			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",PINK,WHITE);
 			PrintToConsole(client, "[KZ] AutoBhop enabled");
 		}
+		*/
 	}
 }
 
@@ -3252,7 +3256,7 @@ public GetClientStatsLog(client, String:string[], length)
 
 public MacroBan(client)
 {
-	if (!g_bAutoBhop && !g_bFlagged[client])
+	if (/*!g_bAutoBhop &&*/ !g_bFlagged[client])
 	{
 		decl String:globalbanstats[256];
 		decl String:banstats[256];
@@ -3283,7 +3287,7 @@ public MacroBan(client)
 //macrodox addon by 1nut
 public BhopPatternCheck(client)
 {
-	if (!IsValidClient(client) || !IsPlayerAlive(client) || IsFakeClient(client) || g_bAutoBhop || g_bFlagged[client] || g_fafAvgPerfJumps[client] < 0.6 || g_fafAvgSpeed[client] < 300.0)
+	if (!IsValidClient(client) || !IsPlayerAlive(client) || IsFakeClient(client) /*|| g_bAutoBhop*/ || g_bFlagged[client] || g_fafAvgPerfJumps[client] < 0.6 || g_fafAvgSpeed[client] < 300.0)
 		return;
 
 	//decl.
