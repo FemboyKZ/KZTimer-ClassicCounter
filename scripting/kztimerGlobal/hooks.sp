@@ -189,6 +189,7 @@ PlayerSpawn(client)
 	SetEntityRenderColor(client, _,_,_, g_TransPlayerModels);  	
 	
 	//strip weapons
+	/*
 	StripAllWeapons(client);
 	new weapon = GetPlayerWeaponSlot(client, 2);
 	if (IsFakeClient(client))
@@ -200,7 +201,7 @@ PlayerSpawn(client)
 	}
 	else
 		CreateTimer(0.1, GiveUsp, client,TIMER_FLAG_NO_MAPCHANGE);
-	
+	*/
 	//godmode
 	if (g_bgodmode || IsFakeClient(client))
 		SetEntProp(client, Prop_Data, "m_takedamage", 0, 1);
@@ -280,7 +281,7 @@ PlayerSpawn(client)
 	Format(g_szPlayerPanelText[client], 512, "");	
 	CreateTimer(0.0, ClimbersMenuTimer, client,TIMER_FLAG_NO_MAPCHANGE);
 	CreateTimer(0.0, HideRadar, client,TIMER_FLAG_NO_MAPCHANGE);
-	CreateTimer(1.5, SetClanTag, client,TIMER_FLAG_NO_MAPCHANGE);	
+	//CreateTimer(1.5, SetClanTag, client,TIMER_FLAG_NO_MAPCHANGE);	
 	QueryClientConVar(client, "fps_max", ConVarQueryFinished:FPSCheck, client);	
 	g_fSpawnTime[client] = GetEngineTime();
 	g_fLastSpeed[client] = GetSpeed(client);
@@ -415,6 +416,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 			g_bSayHook[client]=false;
 			return Plugin_Handled;
 		}
+		/*
 		else
 		{
 			decl String:szChatRank[64];
@@ -448,7 +450,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 						CPrintToChatAllEx(client,"%s {teamcolor}*DEAD* %s{default}: %s",szChatRank,szName,sText);
 					g_bSayHook[client]=false;						
 					return Plugin_Handled;							
-				}
+				} 
 				else
 					if (g_bCountry)
 					{
@@ -466,6 +468,7 @@ public Action:Say_Hook(client, const String:command[], argc)
 					}								
 			}
 		}	
+		*/
 	}
 	g_bSayHook[client]=false;
 	return Plugin_Continue;
@@ -569,7 +572,7 @@ public Action:Event_PlayerDisconnect(Handle:event, const String:name[], bool:don
 		GetEventString(event, "reason", disconnectReason, sizeof(disconnectReason));  
 		for (new i = 1; i <= MaxClients; i++)
 			if (IsValidClient(i) && i != client && !IsFakeClient(i))
-				PrintToChat(i, "%t", "Disconnected1",WHITE, MOSSGREEN, szName, WHITE, disconnectReason);	
+				PrintToChat(i, "%t", "Disconnected1",WHITE, PINK, szName, WHITE, disconnectReason);	
 		return Plugin_Handled;
 	}
 	else
@@ -714,7 +717,7 @@ public Action:Event_OnRoundStart(Handle:event, const String:name[], bool:dontBro
 	
 	g_bRoundEnd=false;
 	db_selectMapButtons();
-	OnPluginPauseChange(false);
+	//OnPluginPauseChange(false);
 	return Plugin_Continue; 
 }
 
@@ -912,7 +915,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
 		if (fLastUndo < 1.0 && g_bOnBhopPlattform[client])
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client,"[%cKZ%c] %cUndo-TP is not allowed on bhop blocks!",MOSSGREEN,WHITE,RED);
+			PrintToChat(client,"[%cKZ%c] %cUndo-TP is not allowed on bhop blocks!",PINK,WHITE,RED);
 			g_bOnBhopPlattform[client]=false;
 			DoTeleport(client,0);		
 			new Float:f3pos[3];
