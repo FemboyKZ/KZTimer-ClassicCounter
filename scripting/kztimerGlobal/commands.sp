@@ -1298,7 +1298,7 @@ public ProfileSelectMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 		CloseHandle(menu);
 	}
 }
-
+/*
 public Action:Client_AutoBhop(client, args)
 {
 	AutoBhop(client);
@@ -1321,7 +1321,7 @@ public AutoBhop(client)
 	else
 		g_bAutoBhopClient[client] = false;
 }
-
+*/
 public Action:Client_Hide(client, args)
 {
 	HideMethod(client);
@@ -2609,7 +2609,7 @@ public ShowSrvSettings(client)
 	//PrintToConsole(client, "kz_admin_clantag %b", g_bAdminClantag);
 	PrintToConsole(client, "kz_attack_spam_protection %b", g_bAttackSpamProtection);
 	PrintToConsole(client, "kz_anticheat_ban_duration %.1fh", g_fBanDuration);
-	PrintToConsole(client, "kz_auto_bhop %i (climb maps are not supported)", g_bAutoBhopConVar);
+	//PrintToConsole(client, "kz_auto_bhop %i (climb maps are not supported)", g_bAutoBhopConVar);
 	PrintToConsole(client, "kz_auto_timer %i", g_bAutoTimer);
 	PrintToConsole(client, "kz_autoheal %i (requires kz_godmode 0)", g_Autohealing_Hp);
 	PrintToConsole(client, "kz_autorespawn %b", g_bAutoRespawn);
@@ -2969,6 +2969,7 @@ public OptionMenu(client)
 		AddMenuItem(optionmenu, "", buffer);
 	}
 	//17
+	/*
 	if (g_bAutoBhop)
 	{
 		if (g_bAutoBhopClient[client])
@@ -2982,6 +2983,7 @@ public OptionMenu(client)
 			AddMenuItem(optionmenu, "", buffer);
 		}
 	}
+	*/
 
 	SetMenuOptionFlags(optionmenu, MENUFLAG_BUTTON_EXIT);
 	if (g_OptionsMenuLastPage[client] < 6)
