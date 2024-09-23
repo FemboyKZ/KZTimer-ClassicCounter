@@ -1632,6 +1632,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 		else
 			g_bPlayerSkinChange = false;
 	}
+	/*
 	if(convar == g_hPointSystem)
 	{
 		if(newValue[0] == '1')
@@ -1652,6 +1653,7 @@ public OnSettingChanged(Handle:convar, const String:oldValue[], const String:new
 			g_bPointSystem = false;
 		}
 	}
+	*/
 	if(convar == g_hAttackSpamProtection)
 	{
 		if(newValue[0] == '1')
