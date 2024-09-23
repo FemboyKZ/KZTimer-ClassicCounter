@@ -421,9 +421,10 @@ public Action:KZTimer2(Handle:timer)
 			SpecListMenuAlive(i);
 			
 			//AutBhop check
+			/*
 			if (g_bAutoBhop && g_bTimeractivated[i])
 				g_global_AutoBhopDetected[i] = true;
-				
+			*/
 			//challenge check
 			if (g_bChallenge_Request[i])
 			{
