@@ -162,7 +162,10 @@ public Action:StartTimer(Handle:timer, any:client)
 
 public Action:BhopCheck(Handle:timer, any:client)
 {
-
+	/*
+	if (!g_js_bBhop[client])
+		g_js_GODLIKE_Count[client] = 0;
+	*/
 }
 
 public Action:VersionCheckTimer(Handle:timer)
