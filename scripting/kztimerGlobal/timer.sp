@@ -42,7 +42,7 @@ public Action:CheckTeleport(Handle:timer, any:client)
 		{
 			decl Float:org[3];
 			GetClientAbsOrigin(client,org);
-			PrintToChat(client,"[%cKZ%c] Unverified client teleport detected. Your position: %f, %f, %f on %s",MOSSGREEN,WHITE,org[0],org[1],org[2],g_szMapName);
+			PrintToChat(client,"[%cKZ%c] Unverified client teleport detected. Your position: %f, %f, %f on %s",PINK,WHITE,org[0],org[1],org[2],g_szMapName);
 			PrintToConsole(client,"[KZ] Unverified client teleport detected. Your position: %f, %f, %f on %s",org[0],org[1],org[2],g_szMapName);
 			Client_Stop(client,0);
 		}	
@@ -65,7 +65,7 @@ public Action:SpecAdvertTimer(Handle:timer)
 			if (StrEqual(szNameList,""))
 				Format(szNameList,1024,"%s",clientname);
 			else
-				Format(szNameList,1024,"%s%c;%c %s",szNameList, MOSSGREEN,WHITE,clientname);
+				Format(szNameList,1024,"%s%c;%c %s",szNameList, PINK,WHITE,clientname);
 			count++;
 		}
 	}
@@ -73,7 +73,7 @@ public Action:SpecAdvertTimer(Handle:timer)
 		PrintToChatAll(" %c>>%c Spectators (%c%i%c):%c %s",YELLOW,GRAY,LIMEGREEN,count,GRAY,WHITE,szNameList);
 	return Plugin_Continue;
 }
-
+/*
 public Action:GiveUsp(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && IsPlayerAlive(client))
@@ -87,7 +87,7 @@ public Action:GiveUsp(Handle:timer, any:client)
 		}
 	}
 }
-
+*/
 public Action:OpenOptionsMenu(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))
@@ -131,7 +131,7 @@ public Action:RefreshAdminMenu(Handle:timer, any:client)
 	if (IsValidEntity(client) && !IsFakeClient(client))
 		KzAdminMenu(client);
 }
-
+/*
 public Action:SetPlayerWeapons(Handle:timer, any:client)
 {
 	if ((GetClientTeam(client) > 1) && IsValidClient(client))
@@ -147,7 +147,7 @@ public Action:SetPlayerWeapons(Handle:timer, any:client)
 		}
 	}	
 }
-
+*/
 public Action:UpdatePlayerProfile(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))	
@@ -162,8 +162,7 @@ public Action:StartTimer(Handle:timer, any:client)
 
 public Action:BhopCheck(Handle:timer, any:client)
 {
-	if (!g_js_bBhop[client])
-		g_js_GODLIKE_Count[client] = 0;
+
 }
 
 public Action:VersionCheckTimer(Handle:timer)
@@ -406,8 +405,8 @@ public Action:KZTimer2(Handle:timer)
 				Client_SetDeaths(i,0);
 				Client_SetAssists(i,0);
 			}
-			if (!IsFakeClient(i) && !g_pr_Calculating[i])
-				CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);		
+			//if (!IsFakeClient(i) && !g_pr_Calculating[i])
+				//CreateTimer(0.0, SetClanTag, i,TIMER_FLAG_NO_MAPCHANGE);		
 		}
 		
 		
@@ -469,6 +468,7 @@ public Action:KZTimer2(Handle:timer)
 	}
 	
 	//clean weapons on ground
+	/*
 	decl maxEntities;
 	maxEntities = GetMaxEntities();
 	decl String:classx[20];
@@ -486,7 +486,7 @@ public Action:KZTimer2(Handle:timer)
 				}
 			}
 		}
-	}
+	}*/
 	if (g_global_EntityCheck)
 	{
 		decl String:classname[32];
@@ -646,7 +646,7 @@ public Action:LoadReplaysTimer(Handle:timer)
 	if (g_bReplayBot)
 		LoadReplays();
 }
-
+/*
 public Action:SetClanTag(Handle:timer, any:client)
 {
 	if (!IsValidClient(client) || IsFakeClient(client) || g_pr_Calculating[client])
@@ -684,9 +684,9 @@ public Action:SetClanTag(Handle:timer, any:client)
 	//new rank
 	if (oldrank && g_bPointSystem)
 		if (!StrEqual(g_pr_rankname[client], old_pr_rankname, false) && IsValidClient(client))
-			CPrintToChat(client,"%t","SkillGroup", MOSSGREEN, WHITE, GRAY,GRAY, g_pr_chat_coloredrank[client]);
+			CPrintToChat(client,"%t","SkillGroup", PINK, WHITE, GRAY,GRAY, g_pr_chat_coloredrank[client]);
 }
-
+*/
 public Action:TerminateRoundTimer(Handle:timer)
 {
 	CS_TerminateRound(1.0, CSRoundEnd_CTWin, true);
@@ -701,7 +701,7 @@ public Action:WelcomeMsgTimer(Handle:timer, any:client)
 public Action:HelpMsgTimer(Handle:timer, any:client)
 {
 	if (IsValidClient(client) && !IsFakeClient(client))
-		PrintToChat(client, "%t", "HelpMsg", MOSSGREEN,WHITE,GREEN,WHITE);
+		PrintToChat(client, "%t", "HelpMsg", PINK,WHITE,GREEN,WHITE);
 }
 
 public Action:SteamGroupTimer(Handle:timer, any:client)
@@ -724,7 +724,7 @@ public Action:StartMsgTimer(Handle:timer, any:client)
 	if (IsValidClient(client) && !IsFakeClient(client))
 	{
 		if (!g_bEnforcer)
-			PrintToChat(client, "%t", "SettingsEnforcerDisabled", MOSSGREEN,WHITE,GRAY);	
+			PrintToChat(client, "%t", "SettingsEnforcerDisabled", PINK,WHITE,GRAY);	
 		PrintMapRecords(client);	
 	}
 }
@@ -851,5 +851,3 @@ public Action:GetServerInfo(Handle:timer)
 	Format(g_szServerIp, sizeof(g_szServerIp), "%s:%i",NetIP,port);	
 	return Plugin_Continue;
 }
-
-
