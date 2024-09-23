@@ -4895,7 +4895,7 @@ public RegConsoleCmds()
 	RegConsoleCmd("sm_sync", Client_StrafeSync,"[KZTimer] on/off strafe sync in chat");
 	RegConsoleCmd("sm_surrender", Client_Surrender, "[KZTimer] surrender your current challenge");
 	RegConsoleCmd("sm_next", Client_Next,"[KZTimer] goto next checkpoint");
-	RegConsoleCmd("sm_bhop", Client_AutoBhop,"[KZTimer] on/off autobhop (only mg_,surf_ and bhop_ maps supported)");
+	//RegConsoleCmd("sm_bhop", Client_AutoBhop,"[KZTimer] on/off autobhop (only mg_,surf_ and bhop_ maps supported)");
 	RegConsoleCmd("sm_undo", Client_Undo,"[KZTimer] undoes your last telepoint");
 	RegConsoleCmd("sm_help2", Client_RankingSystem,"[KZTimer] Explanation of the KZTimer ranking system");
 	RegConsoleCmd("sm_flashlight", Client_Flashlight,"[KZTimer] on/off flashlight");
