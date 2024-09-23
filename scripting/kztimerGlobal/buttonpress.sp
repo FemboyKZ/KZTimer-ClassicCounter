@@ -199,10 +199,10 @@ public CL_OnEndTimerPress(client)
 					if (Target == client)
 					{
 						if (Target == g_TpBot)
-							PrintToChat(i, "%t", "ReplayFinishingMsg", MOSSGREEN,WHITE,LIMEGREEN,g_szReplayNameTp,GRAY,LIMEGREEN,g_szReplayTimeTp,GRAY);
+							PrintToChat(i, "%t", "ReplayFinishingMsg", PINK,WHITE,LIMEGREEN,g_szReplayNameTp,GRAY,LIMEGREEN,g_szReplayTimeTp,GRAY);
 						else
 						if (Target == g_ProBot)
-							PrintToChat(i, "%t", "ReplayFinishingMsg", MOSSGREEN,WHITE,LIMEGREEN,g_szReplayName,GRAY,LIMEGREEN,g_szReplayTime,GRAY);
+							PrintToChat(i, "%t", "ReplayFinishingMsg", PINK,WHITE,LIMEGREEN,g_szReplayName,GRAY,LIMEGREEN,g_szReplayTime,GRAY);
 					}
 				}					
 			}		
@@ -436,13 +436,13 @@ public CL_OnEndTimerPress(client)
 					GetClientName(i, szNameOpponent, MAX_NAME_LENGTH);	
 					for (new k = 1; k <= MaxClients; k++)
 						if (IsValidClient(k))
-							PrintToChat(k, "%t", "ChallengeW", RED,WHITE,MOSSGREEN,szName,WHITE,MOSSGREEN,szNameOpponent,WHITE); 			
+							PrintToChat(k, "%t", "ChallengeW", RED,WHITE,PINK,szName,WHITE,PINK,szNameOpponent,WHITE); 			
 					if (g_Challenge_Bet[client]>0)
 					{										
 						new lostpoints = g_Challenge_Bet[client] * g_pr_PointUnit;
 						for (new j = 1; j <= MaxClients; j++)
 							if (IsValidClient(j))
-								PrintToChat(j, "%t", "ChallengeL", MOSSGREEN, WHITE, PURPLE,szNameOpponent, GRAY, RED, lostpoints,GRAY);		
+								PrintToChat(j, "%t", "ChallengeL", PINK, WHITE, PURPLE,szNameOpponent, GRAY, RED, lostpoints,GRAY);		
 						CreateTimer(0.5, UpdatePlayerProfile, i,TIMER_FLAG_NO_MAPCHANGE);
 						g_pr_showmsg[client] = true;
 					}					
