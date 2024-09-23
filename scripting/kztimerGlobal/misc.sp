@@ -169,12 +169,12 @@ public SetServerConvars()
 		SetConVarFloat(g_hAccelerate, 6.5);
 		SetConVarFloat(g_hMaxVelocity, 2000.0);
 		SetConVarFloat(g_hBhopSpeedCap, 380.0);
-		SetConVarFloat(g_hWaterAccelerate, 10.0);
+		//SetConVarFloat(g_hWaterAccelerate, 10.0);
 		SetConVarInt(g_hCheats, 0);
 		SetConVarInt(g_hDropKnifeEnable, 0);
-		SetConVarInt(g_hEnableBunnyhoping, 1);
-		SetConVarInt(g_hAutoBhop, 0);
-		SetConVarInt(g_hClampVel, 0);
+		//SetConVarInt(g_hEnableBunnyhoping, 1);
+		//SetConVarInt(g_hAutoBhop, 0);
+		//SetConVarInt(g_hClampVel, 0);
 		SetConVarFloat(g_hsv_ladder_scale_speed, 1.0);
 	}
 
@@ -417,7 +417,7 @@ public PrintConsoleInfo(client)
 	PrintToConsole(client, "Player commands:");
 	PrintToConsole(client, "!help, !help2, !menu, !options, !checkpoint, !gocheck, !prev, !next, !undo, !profile, !compare, !specs,");
 	PrintToConsole(client, "!bhopcheck, !maptop, top, !start, !stop, !pause, !challenge, !surrender, !goto, !spec, !wr, !avg,");
-	PrintToConsole(client, "!showsettings, !latest, !measure, !ljblock, !ranks, !flashlight, !usp, !globalcheck, !beam,");
+	PrintToConsole(client, "!showsettings, !latest, !measure, !ljblock, !ranks, !flashlight, !globalcheck, !beam,");
 	PrintToConsole(client, "!adv, !speed, !showkeys, !hide, !sync, !bhop, !hidechat, !hideweapon, !stopsound, !route, !mapinfo");
 	PrintToConsole(client, " ");
 	PrintToConsole(client, "Scoreboard info:");
@@ -525,6 +525,7 @@ public StringToUpper(String:input[])
 	}
 }
 
+/*
 public GetCountry(client)
 {
 	if(client != 0)
@@ -582,6 +583,7 @@ stock StripAllWeapons(client)
 	if (GetPlayerWeaponSlot(client, 2) == -1)
 		GivePlayerItem(client, "weapon_knife");
 }
+*/
 
 public PlayButtonSound(client)
 {
@@ -724,13 +726,13 @@ public CreateButton(client,String:targetname[])
 			if (StrEqual(targetname, "climb_startbuttonx"))
 			{
 				g_fStartButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,MOSSGREEN,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Start button built!", WHITE,PINK,WHITE);
 				g_bFirstStartButtonPush=false;
 			}
 			else
 			{
 				g_fEndButtonPos = location3;
-				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,MOSSGREEN,WHITE);
+				PrintToChat(client,"%c[%cKZ%c] Stop button built!", WHITE,PINK,WHITE);
 				g_bFirstEndButtonPush = false;
 			}
 			g_global_SelfBuiltButtons=true;
@@ -776,7 +778,7 @@ public CreateButton(client,String:targetname[])
 		}
 	}
 	else
-		PrintToChat(client, "%t", "AdminSetButton", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "AdminSetButton", PINK,WHITE);
 	KzAdminMenu(client);
 }
 
@@ -899,7 +901,7 @@ public SetClientDefaults(client)
 	g_bShowTime[client]=true;
 	g_bHide[client]=false;
 	g_bCPTextMessage[client]=false;
-	g_bStartWithUsp[client] = false;
+	//g_bStartWithUsp[client] = false;
 	g_bAdvancedClimbersMenu[client]=true;
 	g_ColorChat[client]=1;
 	g_ShowSpecs[client]=0;
@@ -1187,9 +1189,9 @@ public PrintMapRecords(client)
 			FormatTimeFloat(client, g_fGlobalRecordPro_Time, 3,szTime,sizeof(szTime));
 			switch(g_Server_Tickrate)
 			{
-				case 64: PrintToChat(client, "%t", "GlobalRecord1_Pro",MOSSGREEN,WHITE, DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
-				case 102: PrintToChat(client, "%t", "GlobalRecord2_Pro",MOSSGREEN,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
-				case 128: PrintToChat(client, "%t", "GlobalRecord3_Pro",MOSSGREEN,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 64: PrintToChat(client, "%t", "GlobalRecord1_Pro",PINK,WHITE, DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 102: PrintToChat(client, "%t", "GlobalRecord2_Pro",PINK,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
+				case 128: PrintToChat(client, "%t", "GlobalRecord3_Pro",PINK,WHITE,DARKRED,WHITE, szTime, g_GlobalRecordPro_Name);
 			}
 		}
 
@@ -1198,9 +1200,9 @@ public PrintMapRecords(client)
 			FormatTimeFloat(client, g_fGlobalRecordTp_Time, 3,szTime,sizeof(szTime));
 			switch(g_Server_Tickrate)
 			{
-				case 64: PrintToChat(client, "%t", "GlobalRecord1_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
-				case 102: PrintToChat(client, "%t", "GlobalRecord2_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
-				case 128: PrintToChat(client, "%t", "GlobalRecord3_Tp",MOSSGREEN,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 64: PrintToChat(client, "%t", "GlobalRecord1_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 102: PrintToChat(client, "%t", "GlobalRecord2_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
+				case 128: PrintToChat(client, "%t", "GlobalRecord3_Tp",PINK,WHITE,RED,WHITE, szTime, g_GlobalRecordTp_Name);
 			}
 		}
 	}
@@ -1208,12 +1210,12 @@ public PrintMapRecords(client)
 	if (g_fRecordTimePro != 9999999.0)
 	{
 		FormatTimeFloat(client, g_fRecordTimePro, 3,szTime,sizeof(szTime));
-		PrintToChat(client, "%t", "ProRecord",MOSSGREEN,WHITE,DARKBLUE,WHITE, szTime, g_szRecordPlayerPro);
+		PrintToChat(client, "%t", "ProRecord",PINK,WHITE,DARKBLUE,WHITE, szTime, g_szRecordPlayerPro);
 	}
 	if (g_fRecordTime != 9999999.0)
 	{
 		FormatTimeFloat(client, g_fRecordTime, 3,szTime,sizeof(szTime));
-		PrintToChat(client, "%t", "TpRecord",MOSSGREEN,WHITE,YELLOW,WHITE, szTime, g_szRecordPlayer);
+		PrintToChat(client, "%t", "TpRecord",PINK,WHITE,YELLOW,WHITE, szTime, g_szRecordPlayer);
 	}
 }
 
@@ -1245,37 +1247,37 @@ public MapFinishedMsgs(client, type)
 			{
 				if (g_Time_Type[client] == 0)
 				{
-					PrintToChat(i, "%t", "MapFinished0",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,  LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+					PrintToChat(i, "%t", "MapFinished0",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,  LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 					PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],rank,count,szTime);
 				}
 				else
 				if (g_Time_Type[client] == 1)
 				{
-					PrintToChat(i, "%t", "MapFinished1",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+					PrintToChat(i, "%t", "MapFinished1",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 					PrintToConsole(i, "%s finished with a PRO TIME of (%s). [rank #%i/%i | record %s]",szName,g_szFinalTime[client],rank,count,szTime);
 				}
 				else
 					if (g_Time_Type[client] == 2)
 					{
-						PrintToChat(i, "%t", "MapFinished2",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+						PrintToChat(i, "%t", "MapFinished2",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 						PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). Improving their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],g_szTimeDifference[client],rank,count,szTime);
 					}
 					else
 						if (g_Time_Type[client] == 3)
 						{
-							PrintToChat(i, "%t", "MapFinished3",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+							PrintToChat(i, "%t", "MapFinished3",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,GREEN, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 							PrintToConsole(i, "%s finished with a PRO TIME of (%s). Improving their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_szTimeDifference[client],rank,count,szTime);
 						}
 						else
 							if (g_Time_Type[client] == 4)
 							{
-								PrintToChat(i, "%t", "MapFinished4",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+								PrintToChat(i, "%t", "MapFinished4",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,LIMEGREEN,g_Tp_Final[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 								PrintToConsole(i, "%s finished with a TP TIME of (%s, TP's: %i). Missing their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_Tp_Final[client],g_szTimeDifference[client],rank,count,szTime);
 							}
 							else
 								if (g_Time_Type[client] == 5)
 								{
-									PrintToChat(i, "%t", "MapFinished5",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
+									PrintToChat(i, "%t", "MapFinished5",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE,GRAY,LIMEGREEN, g_szFinalTime[client],GRAY,RED, g_szTimeDifference[client],GRAY, WHITE, LIMEGREEN, rank, WHITE,count,LIMEGREEN,szTime,WHITE);
 									PrintToConsole(i, "%s finished with a PRO TIME of (%s). Missing their best time by (%s).  [rank #%i/%i | record %s]",szName,g_szFinalTime[client],g_szTimeDifference[client],rank,count,szTime);
 								}
 
@@ -1288,17 +1290,17 @@ public MapFinishedMsgs(client, type)
 						{
 							case 64:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord64_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToChat(i, "%t", "NewGlobalRecord64_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (64)",szName);
 							}
 							case 102:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord102_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToChat(i, "%t", "NewGlobalRecord102_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD (102)",szName);
 							}
 							case 128:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord128_Tp",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,RED);
+								PrintToChat(i, "%t", "NewGlobalRecord128_Tp",PINK,WHITE,LIMEGREEN,szName,GRAY,RED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL TP RECORD",szName);
 							}
 						}
@@ -1309,29 +1311,29 @@ public MapFinishedMsgs(client, type)
 						{
 							case 64:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord64_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToChat(i, "%t", "NewGlobalRecord64_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (64)",szName);
 							}
 							case 102:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord102_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToChat(i, "%t", "NewGlobalRecord102_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD (102)",szName);
 							}
 							case 128:
 							{
-								PrintToChat(i, "%t", "NewGlobalRecord128_Pro",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
+								PrintToChat(i, "%t", "NewGlobalRecord128_Pro",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKRED);
 								PrintToConsole(i, "[KZ] %s has beaten the GLOBAL PRO RECORD",szName);
 							}
 						}
 					}
 					case 2:
 					{
-						PrintToChat(i, "%t", "NewProRecord",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE);
+						PrintToChat(i, "%t", "NewProRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,DARKBLUE);
 						PrintToConsole(i, "[KZ] %s has beaten the PRO RECORD",szName);
 					}
 					case 1:
 					{
-						PrintToChat(i, "%t", "NewTpRecord",MOSSGREEN,WHITE,LIMEGREEN,szName,GRAY,YELLOW);
+						PrintToChat(i, "%t", "NewTpRecord",PINK,WHITE,LIMEGREEN,szName,GRAY,YELLOW);
 						PrintToConsole(i, "[KZ] %s has beaten the TP RECORD",szName);
 					}
 				}
@@ -1339,7 +1341,7 @@ public MapFinishedMsgs(client, type)
 		}
 
 		if (rank==99999 && IsValidClient(client))
-			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",MOSSGREEN,WHITE,DARKRED,RED,DARKRED);
+			PrintToChat(client, "[%cKZ%c] %cFailed to save your data correctly! Please contact an admin.",PINK,WHITE,DARKRED,RED,DARKRED);
 		else
 		{
 			Call_StartForward(g_hFWD_TimerStoppedValid);
@@ -1352,7 +1354,7 @@ public MapFinishedMsgs(client, type)
 
 		//noclip MsgMsg
 		if (IsValidClient(client) && g_bMapFinished[client] == false && !StrEqual(g_pr_rankname[client],g_szSkillGroups[8]) && !(GetUserFlagBits(client) & ADMFLAG_RESERVATION) && !(GetUserFlagBits(client) & ADMFLAG_ROOT) && !(GetUserFlagBits(client) & ADMFLAG_GENERIC) && g_bNoClipS)
-			PrintToChat(client, "%t", "NoClipUnlocked",MOSSGREEN,WHITE,YELLOW);
+			PrintToChat(client, "%t", "NoClipUnlocked",PINK,WHITE,YELLOW);
 		g_bMapFinished[client] = true;
 		CreateTimer(0.0, UpdatePlayerProfile, client,TIMER_FLAG_NO_MAPCHANGE);
 
@@ -1667,6 +1669,7 @@ public SetPlayerRank(client)
 	}
 
 	// VIP tag
+	/*
 	if (g_bVipClantag)
 		if ((GetUserFlagBits(client) & ADMFLAG_RESERVATION) && !(GetUserFlagBits(client) & ADMFLAG_ROOT) && !(GetUserFlagBits(client) & ADMFLAG_GENERIC))
 		{
@@ -1712,6 +1715,7 @@ public SetPlayerRank(client)
 			}
 		}
 	}
+	*/
 }
 
 stock Action:PrintSpecMessageAll(client)
@@ -1760,6 +1764,7 @@ stock Action:PrintSpecMessageAll(client)
 	if(RTLify(sTextNew, szTextToAll))
 		FormatEx(szTextToAll, 1024, sTextNew);
 
+	/*
 	decl String:szChatRank[64];
 	Format(szChatRank, 64, "%s",g_pr_chat_coloredrank[client]);
 
@@ -1787,6 +1792,7 @@ stock Action:PrintSpecMessageAll(client)
 						else
 							PrintToConsole(i, "*SPEC* %s: %s", szName, szTextToAll);
 		}
+	*/
 	return Plugin_Handled;
 }
 
@@ -2451,7 +2457,7 @@ public MenuTitleRefreshing(client)
 				g_bMissedProBest[client]=true;
 				FormatTimeFloat(client, g_fPersonalRecordPro[client], 3,szTime, sizeof(szTime));
 				if (g_fPersonalRecordPro[client] > 0.0)
-					PrintToChat(client, "%t", "MissedProBest", MOSSGREEN,WHITE,GRAY,DARKBLUE,szTime,GRAY);
+					PrintToChat(client, "%t", "MissedProBest", PINK,WHITE,GRAY,DARKBLUE,szTime,GRAY);
 				EmitSoundToClient(client,"buttons/button18.wav",client);
 			}
 			else
@@ -2461,7 +2467,7 @@ public MenuTitleRefreshing(client)
 					g_bMissedTpBest[client]=true;
 					FormatTimeFloat(client, g_fPersonalRecord[client], 3, szTime, sizeof(szTime));
 					if (g_fPersonalRecord[client] > 0.0)
-						PrintToChat(client, "%t", "MissedTpBest", MOSSGREEN,WHITE,GRAY,YELLOW,szTime,GRAY);
+						PrintToChat(client, "%t", "MissedTpBest", PINK,WHITE,GRAY,YELLOW,szTime,GRAY);
 					EmitSoundToClient(client,"buttons/button18.wav",client);
 				}
 		}
@@ -2944,7 +2950,7 @@ public SpecListMenuDead(client)
 				if (g_bSpecInfo[client] && IsFakeClient(ObservedUser))
 				{
 					g_bSpecInfo[client]=false;
-					PrintToChat(client, "%t", "SpecInfo",MOSSGREEN, WHITE,GREEN,WHITE);
+					PrintToChat(client, "%t", "SpecInfo",PINK, WHITE,GREEN,WHITE);
 				}
 				if (g_bTimeractivated[ObservedUser])
 				{
@@ -3132,11 +3138,11 @@ public PerformStats(client, target,bool:console_only)
 		decl String:banstats[512];
 		GetClientStats(target, banstats, sizeof(banstats));
 		if (!console_only)
-			PrintToChat(client, "[%cKZ%c] %s",MOSSGREEN,WHITE,banstats);
+			PrintToChat(client, "[%cKZ%c] %s",PINK,WHITE,banstats);
 		PrintToConsole(client, "[KZ] %s, fps_max: %i, Tickrate: %i",banstats,g_fps_max[target],	g_Server_Tickrate);
 		if (g_bAutoBhop)
 		{
-			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",MOSSGREEN,WHITE);
+			PrintToChat(client, "[%cKZ%c] AutoBhop enabled",PINK,WHITE);
 			PrintToConsole(client, "[KZ] AutoBhop enabled");
 		}
 	}
@@ -3824,7 +3830,7 @@ GetPos(client,arg)
 	if(!TR_DidHit(trace))
 	{
 		CloseHandle(trace);
-		PrintToChat(client, "%t", "Measure3",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Measure3",PINK,WHITE);
 		return;
 	}
 	TR_GetEndPosition(origin,trace);
@@ -3832,7 +3838,7 @@ GetPos(client,arg)
 	g_fvMeasurePos[client][arg][0] = origin[0];
 	g_fvMeasurePos[client][arg][1] = origin[1];
 	g_fvMeasurePos[client][arg][2] = origin[2];
-	PrintToChat(client, "%t", "Measure4",MOSSGREEN,WHITE,arg+1,origin[0],origin[1],origin[2]);
+	PrintToChat(client, "%t", "Measure4",PINK,WHITE,arg+1,origin[0],origin[1],origin[2]);
 	if(arg == 0)
 	{
 		if(g_hP2PRed[client] != INVALID_HANDLE)
@@ -4454,7 +4460,7 @@ public RegServerConVars()
 	g_hNoClipS = CreateConVar("kz_noclip", "1", "on/off - Allows players to use noclip when they have finished the map", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bNoClipS     = GetConVarBool(g_hNoClipS);
 	HookConVarChange(g_hNoClipS, OnSettingChanged);
-
+	/*
 	g_hVipClantag = 	CreateConVar("kz_vip_clantag", "1", "on/off - VIP clan tag (necessary flag: a)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bVipClantag     = GetConVarBool(g_hVipClantag);
 	HookConVarChange(g_hVipClantag, OnSettingChanged);
@@ -4462,7 +4468,7 @@ public RegServerConVars()
 	g_hAdminClantag = 	CreateConVar("kz_admin_clantag", "1", "on/off - Admin clan tag (necessary flag: b - z)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bAdminClantag     = GetConVarBool(g_hAdminClantag);
 	HookConVarChange(g_hAdminClantag, OnSettingChanged);
-
+	*/
 	g_hAutoTimer = CreateConVar("kz_auto_timer", "0", "on/off - Timer starts automatically when a player joins a team, dies or uses !start/!r (0 required for global records)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bAutoTimer     = GetConVarBool(g_hAutoTimer);
 	HookConVarChange(g_hAutoTimer, OnSettingChanged);
@@ -4514,27 +4520,27 @@ public RegServerConVars()
 	g_hAutohealing_Hp 	= CreateConVar("kz_autoheal", "50", "Sets HP amount for autohealing (requires kz_godmode 0)", FCVAR_NOTIFY, true, 0.0, true, 100.0);
 	g_Autohealing_Hp     = GetConVarInt(g_hAutohealing_Hp);
 	HookConVarChange(g_hAutohealing_Hp, OnSettingChanged);
-
+	/*
 	g_hCleanWeapons 	= CreateConVar("kz_clean_weapons", "1", "on/off - Removes all weapons on the ground", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bCleanWeapons     = GetConVarBool(g_hCleanWeapons);
 	HookConVarChange(g_hCleanWeapons, OnSettingChanged);
-
+	*/
 	g_hJumpStats 	= CreateConVar("kz_jumpstats", "1", "on/off - Measuring of jump distances (longjump, weirdjump, bhop, dropbhop, multibhop, ladderjump)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bJumpStats     = GetConVarBool(g_hJumpStats);
 	HookConVarChange(g_hJumpStats, OnSettingChanged);
-
+	/*
 	g_hCountry 	= CreateConVar("kz_country_tag", "1", "on/off - Country clan tag", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bCountry     = GetConVarBool(g_hCountry);
 	HookConVarChange(g_hCountry, OnSettingChanged);
-
+	*/
 	g_hChallengePoints 	= CreateConVar("kz_challenge_points", "1", "on/off - Allows players to bet points on their challenges", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bChallengePoints     = GetConVarBool(g_hChallengePoints);
 	HookConVarChange(g_hChallengePoints, OnSettingChanged);
-
+	/*
 	g_hAutoBhopConVar 	= CreateConVar("kz_auto_bhop", "0", "on/off - AutoBhop on bhop_ and surf_ maps (climb maps are not supported)", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bAutoBhopConVar     = GetConVarBool(g_hAutoBhopConVar);
 	HookConVarChange(g_hAutoBhopConVar, OnSettingChanged);
-
+	*/
 	g_hDynamicTimelimit 	= CreateConVar("kz_dynamic_timelimit", "1", "on/off - Sets a suitable timelimit by calculating the average run time (This method requires kz_map_end 1, greater than 5 map times and a default timelimit in your server config for maps with less than 5 times", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bDynamicTimelimit     = GetConVarBool(g_hDynamicTimelimit);
 	HookConVarChange(g_hDynamicTimelimit, OnSettingChanged);
@@ -4624,17 +4630,17 @@ public RegServerConVars()
 	g_hGravity = FindConVar("sv_gravity");
 	g_hAirAccelerate = FindConVar("sv_airaccelerate");
 	g_hMaxSpeed = FindConVar("sv_maxspeed");
-	g_hWaterAccelerate = FindConVar("sv_wateraccelerate");
+	//g_hWaterAccelerate = FindConVar("sv_wateraccelerate");
 	g_hFriction = FindConVar("sv_friction");
 	g_hAccelerate = FindConVar("sv_accelerate");
 	g_hMaxVelocity = FindConVar("sv_maxvelocity");
 	g_hCheats = FindConVar("sv_cheats");
 	g_hDropKnifeEnable = FindConVar("sv_cheats");
-	g_hEnableBunnyhoping = FindConVar("sv_enablebunnyhopping");
+	//g_hEnableBunnyhoping = FindConVar("sv_enablebunnyhopping");
 
   // New convars
-	g_hAutoBhop= FindConVar("sv_autobunnyhopping");
-	g_hClampVel= FindConVar("sv_clamp_unsafe_velocities");
+	//g_hAutoBhop= FindConVar("sv_autobunnyhopping");
+	//g_hClampVel= FindConVar("sv_clamp_unsafe_velocities");
 
 	g_hsv_ladder_scale_speed = FindConVar("sv_ladder_scale_speed");
 	g_hMaxRounds = FindConVar("mp_maxrounds");
@@ -4642,16 +4648,16 @@ public RegServerConVars()
 	HookConVarChange(g_hStaminaJumpCost, OnSettingChanged);
 	HookConVarChange(g_hMaxSpeed, OnSettingChanged);
 	HookConVarChange(g_hGravity, OnSettingChanged);
-	HookConVarChange(g_hWaterAccelerate, OnSettingChanged);
+	//HookConVarChange(g_hWaterAccelerate, OnSettingChanged);
 	HookConVarChange(g_hAirAccelerate, OnSettingChanged);
 	HookConVarChange(g_hFriction, OnSettingChanged);
 	HookConVarChange(g_hAccelerate, OnSettingChanged);
 	HookConVarChange(g_hMaxVelocity, OnSettingChanged);
 	HookConVarChange(g_hCheats, OnSettingChanged);
 	HookConVarChange(g_hDropKnifeEnable, OnSettingChanged);
-	HookConVarChange(g_hEnableBunnyhoping, OnSettingChanged);
-	HookConVarChange(g_hAutoBhop, OnSettingChanged);
-	HookConVarChange(g_hClampVel, OnSettingChanged);
+	//HookConVarChange(g_hEnableBunnyhoping, OnSettingChanged);
+	//HookConVarChange(g_hAutoBhop, OnSettingChanged);
+	//HookConVarChange(g_hClampVel, OnSettingChanged);
 	HookConVarChange(g_hsv_ladder_scale_speed, OnSettingChanged);
 	HookConVarChange(g_hMaxRounds, OnSettingChanged);
 
@@ -4875,7 +4881,7 @@ public RegServerConVars()
 public RegConsoleCmds()
 {
 	RegConsoleCmd("kill", BlockKill);
-	RegConsoleCmd("sm_usp", Client_Usp, "[KZTimer] spawns a usp silencer");
+	//RegConsoleCmd("sm_usp", Client_Usp, "[KZTimer] spawns a usp silencer");
 	RegConsoleCmd("sm_beam", Client_PlayerJumpBeam, "[KZTimer] onf/off - showing the trajectory of the jump");
 	RegConsoleCmd("sm_avg", Client_Avg, "[KZTimer] prints in chat the average time of the current map");
 	RegConsoleCmd("sm_join", Client_Join, "[KZTimer] Opens the kztimer steam group");
