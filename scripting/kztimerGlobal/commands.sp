@@ -3,7 +3,7 @@ public Action:Client_Stopsound(client, args)
 	if (IsValidClient(client))
 	{
 		ClientCommand(client,"snd_playsounds Music.StopAllExceptMusic");
-		PrintToChat(client, "%t", "stopsound", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "stopsound", PINK,WHITE);
 	}
 	return Plugin_Handled;
 }
@@ -24,7 +24,7 @@ public Action:Command_Specs(client, args)
 			if (StrEqual(szNameList,""))
 				Format(szNameList,1024,"%s",clientname);
 			else
-				Format(szNameList,1024,"%s%c;%c %s",szNameList, MOSSGREEN,WHITE,clientname);
+				Format(szNameList,1024,"%s%c;%c %s",szNameList, PINK,WHITE,clientname);
 			count++;
 		}
 	}
@@ -39,7 +39,7 @@ public Action:Command_Specs(client, args)
 
 public Action:Client_RankingSystem(client, args)
 {
-	PrintToChat(client,"[%cKZ%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", MOSSGREEN,WHITE,LIMEGREEN);
+	PrintToChat(client,"[%cKZ%c]%c Loading html page.. (requires cl_disablehtmlmotd 0)", PINK,WHITE,LIMEGREEN);
 	ShowMOTDPanel(client, "rankingsystem" ,"http://kuala-lumpur-court-8417.pancakeapps.com/ranking_index.html", 2);
 	return Plugin_Handled;
 }
@@ -56,7 +56,7 @@ public Action:Client_Wr(client, args)
 	if (IsValidClient(client))
 	{
 		if (g_fGlobalRecordTp_Time == 9999999.0 && g_fGlobalRecordPro_Time == 9999999.0 && g_fRecordTimePro == 9999999.0 && g_fRecordTime == 9999999.0)
-			PrintToChat(client, "%t", "NoRecordTop", MOSSGREEN,WHITE);
+			PrintToChat(client, "%t", "NoRecordTop", PINK,WHITE);
 		else
 			PrintMapRecords(client);
 	}
@@ -105,7 +105,7 @@ public Action:Command_Stats(client, args)
 {
 	if (args < 1)
 	{
-	ReplyToCommand(client, "[%cKZ%c] Usage: !bhopcheck <name> | @all | @me",MOSSGREEN,WHITE);
+	ReplyToCommand(client, "[%cKZ%c] Usage: !bhopcheck <name> | @all | @me",PINK,WHITE);
 	return Plugin_Handled;
 	}
 	decl String:arg[65];
@@ -126,7 +126,7 @@ public Action:Command_Stats(client, args)
 	return Plugin_Handled;
 	}
 	if (target_count > 3)
-	PrintToChat(client, "[%cKZ%c] See console for output!", MOSSGREEN,WHITE);
+	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);
 	for (new i = 0; i < target_count; i++)
 	{
 	if (target_count > 3)
@@ -253,7 +253,7 @@ public ChallengeMenuHandler2(Handle:challengemenu, MenuAction:action, param1,par
 		}
 		else
 		{
-			PrintToChat(param1, "%t", "ChallengeFailed4",MOSSGREEN,WHITE);
+			PrintToChat(param1, "%t", "ChallengeFailed4",PINK,WHITE);
 		}
 
 	}
@@ -387,7 +387,7 @@ public Action:Client_Accept(client, args)
 				else
 					Format(szCP, sizeof(szCP), "Forbidden");
 				new points = g_Challenge_Bet[i]*2*g_pr_PointUnit;
-				PrintToChatAll("[%cKZ%c] Challenge: %c%s%c vs. %c%s%c",RED,WHITE,MOSSGREEN,szPlayer1,WHITE,MOSSGREEN,szPlayer2,WHITE);
+				PrintToChatAll("[%cKZ%c] Challenge: %c%s%c vs. %c%s%c",RED,WHITE,PINK,szPlayer1,WHITE,PINK,szPlayer2,WHITE);
 				PrintToChatAll("[%cKZ%c] Checkpoints: %c%s%c, Pot: %c%ip",RED,WHITE,GRAY,szCP,WHITE,GRAY,points);
 
 				new r1 = GetRandomInt(55, 255);
@@ -433,7 +433,7 @@ public Action:Client_Avg(client, args)
 		Format(szProTime,32,"00:00:00");
 	if (g_MapTimesCountTp==0)
 		Format(szTpTime,32,"00:00:00");
-	PrintToChat(client, "%t", "AvgTime", MOSSGREEN,WHITE,GRAY,DARKBLUE,WHITE,szProTime,g_MapTimesCountPro,YELLOW,WHITE,szTpTime,g_MapTimesCountTp);
+	PrintToChat(client, "%t", "AvgTime", PINK,WHITE,GRAY,DARKBLUE,WHITE,szProTime,g_MapTimesCountPro,YELLOW,WHITE,szTpTime,g_MapTimesCountTp);
 	return Plugin_Handled;
 }
 
@@ -442,9 +442,9 @@ public Action:Client_HideWeapon(client, args)
 {
 	HideViewModel(client);
 	if (g_bViewModel[client])
-		PrintToChat(client, "%t", "HideViewModel2",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideViewModel2",PINK, WHITE);
 	else
-		PrintToChat(client, "%t", "HideViewModel1",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideViewModel1",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -461,7 +461,7 @@ public HideViewModel(client)
 		Client_SetDrawViewModel(client,false);
 	}
 }
-
+/*
 public Action:Client_Usp(client, args)
 {
 	if(!IsValidClient(client) || !IsPlayerAlive(client))
@@ -476,7 +476,7 @@ public Action:Client_Usp(client, args)
 		GivePlayerItem(client, "weapon_usp_silencer");
 	return Plugin_Handled;
 }
-
+*/
 InstantSwitch(client, weapon, timer = 0)
 {
 	if (weapon==-1)
@@ -520,7 +520,7 @@ public Action:Client_Surrender (client, args)
 					{
 						if (IsValidClient(j) && IsValidEntity(j))
 						{
-								PrintToChat(j, "%t", "Challenge4",RED,WHITE,MOSSGREEN,szNameOpponent, WHITE,MOSSGREEN,szName,WHITE);
+								PrintToChat(j, "%t", "Challenge4",RED,WHITE,PINK,szNameOpponent, WHITE,PINK,szName,WHITE);
 						}
 					}
 					//win ratio
@@ -530,12 +530,12 @@ public Action:Client_Surrender (client, args)
 					if (g_Challenge_Bet[client] > 0)
 					{
 						g_pr_showmsg[i] = true;
-						PrintToChat(i, "%t", "Rc_PlayerRankStart", MOSSGREEN,WHITE,GRAY);
-						PrintToChat(client, "%t", "Rc_PlayerRankStart", MOSSGREEN,WHITE,GRAY);
+						PrintToChat(i, "%t", "Rc_PlayerRankStart", PINK,WHITE,GRAY);
+						PrintToChat(client, "%t", "Rc_PlayerRankStart", PINK,WHITE,GRAY);
 						new lostpoints = g_Challenge_Bet[client] * g_pr_PointUnit;
 						for (new j = 1; j <= MaxClients; j++)
 							if (IsValidClient(j) && IsValidEntity(j))
-								PrintToChat(j, "[%cKZ%c] %c%s%c has lost %c%i %cpoints!", MOSSGREEN, WHITE, PURPLE,szName, GRAY, RED, lostpoints,GRAY);
+								PrintToChat(j, "[%cKZ%c] %c%s%c has lost %c%i %cpoints!", PINK, WHITE, PURPLE,szName, GRAY, RED, lostpoints,GRAY);
 					}
 					//db update
 					CreateTimer(0.0, UpdatePlayerProfile, i,TIMER_FLAG_NO_MAPCHANGE);
@@ -660,7 +660,7 @@ public Action:Client_Next(client, args)
 {
 	if(g_CurrentCp[client] == -1)
 	{
-		PrintToChat(client, "%t", "NoCheckpointsFound", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "NoCheckpointsFound", PINK,WHITE);
 		return Plugin_Handled;
 	}
 	DoTeleport(client,1);
@@ -677,12 +677,11 @@ public Action:Client_Undo(client, args)
 		{
 			g_fLastUndo[client] = GetEngineTime();
 			DoValidTeleport(client, g_fPlayerCordsUndoTp[client],g_fPlayerAnglesUndoTp[client], Float:{0.0,0.0,-100.0});
-			g_js_GODLIKE_Count[client] = 0;
 		}
 		else
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client, "%t", "UndoMidAir",MOSSGREEN, WHITE,RED);
+			PrintToChat(client, "%t", "UndoMidAir",PINK, WHITE,RED);
 		}
 	}
 	else
@@ -690,7 +689,7 @@ public Action:Client_Undo(client, args)
 		if (g_bInvalidUndoGround[client])
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client, "%t", "UndoLadder",MOSSGREEN, WHITE,RED);
+			PrintToChat(client, "%t", "UndoLadder",PINK, WHITE,RED);
 		}
 	}
 	return Plugin_Handled;
@@ -709,7 +708,7 @@ public Action:NoClip(client, args)
 			if ((StrEqual(g_pr_rankname[client],g_szSkillGroups[8]) || StrEqual(g_pr_rankname[client],"MAPPER") || GetUserFlagBits(client) & ADMFLAG_RESERVATION || GetUserFlagBits(client) & ADMFLAG_ROOT || GetUserFlagBits(client) & ADMFLAG_GENERIC) && !g_bNoClip[client])
 				Action_NoClip(client);
 			else
-				PrintToChat(client, "%t", "NoclipNotAvailable2",MOSSGREEN, WHITE, g_szSkillGroups[8]);
+				PrintToChat(client, "%t", "NoclipNotAvailable2",PINK, WHITE, g_szSkillGroups[8]);
 		}
 		else
 			if (!g_bNoClip[client])
@@ -717,7 +716,7 @@ public Action:NoClip(client, args)
 	}
 	else
 		if (IsValidClient(client))
-			PrintToChat(client, "%t", "NoclipNotAvailable3",MOSSGREEN, WHITE);
+			PrintToChat(client, "%t", "NoclipNotAvailable3",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -732,7 +731,7 @@ public Action:Client_Prev(client, args)
 {
 	if(g_CurrentCp[client] == -1)
 	{
-		PrintToChat(client, "%t", "NoCheckpointsFound", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "NoCheckpointsFound", PINK,WHITE);
 		return Plugin_Handled;
 	}
 	DoTeleport(client,-1);
@@ -818,11 +817,11 @@ public Handler_MainMenu(Handle:menu,MenuAction:action,param1,param2)
 				{
 					new Float:vDist = GetVectorDistance(g_fvMeasurePos[param1][0],g_fvMeasurePos[param1][1]);
 					new Float:vHightDist = (g_fvMeasurePos[param1][0][2] - g_fvMeasurePos[param1][1][2]);
-					PrintToChat(param1, "%t", "Measure1",MOSSGREEN,WHITE,vDist,vHightDist);
+					PrintToChat(param1, "%t", "Measure1",PINK,WHITE,vDist,vHightDist);
 					Beam(param1,g_fvMeasurePos[param1][0],g_fvMeasurePos[param1][1],4.0,2.0,0,0,255);
 				}
 				else
-					PrintToChat(param1, "%t", "Measure2",MOSSGREEN,WHITE);
+					PrintToChat(param1, "%t", "Measure2",PINK,WHITE);
 			}
 			case 3: {	//Reset
 				ResetPos(param1);
@@ -954,7 +953,7 @@ public SpecPlayer(client,args)
 			DisplayMenu(menu, client, MENU_TIME_FOREVER);
 		}
 		else
-			PrintToChat(client, "%t", "ChallengeFailed4",MOSSGREEN,WHITE);
+			PrintToChat(client, "%t", "ChallengeFailed4",PINK,WHITE);
 
 	}
 	else
@@ -987,7 +986,7 @@ public SpecPlayer(client,args)
 				}
 			}
 		}
-		PrintToChat(client, "%t", "PlayerNotFound",MOSSGREEN,WHITE, szOrgTargetName);
+		PrintToChat(client, "%t", "PlayerNotFound",PINK,WHITE, szOrgTargetName);
 	}
 }
 
@@ -1067,7 +1066,7 @@ public SpecMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 public Action:Client_Kzmenu(client, args)
 {
 	if (!g_bAllowCheckpoints && IsValidClient(client))
-		PrintToChat(client, "%t", "CMenuDisabled",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "CMenuDisabled",PINK, WHITE);
 	else
 	{
 		g_bMenuOpen[client]=false;
@@ -1104,7 +1103,7 @@ public CompareMenu(client,args)
 			DisplayMenu(menu, client, MENU_TIME_FOREVER);
 		}
 		else
-			PrintToChat(client,"[%cKZ%c] No valid players found",MOSSGREEN,WHITE);
+			PrintToChat(client,"[%cKZ%c] No valid players found",PINK,WHITE);
 		return;
 	}
 	else
@@ -1306,9 +1305,9 @@ public Action:Client_AutoBhop(client, args)
 	if (g_bAutoBhop)
 	{
 		if (!g_bAutoBhopClient[client])
-			PrintToChat(client, "%t", "AutoBhop2",MOSSGREEN,WHITE);
+			PrintToChat(client, "%t", "AutoBhop2",PINK,WHITE);
 		else
-			PrintToChat(client, "%t", "AutoBhop1",MOSSGREEN,WHITE);
+			PrintToChat(client, "%t", "AutoBhop1",PINK,WHITE);
 	}
 	return Plugin_Handled;
 }
@@ -1316,7 +1315,7 @@ public Action:Client_AutoBhop(client, args)
 public AutoBhop(client)
 {
 	if (!g_bAutoBhop)
-		PrintToChat(client, "%t", "AutoBhop3",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "AutoBhop3",PINK,WHITE);
 	if (!g_bAutoBhopClient[client])
 		g_bAutoBhopClient[client] = true;
 	else
@@ -1327,9 +1326,9 @@ public Action:Client_Hide(client, args)
 {
 	HideMethod(client);
 	if (!g_bHide[client])
-		PrintToChat(client, "%t", "Hide1",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Hide1",PINK,WHITE);
 	else
-		PrintToChat(client, "%t", "Hide2",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Hide2",PINK,WHITE);
 	return Plugin_Handled;
 }
 
@@ -1371,7 +1370,7 @@ public Action:Client_Ranks(client, args)
 {
 	if (IsValidClient(client))
 		PrintToChat(client, "[%cKZ%c] %c%s (0p)  %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)   %c%s%c (%ip)",
-		MOSSGREEN,WHITE, WHITE, g_szSkillGroups[0],WHITE,g_szSkillGroups[1],WHITE,g_pr_rank_Percentage[1], GRAY, g_szSkillGroups[2],GRAY,g_pr_rank_Percentage[2],LIGHTBLUE,
+		PINK,WHITE, WHITE, g_szSkillGroups[0],WHITE,g_szSkillGroups[1],WHITE,g_pr_rank_Percentage[1], GRAY, g_szSkillGroups[2],GRAY,g_pr_rank_Percentage[2],LIGHTBLUE,
 		g_szSkillGroups[3],LIGHTBLUE,g_pr_rank_Percentage[3],BLUE, g_szSkillGroups[4],BLUE,g_pr_rank_Percentage[4],DARKBLUE,g_szSkillGroups[5],DARKBLUE,g_pr_rank_Percentage[5],
 		PINK,g_szSkillGroups[6],PINK,g_pr_rank_Percentage[6],LIGHTRED,g_szSkillGroups[7],LIGHTRED,g_pr_rank_Percentage[7],DARKRED,g_szSkillGroups[8],DARKRED,g_pr_rank_Percentage[8]);
 	return Plugin_Handled;
@@ -1419,9 +1418,9 @@ public Action:Client_Pause(client, args)
 	}
 	PauseMethod(client);
 	if (g_bPause[client]==false)
-		PrintToChat(client, "%t", "Pause2",MOSSGREEN, WHITE, RED, WHITE);
+		PrintToChat(client, "%t", "Pause2",PINK, WHITE, RED, WHITE);
 	else
-		PrintToChat(client, "%t", "Pause3",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "Pause3",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1435,7 +1434,7 @@ public PauseMethod(client)
 	{
 		if (g_bPauseServerside==false && client != g_ProBot && client != g_TpBot)
 		{
-			PrintToChat(client, "%t", "Pause1",MOSSGREEN, WHITE,RED,WHITE);
+			PrintToChat(client, "%t", "Pause1",PINK, WHITE,RED,WHITE);
 			return;
 		}
 		g_fLastTimeDoubleDucked[client] -= 500.0;
@@ -1471,9 +1470,9 @@ public Action:Client_CPMessage(client, args)
 {
 	CPMessage(client);
 	if (g_bCPTextMessage[client] == true)
-		PrintToChat(client, "%t", "CpMessage1",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "CpMessage1",PINK, WHITE);
 	else
-		PrintToChat(client, "%t", "CpMessage2",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "CpMessage2",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1501,9 +1500,9 @@ public Action:Client_AdvClimbersMenu(client, args)
 {
 	AdvClimbersMenu(client);
 	if (g_bAdvancedClimbersMenu[client])
-		PrintToChat(client, "%t", "AdvClimbersMenu1",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "AdvClimbersMenu1",PINK, WHITE);
 	else
-		PrintToChat(client, "%t", "AdvClimbersMenu2",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "AdvClimbersMenu2",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1520,9 +1519,9 @@ public Action:Client_HideChat(client, args)
 {
 	HideChat(client);
 	if (g_bHideChat[client])
-		PrintToChat(client, "%t", "HideChat1",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideChat1",PINK, WHITE);
 	else
-		PrintToChat(client, "%t", "HideChat2",MOSSGREEN, WHITE);
+		PrintToChat(client, "%t", "HideChat2",PINK, WHITE);
 	return Plugin_Handled;
 }
 
@@ -1576,7 +1575,7 @@ public GoToMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 				{
 					if (i == MaxClients)
 					{
-						PrintToChat(param1, "%t", "Goto4", MOSSGREEN,WHITE, szPlayerName);
+						PrintToChat(param1, "%t", "Goto4", PINK,WHITE, szPlayerName);
 						Client_GoTo(param1,0);
 					}
 				}
@@ -1619,17 +1618,17 @@ public GotoMethod(client, i)
 			DoValidTeleport(client, position,angles,Float:{0.0,0.0,-100.0});
 			decl String:szClientName[MAX_NAME_LENGTH];
 			GetClientName(client, szClientName, MAX_NAME_LENGTH);
-			PrintToChat(i, "%t", "Goto5", MOSSGREEN,WHITE, szClientName);
+			PrintToChat(i, "%t", "Goto5", PINK,WHITE, szClientName);
 		}
 		else
 		{
-			PrintToChat(client, "%t", "Goto6", MOSSGREEN,WHITE, szTargetName);
+			PrintToChat(client, "%t", "Goto6", PINK,WHITE, szTargetName);
 			Client_GoTo(client,0);
 		}
 	}
 	else
 	{
-		PrintToChat(client, "%t", "Goto7", MOSSGREEN,WHITE, szTargetName);
+		PrintToChat(client, "%t", "Goto7", PINK,WHITE, szTargetName);
 		Client_GoTo(client,0);
 	}
 }
@@ -1638,10 +1637,10 @@ public GotoMethod(client, i)
 public Action:Client_GoTo(client, args)
 {
 	if (!g_bGoToServer)
-		PrintToChat(client, "%t", "Goto1",MOSSGREEN,WHITE,RED,WHITE);
+		PrintToChat(client, "%t", "Goto1",PINK,WHITE,RED,WHITE);
 	else
 	if (g_bTimeractivated[client])
-		PrintToChat(client, "%t", "Goto3",MOSSGREEN,WHITE, GREEN,WHITE);
+		PrintToChat(client, "%t", "Goto3",PINK,WHITE, GREEN,WHITE);
 	else
 	{
 		decl String:szPlayerName[MAX_NAME_LENGTH];
@@ -1671,7 +1670,7 @@ public Action:Client_GoTo(client, args)
 			else
 			{
 				CloseHandle(menu);
-				PrintToChat(client, "%t", "ChallengeFailed4",MOSSGREEN,WHITE);
+				PrintToChat(client, "%t", "ChallengeFailed4",PINK,WHITE);
 			}
 		}
 		else
@@ -1702,7 +1701,7 @@ public Action:Client_GoTo(client, args)
 					}
 				}
 			}
-			PrintToChat(client, "%t", "PlayerNotFound",MOSSGREEN,WHITE, szOrgTargetName);
+			PrintToChat(client, "%t", "PlayerNotFound",PINK,WHITE, szOrgTargetName);
 		}
 	}
 	return Plugin_Handled;
@@ -1713,9 +1712,9 @@ public Action:Client_StrafeSync(client, args)
 {
 	StrafeSync(client);
 	if (g_bStrafeSync[client])
-		PrintToChat(client, "%t", "StrafeSync1", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "StrafeSync1", PINK,WHITE);
 	else
-		PrintToChat(client, "%t", "StrafeSync2", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "StrafeSync2", PINK,WHITE);
 	return Plugin_Handled;
 }
 
@@ -1723,9 +1722,9 @@ public Action:Client_Route(client, args)
 {
 	ReplayRoute(client);
 	if (g_bReplayRoute[client])
-		PrintToChat(client, "%t", "Route1", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Route1", PINK,WHITE);
 	else
-		PrintToChat(client, "%t", "Route2", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Route2", PINK,WHITE);
 	return Plugin_Handled;
 }
 
@@ -1760,9 +1759,9 @@ public Action:Client_InfoPanel(client, args)
 {
 	InfoPanel(client);
 	if (g_bInfoPanel[client] == true)
-		PrintToChat(client, "%t", "Info1", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Info1", PINK,WHITE);
 	else
-		PrintToChat(client, "%t", "Info2", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "Info2", PINK,WHITE);
 	return Plugin_Handled;
 }
 
@@ -1791,9 +1790,9 @@ public Action:Client_PlayerJumpBeam(client, args)
 {
 	PlayerJumpBeam(client);
 	if (g_bJumpBeam[client])
-		PrintToChat(client, "%t", "PlayerJumpBeam1", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "PlayerJumpBeam1", PINK,WHITE);
 	else
-		PrintToChat(client, "%t", "PlayerJumpBeam2", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "PlayerJumpBeam2", PINK,WHITE);
 	return Plugin_Handled;
 }
 
@@ -1824,7 +1823,7 @@ public Action:Client_Stop(client, args)
 		g_bTimeractivated[client] = false;
 		g_fStartTime[client] = -1.0;
 		g_fCurrentRunTime[client] = -1.0;
-		PrintToChat(client, "%t", "TimerStopped1",MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "TimerStopped1",PINK,WHITE);
 	}
 	return Plugin_Handled;
 }
@@ -1849,7 +1848,7 @@ public DoCheckpoint(client)
 	if (StrEqual("kzpro", g_szMapPrefix[0]) && g_bTimeractivated[client])
 	{
 		EmitSoundToClient(client,"buttons/button10.wav",client);
-		PrintToChat(client, "[%cKZ%c] %cCheckpoint not supported while your timer is running (kzpro_ map)", MOSSGREEN,WHITE,RED);
+		PrintToChat(client, "[%cKZ%c] %cCheckpoint not supported while your timer is running (kzpro_ map)", PINK,WHITE,RED);
 		return;
 	}
 
@@ -1873,7 +1872,7 @@ public DoCheckpoint(client)
 		if (g_bOnBhopPlattform[client])
 		{
 			EmitSoundToClient(client,"buttons/button10.wav",client);
-			PrintToChat(client, "%t", "CheckpointsNotonBhopPlattforms", MOSSGREEN,WHITE,RED);
+			PrintToChat(client, "%t", "CheckpointsNotonBhopPlattforms", PINK,WHITE,RED);
 			return;
 		}
 
@@ -1889,13 +1888,13 @@ public DoCheckpoint(client)
 			EmitSoundToClient(client,"buttons/blip1.wav",client);
 		if (g_bCPTextMessage[client])
 		{
-			PrintToChat(client, "%t", "CheckpointSaved", MOSSGREEN,WHITE,GRAY, LIGHTBLUE, g_OverallCp[client], GRAY);
+			PrintToChat(client, "%t", "CheckpointSaved", PINK,WHITE,GRAY, LIGHTBLUE, g_OverallCp[client], GRAY);
 		}
 	}
 	else
 	{
 		EmitSoundToClient(client,"buttons/button10.wav",client);
-		PrintToChat(client, "%t", "CheckpointsNotinAir", MOSSGREEN,WHITE,RED);
+		PrintToChat(client, "%t", "CheckpointsNotinAir", PINK,WHITE,RED);
 	}
 }
 
@@ -1906,7 +1905,7 @@ public DoTeleport(client,pos)
 
 	if (!g_bAllowCheckpoints)
 	{
-		PrintToChat(client, "%t", "CheckpointsDisabled", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "CheckpointsDisabled", PINK,WHITE);
 		return;
 	}
 	new current = g_CurrentCp[client];
@@ -1948,7 +1947,7 @@ public DoTeleport(client,pos)
 
 	new actual = current+pos;
 	if(actual < 0 || actual > g_OverallCp[client])
-		PrintToChat(client, "%t", "NoCheckpointsFound", MOSSGREEN,WHITE);
+		PrintToChat(client, "%t", "NoCheckpointsFound", PINK,WHITE);
 	else
 	{
 		g_js_bPlayerJumped[client] = false;
@@ -1965,8 +1964,6 @@ public DoTeleport(client,pos)
 			SetEntPropVector(client, Prop_Data, "m_vecVelocity", fVelocity);
 			GetClientAbsOrigin(client, g_fPlayerCordsUndoTp[client]);
 			GetClientEyeAngles(client,g_fPlayerAnglesUndoTp[client]);
-			if (!(GetEntityFlags(client) & FL_ONGROUND))
-				g_js_GODLIKE_Count[client] = 0;
 
 			if (GetEntityMoveType(client) == MOVETYPE_LADDER)
 				g_bInvalidUndoGround[client]=true;
@@ -2250,7 +2247,7 @@ public TopMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 				case 5: JumpTopMenu(param1);
 			}
 			if (param2==5 && !g_bJumpStats)
-				PrintToChat(param1, "%t", "JumpstatsDisabled",MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "JumpstatsDisabled",PINK,WHITE);
 		}
 		else
 		{
@@ -2263,7 +2260,7 @@ public TopMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 				case 4: JumpTopMenu(param1);
 			}
 			if (param2==4 && !g_bJumpStats)
-				PrintToChat(param1, "%t", "JumpStatsDisabled",MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "JumpStatsDisabled",PINK,WHITE);
 		}
 	}
 	else
@@ -2609,7 +2606,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "-----------------");
 	PrintToConsole(client, "KZ Timer settings");
 	PrintToConsole(client, "-----------------");
-	PrintToConsole(client, "kz_admin_clantag %b", g_bAdminClantag);
+	//PrintToConsole(client, "kz_admin_clantag %b", g_bAdminClantag);
 	PrintToConsole(client, "kz_attack_spam_protection %b", g_bAttackSpamProtection);
 	PrintToConsole(client, "kz_anticheat_ban_duration %.1fh", g_fBanDuration);
 	PrintToConsole(client, "kz_auto_bhop %i (climb maps are not supported)", g_bAutoBhopConVar);
@@ -2619,38 +2616,45 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "kz_bhop_single_touch %b", g_bSingleTouch);
 	PrintToConsole(client, "kz_challenge_points %b", g_bChallengePoints);
 	PrintToConsole(client, "kz_checkpoints %b", g_bAllowCheckpoints);
-	PrintToConsole(client, "kz_clean_weapons %b", g_bCleanWeapons);
+	//PrintToConsole(client, "kz_clean_weapons %b", g_bCleanWeapons);
 	PrintToConsole(client, "kz_connect_msg %b", g_bConnectMsg);
-	PrintToConsole(client, "kz_country_tag %b", g_bCountry);
+	//PrintToConsole(client, "kz_country_tag %b", g_bCountry);
 	PrintToConsole(client, "kz_custom_models %b", g_bPlayerSkinChange);
 	PrintToConsole(client, "kz_dist_min_lj %.1f", g_dist_min_lj);
 	PrintToConsole(client, "kz_dist_perfect_lj %.1f", g_dist_perfect_lj);
 	PrintToConsole(client, "kz_dist_impressive_lj %.1f", g_dist_impressive_lj);
 	PrintToConsole(client, "kz_dist_god_lj %.1f", g_dist_god_lj);
+	PrintToConsole(client, "kz_dist_golden_lj %.1f", g_dist_golden_lj);
 	PrintToConsole(client, "kz_dist_min_cj %.1f", g_dist_min_countjump);
 	PrintToConsole(client, "kz_dist_perfect_cj %.1f", g_dist_perfect_countjump);
 	PrintToConsole(client, "kz_dist_impressive_cj %.1f", g_dist_impressive_countjump);
 	PrintToConsole(client, "kz_dist_god_cj %.1f", g_dist_god_countjump);
+	PrintToConsole(client, "kz_dist_golden_cj %.1f", g_dist_golden_countjump);
 	PrintToConsole(client, "kz_dist_min_bhop %.1f", g_dist_min_bhop);
 	PrintToConsole(client, "kz_dist_perfect_bhop %.1f", g_dist_perfect_bhop);
 	PrintToConsole(client, "kz_dist_impressive_bhop %.1f", g_dist_impressive_bhop);
 	PrintToConsole(client, "kz_dist_god_bhop %.1f", g_dist_god_bhop);
+	PrintToConsole(client, "kz_dist_golden_bhop %.1f", g_dist_golden_bhop);
 	PrintToConsole(client, "kz_dist_min_multibhop %.1f", g_dist_min_multibhop);
 	PrintToConsole(client, "kz_dist_perfect_multibhop %.1f", g_dist_perfect_multibhop);
 	PrintToConsole(client, "kz_dist_impressive_multibhop %.1f", g_dist_impressive_multibhop);
 	PrintToConsole(client, "kz_dist_god_multibhop %.1f", g_dist_god_multibhop);
+	PrintToConsole(client, "kz_dist_golden_multibhop %.1f", g_dist_golden_multibhop);
 	PrintToConsole(client, "kz_dist_min_dropbhop %.1f", g_dist_min_dropbhop);
 	PrintToConsole(client, "kz_dist_perfect_dropbhop %.1f", g_dist_perfect_dropbhop);
 	PrintToConsole(client, "kz_dist_impressive_dropbhop %.1f", g_dist_impressive_dropbhop);
 	PrintToConsole(client, "kz_dist_god_dropbhop %.1f", g_dist_god_dropbhop);
+	PrintToConsole(client, "kz_dist_golden_dropbhop %.1f", g_dist_golden_dropbhop);
 	PrintToConsole(client, "kz_dist_min_wj %.1f", g_dist_min_weird);
 	PrintToConsole(client, "kz_dist_perfect_wj %.1f", g_dist_perfect_weird);
 	PrintToConsole(client, "kz_dist_impressive_wj %.1f", g_dist_impressive_weird);
 	PrintToConsole(client, "kz_dist_god_wj %.1f", g_dist_god_weird);
+	PrintToConsole(client, "kz_dist_golden_wj %.1f", g_dist_golden_weird);
 	PrintToConsole(client, "kz_dist_min_ladder %.1f", g_dist_min_ladder);
 	PrintToConsole(client, "kz_dist_perfect_ladder %.1f", g_dist_perfect_ladder);
 	PrintToConsole(client, "kz_dist_impressive_ladder %.1f", g_dist_impressive_ladder);
 	PrintToConsole(client, "kz_dist_god_ladder %.1f", g_dist_god_ladder);
+	PrintToConsole(client, "kz_dist_golden_ladder %.1f", g_dist_golden_ladder);
 	PrintToConsole(client, "kz_double_duck %b", g_bDoubleDuckCvar);
 	PrintToConsole(client, "kz_dynamic_timelimit %b (requires kz_map_end 1)", g_bDynamicTimelimit);
 	PrintToConsole(client, "kz_godmode %b", g_bgodmode);
@@ -2676,7 +2680,7 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "kz_speclist_advert_interval %.1f", g_fSpecsAdvert);
 	PrintToConsole(client, "kz_team_restriction %i", g_Team_Restriction);
 	PrintToConsole(client, "kz_use_radio %b", g_bRadioCommands);
-	PrintToConsole(client, "kz_vip_clantag %b", g_bVipClantag);
+	//PrintToConsole(client, "kz_vip_clantag %b", g_bVipClantag);
 	PrintToConsole(client, "---------------");
 	PrintToConsole(client, "Server settings");
 	PrintToConsole(client, "---------------");
@@ -2689,8 +2693,8 @@ public ShowSrvSettings(client)
 	new Float: flFriction = GetConVarFloat(hTmp);
 	hTmp = FindConVar("sv_gravity");
 	new Float: flGravity = GetConVarFloat(hTmp);
-	hTmp = FindConVar("sv_enablebunnyhopping");
-	new iBhop = GetConVarInt(hTmp);
+	//hTmp = FindConVar("sv_enablebunnyhopping");
+	//new iBhop = GetConVarInt(hTmp);
 	hTmp = FindConVar("sv_maxspeed");
 	new Float: flMaxSpeed = GetConVarFloat(hTmp);
 	hTmp = FindConVar("sv_maxvelocity");
@@ -2699,8 +2703,8 @@ public ShowSrvSettings(client)
 	new Float: flStamLand = GetConVarFloat(hTmp);
 	hTmp = FindConVar("sv_staminajumpcost");
 	new Float: flStamJump = GetConVarFloat(hTmp);
-	hTmp = FindConVar("sv_wateraccelerate");
-	new Float: flWaterA = GetConVarFloat(hTmp);
+	//hTmp = FindConVar("sv_wateraccelerate");
+	//new Float: flWaterA = GetConVarFloat(hTmp);
 	hTmp = FindConVar("sv_ladder_scale_speed");
 	new Float: flLadderSpeed = GetConVarFloat(hTmp);
 	if (hTmp != INVALID_HANDLE)
@@ -2709,15 +2713,15 @@ public ShowSrvSettings(client)
 	PrintToConsole(client, "sv_airaccelerate %.1f", flAA);
 	PrintToConsole(client, "sv_friction %.1f", flFriction);
 	PrintToConsole(client, "sv_gravity %.1f", flGravity);
-	PrintToConsole(client, "sv_enablebunnyhopping %i", iBhop);
+	//PrintToConsole(client, "sv_enablebunnyhopping %i", iBhop);
 	PrintToConsole(client, "sv_ladder_scale_speed %.1f", flLadderSpeed);
 	PrintToConsole(client, "sv_maxspeed %.1f", flMaxSpeed);
 	PrintToConsole(client, "sv_maxvelocity %.1f", flMaxVel);
 	PrintToConsole(client, "sv_staminalandcost %.2f", flStamLand);
 	PrintToConsole(client, "sv_staminajumpcost %.2f", flStamJump);
-	PrintToConsole(client, "sv_wateraccelerate %.1f", flWaterA);
+	//PrintToConsole(client, "sv_wateraccelerate %.1f", flWaterA);
 	PrintToConsole(client, "-------------------------------------");
-	PrintToChat(client, "[%cKZ%c] See console for output!", MOSSGREEN,WHITE);
+	PrintToChat(client, "[%cKZ%c] See console for output!", PINK,WHITE);
 }
 
 public SetClientLang(client)
@@ -2915,6 +2919,7 @@ public OptionMenu(client)
 		AddMenuItem(optionmenu, "", buffer);
 	}
 	//12
+	/*
 	if (g_bStartWithUsp[client])
 	{
 		Format(buffer, sizeof(buffer), "%T", "options_start_weapon_usp", client);
@@ -2925,6 +2930,7 @@ public OptionMenu(client)
 		Format(buffer, sizeof(buffer), "%T", "options_start_weapon_knife", client);
 		AddMenuItem(optionmenu, "", buffer);
 	}
+	*/
 	//13
 	if (g_bJumpBeam[client])
 	{
@@ -3014,12 +3020,12 @@ public OptionMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 			case 10: HideSpecs(param1);
 			case 11: InfoPanel(param1);
 			case 12: AdvInfoPanel(param1);
-			case 13: SwitchStartWeapon(param1);
+			//case 13: SwitchStartWeapon(param1);
 			case 14: PlayerJumpBeam(param1);
 			case 15: HideChat(param1);
 			case 16: HideViewModel(param1);
 			case 17: DisableGoTo(param1);
-			case 18: AutoBhop(param1);
+			//case 18: AutoBhop(param1);
 		}
 		g_OptionsMenuLastPage[param1] = param2;
 		OptionMenu(param1);
@@ -3036,7 +3042,7 @@ public OptionMenuHandler(Handle:menu, MenuAction:action, param1,param2)
 				CloseHandle(menu);
 			}
 }
-
+/*
 public SwitchStartWeapon(client)
 {
 	if (g_bStartWithUsp[client])
@@ -3044,3 +3050,4 @@ public SwitchStartWeapon(client)
 	else
 		g_bStartWithUsp[client] = true;
 }
+*/
