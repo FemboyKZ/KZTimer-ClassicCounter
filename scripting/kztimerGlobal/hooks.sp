@@ -928,7 +928,7 @@ public Action:OnPlayerRunCmd(client, &buttons, &impulse, Float:vel[3], Float:ang
 		
 		//other
 		SpeedCap(client);		
-		ServerSidedAutoBhop(client, buttons);
+		//ServerSidedAutoBhop(client, buttons);
 		DoubleDuck(client, buttons);
 		Prestrafe(client,ang[1], buttons);
 		ButtonPressCheck(client, buttons, origin, speed);
