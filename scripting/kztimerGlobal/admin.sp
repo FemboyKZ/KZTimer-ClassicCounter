@@ -153,12 +153,14 @@ public KzAdminMenu(client)
 	if (g_bJumpStats)
 		Format(szTmp, sizeof(szTmp), "[22.] Jumpstats  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[22.] Jumpstats  -  Disabled"); 				
+		Format(szTmp, sizeof(szTmp), "[22.] Jumpstats  -  Disabled");
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bAutoBhopConVar)
 		Format(szTmp, sizeof(szTmp), "[23.] Auto bunnyhop (only surf_/bhop_ maps)  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[23.] Auto bunnyhop  -  Disabled"); 				
+	*/
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bAutoBan)
 		Format(szTmp, sizeof(szTmp), "[24.] AntiCheat auto-ban  -  Enabled"); 	
@@ -406,6 +408,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_jumpstats 0");
 		}	
+		/*
 		if(param2 == 22)
 		{
 			if (!g_bAutoBhopConVar)
@@ -413,6 +416,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_auto_bhop 0");
 		}			
+		*/
 		if(param2 == 23)
 		{
 			if (!g_bAutoBan)
