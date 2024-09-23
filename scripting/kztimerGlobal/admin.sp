@@ -85,11 +85,13 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[9.] Autorespawn  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[9.] Autorespawn  -  Disabled"); 		
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bCleanWeapons)
 		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Disabled"); 		
+		Format(szTmp, sizeof(szTmp), "[10.] Strip weapons  -  Disabled"); 
+	*/		
 	AddMenuItem(adminmenu, szTmp, szTmp);	
 	if (g_bRestore)
 		Format(szTmp, sizeof(szTmp), "[11.] Restore function  -  Enabled"); 	
@@ -130,11 +132,13 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[18.] Player point system  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[18.] Player point system  -  Disabled"); 	
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);			
 	if (g_bCountry)
 		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Disabled"); 				
+		Format(szTmp, sizeof(szTmp), "[19.] Player country tag  -  Disabled"); 	
+	*/			
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bPlayerSkinChange)
 		Format(szTmp, sizeof(szTmp), "[20.] Allow custom models  -  Enabled"); 	
@@ -160,6 +164,7 @@ public KzAdminMenu(client)
 		Format(szTmp, sizeof(szTmp), "[24.] AntiCheat auto-ban  -  Enabled"); 	
 	else
 		Format(szTmp, sizeof(szTmp), "[24.] AntiCheat auto-ban  -  Disabled"); 			
+	/*
 	AddMenuItem(adminmenu, szTmp, szTmp);
 	if (g_bAdminClantag)
 		Format(szTmp, sizeof(szTmp), "[25.] Admin clan tag  -  Enabled"); 	
@@ -169,7 +174,8 @@ public KzAdminMenu(client)
 	if (g_bVipClantag)
 		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Enabled"); 	
 	else
-		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Disabled"); 			
+		Format(szTmp, sizeof(szTmp), "[26.] VIP clan tag  -  Disabled"); 
+	*/			
 	AddMenuItem(adminmenu, szTmp, szTmp);		
 	if (g_bMapEnd)
 		Format(szTmp, sizeof(szTmp), "[27.] Allow map changes  -  Enabled"); 	
@@ -244,7 +250,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 		{ 
 			if (!g_pr_RankingRecalc_InProgress)
 			{
-				PrintToChat(param1, "%t", "PrUpdateStarted", MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "PrUpdateStarted", PINK,WHITE);
 				g_bManualRecalc=true;
 				g_pr_Recalc_AdminID=param1;
 				RefreshPlayerRankTable(MAX_PR_PLAYERS);
@@ -256,7 +262,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				g_bTop100Refresh = false;
 				g_bManualRecalc = false;
 				g_pr_RankingRecalc_InProgress = false;
-				PrintToChat(param1, "%t", "StopRecalculation", MOSSGREEN,WHITE);
+				PrintToChat(param1, "%t", "StopRecalculation", PINK,WHITE);
 			}
 		}
 		if(param2 == 2)
@@ -273,7 +279,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 		{ 
 			DeleteButtons(param1);
 			db_deleteMapButtons(g_szMapName);
-			PrintToChat(param1,"[%cKZ%c] Timer buttons deleted", MOSSGREEN,WHITE,GREEN,WHITE);
+			PrintToChat(param1,"[%cKZ%c] Timer buttons deleted", PINK,WHITE,GREEN,WHITE);
 			KzAdminMenu(param1);
 		}
 		if(param2 == 5)
@@ -304,7 +310,8 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				ServerCommand("kz_autorespawn 1");
 			else
 				ServerCommand("kz_autorespawn 0");
-		}					
+		}
+		/*				
 		if(param2 == 9)
 		{
 			if (!g_bCleanWeapons)
@@ -312,6 +319,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else	
 				ServerCommand("kz_clean_weapons 0");
 		}
+		*/
 		if(param2 == 10)
 		{
 			if (!g_bRestore)
@@ -368,6 +376,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_point_system 0");
 		}	
+		/*
 		if(param2 == 18)
 		{
 			if (!g_bCountry)
@@ -375,6 +384,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_country_tag 0");
 		}	
+		*/
 		if(param2 == 19)
 		{
 			if (!g_bPlayerSkinChange)
@@ -410,6 +420,7 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 			else
 				ServerCommand("kz_anticheat_auto_ban 0");
 		}
+		/*
 		if(param2 == 24)
 		{
 			if (!g_bAdminClantag)
@@ -423,7 +434,8 @@ public AdminPanelHandler(Handle:adminmenu, MenuAction:action, param1, param2)
 				ServerCommand("kz_vip_clantag 1");
 			else
 				ServerCommand("kz_vip_clantag 0");
-		}	
+		}
+		*/	
 		if(param2 == 26)
 		{
 			if (!g_bMapEnd)
