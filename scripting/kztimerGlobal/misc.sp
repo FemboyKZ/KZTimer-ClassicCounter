@@ -2504,6 +2504,7 @@ public MovementCheck(client)
 			if (g_js_bPlayerJumped[client])
 				ResetJump(client);
 		}
+		/*
 		new Float:LaggedMovementValue = GetEntPropFloat(client, Prop_Data, "m_flLaggedMovementValue");
 		if (LaggedMovementValue != 1.0)
 		{
@@ -2515,6 +2516,7 @@ public MovementCheck(client)
 			if (g_js_bPlayerJumped[client])
 				ResetJump(client);
 		}
+		*/
 	}
 	decl MoveType:mt;
 	mt = GetEntityMoveType(client);
